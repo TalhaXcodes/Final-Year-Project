@@ -4,6 +4,8 @@ import GiftList from "./GiftList";
 import PersonalityAnalysisForm from "./PersonalityAnalysisForm";
 import GiftPackaging from "./GiftPackaging";
 import FeedbackSection from "./FeedbackSection";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const Questionnaire = () => {
   const maxTotalItems = 10;
@@ -91,17 +93,23 @@ const Questionnaire = () => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("🎉 Final Submission:", {
-      giftData,
-      personalityData,
-      packagingChoice,
-      feedbackData,
-    });
 
-    // TODO: send to Firebase or show summary screen
+    try {
+      await addDoc(collection(db, "questionnaireResponses"), {
+        timestamp: serverTimestamp(), // records submission time
+        recipientsCount: recipients,  // example state variable
+        responses: giftData           // your existing responses array/object
+      });
+
+      alert("Questionnaire submitted successfully!");
+    } catch (error) {
+      console.error("Error saving data:", error);
+      alert("Something went wrong while submitting.");
+    }
   };
+
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
@@ -341,8 +349,8 @@ const Questionnaire = () => {
                   }}
                   disabled={!packagingChoice} // ✅ disable until user selects a packaging
                   className={`py-2 px-4 rounded-md transition ${packagingChoice
-                      ? "bg-rose-600 text-white hover:bg-rose-700"
-                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    ? "bg-rose-600 text-white hover:bg-rose-700"
+                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
                     }`}
                 >
                   Next
