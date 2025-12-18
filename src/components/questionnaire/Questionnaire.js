@@ -6,6 +6,8 @@ import GiftPackaging from "./GiftPackaging";
 import FeedbackSection from "./FeedbackSection";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+
 
 const Questionnaire = () => {
   const maxTotalItems = 10;
@@ -92,6 +94,9 @@ const Questionnaire = () => {
     );
   };
 
+  const navigate = useNavigate();
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,10 +105,12 @@ const Questionnaire = () => {
       await addDoc(collection(db, "questionnaireResponses"), {
         timestamp: serverTimestamp(), // records submission time
         recipientsCount: recipients,  // example state variable
-        responses: giftData           // your existing responses array/object
+        responses: giftData,           // your existing responses array/object
+        personality: personalityData,
+        packaging: packagingChoice,
+        feedback: feedbackData
       });
-
-      alert("Questionnaire submitted successfully!");
+      navigate("/thank-you");
     } catch (error) {
       console.error("Error saving data:", error);
       alert("Something went wrong while submitting.");
