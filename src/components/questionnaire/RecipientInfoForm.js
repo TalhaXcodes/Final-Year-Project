@@ -75,7 +75,7 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
       recipient.occasion?.length > 0 &&
       !!recipient.relationship &&
       !!recipient.gender &&
-      (!!recipient.ageType || isAutoAdult) &&
+      (!!recipient.ageType) &&
       !!recipient.ageGroup;
 
     if (recipient.ageType === "Kid") {
@@ -92,15 +92,22 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
     setIsStepValid(valid);
   }, [recipient, isAutoAdult, setIsStepValid]);
 
-  const isWeddingOccasion =
-    recipient.occasion?.includes("Wedding/Engagement gift");
+  const isAdultOnlyRelationship =
+    ["Colleague/Professional", "Spouse"].includes(recipient.relationship);
+
+  const isAdultOnlyOccasion = recipient.occasion?.some((occ) =>
+    ["Wedding/Engagement gift", "Anniversary"].includes(occ)
+  );
+
+  const forceAdult = isAdultOnlyRelationship || isAdultOnlyOccasion;
 
 
-  useEffect(() => {
-    if (isWeddingOccasion && recipient.ageType === "Kid") {
-      handleChange("ageType", "Adult");
-    }
-  }, [isWeddingOccasion, recipient.ageType, handleChange]);
+useEffect(() => {
+  if (forceAdult && recipient.ageType !== "Adult") {
+    handleChange("ageType", "Adult");
+  }
+}, [forceAdult, recipient.ageType, handleChange]);
+
 
 
 
@@ -169,7 +176,7 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
 
 
 
-      {!isAutoAdult && (
+      {!forceAdult && (
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">
             Is the recipient a kid or an adult?
@@ -181,7 +188,6 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
                 name={`ageType-${recipient.id}`}
                 value="Kid"
                 checked={recipient.ageType === "Kid"}
-                disabled={isWeddingOccasion}
                 onChange={(e) => handleChange("ageType", e.target.value)}
               />
               <span className="text-gray-700">Kid</span>
@@ -197,11 +203,6 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
               <span className="text-gray-700">Adult</span>
             </label>
           </div>
-          {isWeddingOccasion && (
-            <p className="text-sm text-gray-500 mt-1">
-              Kid option is disabled for Wedding / Engagement occasions
-            </p>
-          )}
 
         </div>
       )}

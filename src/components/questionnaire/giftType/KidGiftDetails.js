@@ -205,7 +205,7 @@ const KidGiftDetails = ({
           </div>
 
           <label className="block text-gray-700 font-medium mb-1">
-            Does the child have a preferred scent?
+            What scent does the recipient prefer?
           </label>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {perfumeScentOptions.map((scent) => (
