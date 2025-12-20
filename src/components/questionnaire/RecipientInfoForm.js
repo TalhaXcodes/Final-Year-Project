@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 
 const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
-  const handleChange = (field, value) => {
+  const handleChange = useCallback((field, value) => {
     setGiftData((prev) =>
       prev.map((r) => {
         if (r.id !== recipient.id) return r;
@@ -19,7 +19,8 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
         return updatedRecipient;
       })
     );
-  };
+  }, [recipient.id, setGiftData]);
+
 
 
 
@@ -90,6 +91,18 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
 
     setIsStepValid(valid);
   }, [recipient, isAutoAdult, setIsStepValid]);
+
+  const isWeddingOccasion =
+    recipient.occasion?.includes("Wedding/Engagement gift");
+
+
+  useEffect(() => {
+    if (isWeddingOccasion && recipient.ageType === "Kid") {
+      handleChange("ageType", "Adult");
+    }
+  }, [isWeddingOccasion, recipient.ageType, handleChange]);
+
+
 
 
   return (
@@ -168,6 +181,7 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
                 name={`ageType-${recipient.id}`}
                 value="Kid"
                 checked={recipient.ageType === "Kid"}
+                disabled={isWeddingOccasion}
                 onChange={(e) => handleChange("ageType", e.target.value)}
               />
               <span className="text-gray-700">Kid</span>
@@ -183,6 +197,12 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
               <span className="text-gray-700">Adult</span>
             </label>
           </div>
+          {isWeddingOccasion && (
+            <p className="text-sm text-gray-500 mt-1">
+              Kid option is disabled for Wedding / Engagement occasions
+            </p>
+          )}
+
         </div>
       )}
 
