@@ -84,9 +84,9 @@ const KidGiftDetails = ({
   };
 
   const handleFlavourChange = (foodType, flavour) => {
-  const updatedFlavours = { ...(gift.flavours || {}), [foodType]: flavour };
-  handleChange("flavours", updatedFlavours);
-};
+    const updatedFlavours = { ...(gift.flavours || {}), [foodType]: flavour };
+    handleChange("flavours", updatedFlavours);
+  };
 
 
   // --- 🧸 Toys Data ---
@@ -269,6 +269,18 @@ const KidGiftDetails = ({
 
           {/* Food Selection */}
           <label className="block text-gray-700 font-medium mb-1">Food</label>
+
+          {/* Guiding Note */}
+          {gift.edibleQuantity && (
+            <p
+              className={`text-red-500 text-sm mb-2 transition-opacity duration-300 ${gift.foodItems?.length === gift.edibleQuantity ? "opacity-0" : "opacity-100"
+                }`}
+            >
+              Please select exactly {gift.edibleQuantity} item
+              {gift.edibleQuantity > 1 ? "s" : ""}
+            </p>
+          )}
+
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
             {foodOptions.map((item) => (
               <label key={item} className="flex items-center space-x-2">
@@ -282,6 +294,7 @@ const KidGiftDetails = ({
               </label>
             ))}
           </div>
+
 
           {/* Flavour Selection */}
           {gift.foodItems?.map(

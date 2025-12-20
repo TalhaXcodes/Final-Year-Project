@@ -164,23 +164,34 @@ const EdibleGiftDetails = ({
         </select>
       </div>
 
-      {/* 🍱 Food Type */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-1">Food</label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {foodOptions.map((item) => (
-            <label key={item} className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                checked={gift.foodItems?.includes(item) || false}
-                onChange={() => handleCheckboxChange(item)}
-                disabled={!isPriceSelected}
-              />
-              <span className="text-gray-700">{item}</span>
-            </label>
-          ))}
-        </div>
+      {/* Food Selection */}
+      <label className="block text-gray-700 font-medium mb-1">Food</label>
+
+      {/* Guiding Note */}
+      {gift.edibleQuantity && (
+        <p
+          className={`text-red-500 text-sm mb-2 transition-opacity duration-300 ${gift.foodItems?.length === gift.edibleQuantity ? "opacity-0" : "opacity-100"
+            }`}
+        >
+          Please select exactly {gift.edibleQuantity} item
+          {gift.edibleQuantity > 1 ? "s" : ""}
+        </p>
+      )}
+
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+        {foodOptions.map((item) => (
+          <label key={item} className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              checked={gift.foodItems?.includes(item) || false}
+              onChange={() => handleCheckboxChange(item)}
+              disabled={!isPriceSelected}
+            />
+            <span className="text-gray-700">{item}</span>
+          </label>
+        ))}
       </div>
+
 
       {/* 🍫 Flavours for Selected Foods */}
       {gift.foodItems?.map(

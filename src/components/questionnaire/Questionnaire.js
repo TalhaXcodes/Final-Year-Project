@@ -26,6 +26,7 @@ const Questionnaire = () => {
 
 
 
+
   const maxRecipients = 10;
 
   const handleRecipientChange = (e) => {
@@ -165,29 +166,44 @@ const Questionnaire = () => {
                 setIsStepValid={setIsStepValid}
               />
 
-              <div className="flex justify-between items-center mt-6">
+              <div className="flex flex-col items-end mt-6">
+                {/* Message displayed above Next button with fade effect */}
+                <p
+                  className={`text-red-500 text-sm mb-1 transition-opacity duration-300 ${isStepValid ? "opacity-0" : "opacity-100"
+                    }`}
+                >
+                  Please fill all required fields before proceeding
+                </p>
 
-                <button onClick={() => {
-                  if (recipientStepIndex === 0) {
-                    setPhase("recipients-count");
-                  } else {
-                    setRecipientStepIndex((i) => i - 1); setRecipientSubStep(3);
-                  }
-                }}
-                  className="bg-rose-600 text-white py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md hover:bg-rose-700 transition">
-                  Back
-                </button>
+                <div className="flex justify-between items-center w-full">
+                  <button
+                    onClick={() => {
+                      if (recipientStepIndex === 0) {
+                        setPhase("recipients-count");
+                      } else {
+                        setRecipientStepIndex((i) => i - 1);
+                        setRecipientSubStep(3);
+                      }
+                    }}
+                    className="bg-rose-600 text-white py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md hover:bg-rose-700 transition"
+                  >
+                    Back
+                  </button>
 
-                <button onClick={() => setRecipientSubStep(2)}
-                  disabled={!isStepValid}
-                  className={`py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md transition
-  ${isStepValid
-    ? "bg-rose-600 text-white hover:bg-rose-700"
-    : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    }`}>
-                  Next
-                </button>
+                  <button
+                    onClick={() => setRecipientSubStep(2)}
+                    disabled={!isStepValid}
+                    className={`py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md transition
+        ${isStepValid
+                        ? "bg-rose-600 text-white hover:bg-rose-700"
+                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      }`}
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
+
             </div>
           </>
         )}
@@ -269,35 +285,46 @@ const Questionnaire = () => {
               setIsStepValid={setIsStepValid}
             />
 
-            <div className="mt-6 flex justify-between">
-              <button
-                onClick={() => setRecipientSubStep(2)}
-                className="bg-rose-600 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition"
-              >
-                Back
-              </button>
-              <button
-                onClick={() => {
-                  if (!isStepValid) return; // safety guard, shouldn’t trigger if disabled
-                  if (recipientStepIndex < recipients - 1) {
-                    setRecipientStepIndex((prev) => prev + 1);
-                    setRecipientSubStep(1);
-                  } else {
-                    setPhase("personality");
-                  }
-                }}
-                disabled={!isStepValid}  // 👈 disable if invalid
-                className={`py-2 px-4 rounded-md transition 
-    ${isStepValid
-                    ? "bg-rose-600 text-white hover:bg-rose-700"
-                    : "bg-gray-300 text-gray-500 cursor-not-allowed"}`}
-              >
-                {recipientStepIndex === recipients - 1
-                  ? "Next"
-                  : "Continue to Next Recipient"}
-              </button>
+            <div className="mt-6 flex flex-col items-end">
+              {/* Warning message above Next button */}
+              {!isStepValid && (
+                <p className="text-red-500 text-sm mb-1 transition-opacity duration-300 opacity-100">
+                  Please fill all required fields before proceeding
+                </p>
+              )}
 
+              <div className="flex justify-between w-full">
+                <button
+                  onClick={() => setRecipientSubStep(2)}
+                  className="bg-rose-600 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition"
+                >
+                  Back
+                </button>
+
+                <button
+                  onClick={() => {
+                    if (!isStepValid) return; // safety guard, shouldn’t trigger if disabled
+                    if (recipientStepIndex < recipients - 1) {
+                      setRecipientStepIndex((prev) => prev + 1);
+                      setRecipientSubStep(1);
+                    } else {
+                      setPhase("personality");
+                    }
+                  }}
+                  disabled={!isStepValid}  // 👈 disable if invalid
+                  className={`py-2 px-4 rounded-md transition 
+        ${isStepValid
+                      ? "bg-rose-600 text-white hover:bg-rose-700"
+                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    }`}
+                >
+                  {recipientStepIndex === recipients - 1
+                    ? "Next"
+                    : "Continue to Next Recipient"}
+                </button>
+              </div>
             </div>
+
           </div>
         )}
 
@@ -341,31 +368,40 @@ const Questionnaire = () => {
                 setIsStepValid={setIsStepValid}
               />
 
-              <div className="flex justify-between mt-6">
-                <button
-                  onClick={() => setPhase("personality")}
-                  disabled={!isStepValid}
-                  className={`px-4 py-2 rounded ${isStepValid ? "bg-rose-500 text-white" : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    }`}
-                >
-                  Back
-                </button>
+              <div className="flex flex-col items-end mt-6">
+                {/* Warning message above Next button */}
+                {!packagingChoice && (
+                  <p className="text-red-500 text-sm mb-1 transition-opacity duration-300 opacity-100">
+                    Please select a packaging option before proceeding
+                  </p>
+                )}
 
-                <button
-                  onClick={() => {
-                    if (packagingChoice) {
-                      setPhase("feedback");
-                    }
-                  }}
-                  disabled={!packagingChoice} // ✅ disable until user selects a packaging
-                  className={`py-2 px-4 rounded-md transition ${packagingChoice
-                    ? "bg-rose-600 text-white hover:bg-rose-700"
-                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    }`}
-                >
-                  Next
-                </button>
+                <div className="flex justify-between w-full">
+                  <button
+                    onClick={() => setPhase("personality")}
+                    disabled={!isStepValid}
+                    className={`px-4 py-2 rounded ${isStepValid ? "bg-rose-500 text-white" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`}
+                  >
+                    Back
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      if (packagingChoice) {
+                        setPhase("feedback");
+                      }
+                    }}
+                    disabled={!packagingChoice} // ✅ disable until user selects a packaging
+                    className={`py-2 px-4 rounded-md transition ${packagingChoice
+                      ? "bg-rose-600 text-white hover:bg-rose-700"
+                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      }`}
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
+
             </div>
           )
         }
