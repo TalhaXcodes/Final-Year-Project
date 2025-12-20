@@ -1,8 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const emojiScale = ["😐", "🙂", "😊", "😄", "😍"];
 
+const DEFAULT_PERSONALITY_VALUES = {
+  personality: 3,
+  connectionImportance: 3,
+  handmadePreference: 3,
+  stylePreference: 3,
+  surpriseReaction: 3,
+  relationshipCloseness: 3,
+  practicalOverSentimental: 3,
+  uniqueGiftValue: 3,
+  experiencePreference: 3,
+  budgetFlexibility: 3,
+  sharedMemoriesAppreciation: 3,
+  noteImportance: 3,
+  handmadeOverStore: 3,
+};
+
+
 const PersonalityAnalysisForm = ({ personalityData, setPersonalityData }) => {
+
+  useEffect(() => {
+    setPersonalityData((prev) => {
+      const updated = { ...prev };
+      let changed = false;
+
+      Object.entries(DEFAULT_PERSONALITY_VALUES).forEach(([key, defaultValue]) => {
+        if (updated[key] == null) {
+          updated[key] = defaultValue;
+          changed = true;
+        }
+      });
+
+      return changed ? updated : prev;
+    });
+  }, [setPersonalityData]);
+
+
   const handleChange = (field, value) => {
     setPersonalityData((prev) => ({
       ...prev,
@@ -34,7 +69,7 @@ const PersonalityAnalysisForm = ({ personalityData, setPersonalityData }) => {
 
 
   const renderSlider = (fieldName, labelLeft, labelRight) => {
-    const value = personalityData[fieldName] || "3"; // default to 3 (middle)
+    const value = personalityData[fieldName];
 
     return (
       <div className="mb-8">
@@ -54,6 +89,7 @@ const PersonalityAnalysisForm = ({ personalityData, setPersonalityData }) => {
             type="range"
             min="1"
             max="5"
+            step="1"
             value={value}
             onChange={(e) => handleChange(fieldName, e.target.value)}
             className="w-full accent-rose-500"
