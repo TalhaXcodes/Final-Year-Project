@@ -1,12 +1,12 @@
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
-import RecipientInfoForm from "./RecipientInfoForm";
-import GiftList from "./GiftList";
-import PersonalityAnalysisForm from "./PersonalityAnalysisForm";
-import GiftPackaging from "./GiftPackaging";
-import FeedbackSection from "./FeedbackSection";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { db } from "../../firebase";
+import FeedbackSection from "./FeedbackSection";
+import GiftList from "./GiftList";
+import GiftPackaging from "./GiftPackaging";
+import PersonalityAnalysisForm from "./PersonalityAnalysisForm";
+import RecipientInfoForm from "./RecipientInfoForm";
 
 
 const Questionnaire = () => {
@@ -119,21 +119,21 @@ const Questionnaire = () => {
 
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold text-center text-rose-700 mb-8">
+    <div className="p-4 sm:p-6 max-w-4xl mx-auto">
+      <h1 className="text-2xl sm:text-4xl font-bold text-center text-rose-700 mb-6 sm:mb-8">
         Gift Basket Questionnaire
       </h1>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         {phase === "recipients-count" && (
-          <div className="bg-white p-6 rounded-xl shadow-md border border-rose-300">
-            <label className="block text-gray-700 font-semibold mb-2">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-rose-300">
+            <label className="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
               How many recipients for the gift baskets? (Max: {maxRecipients})
             </label>
             <select
               value={recipients}
               onChange={handleRecipientChange}
-              className="w-full border border-rose-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-400"
+              className="w-full border border-rose-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-400"
             >
               {[...Array(maxTotalItems).keys()].map(i => i + 1).filter(i => {
                 const allocatedGifts = giftData.reduce((sum, r) => sum + (r.gifts?.length || 0), 0);
@@ -146,15 +146,15 @@ const Questionnaire = () => {
                   </option>
                 ))}
             </select>
-            <div className="flex justify-end mt-6">
-              <button className="bg-rose-600 text-white py-2 px-4 rounded-md" onClick={() => setPhase("recipients")}>Next</button>
+            <div className="flex gap-3 mt-6 justify-end">
+              <button className="bg-rose-600 text-white py-3 px-4 text-sm sm:text-base rounded-md hover:bg-rose-700 transition" onClick={() => setPhase("recipients")}>Next</button>
             </div>
           </div>
         )}
 
         {phase === "recipients" && recipientSubStep === 1 && (
           <>
-            <div className="bg-white p-6 rounded-xl shadow-md border border-rose-300 mb-6">
+            <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-rose-300 mb-6">
               <h2 className="text-2xl font-semibold text-rose-600 mb-4 text-center">
                 Recipient {recipientStepIndex + 1} of {recipients}
               </h2>
@@ -165,7 +165,7 @@ const Questionnaire = () => {
                 setIsStepValid={setIsStepValid}
               />
 
-              <div className="flex justify-between mt-6">
+              <div className="flex justify-between items-center mt-6">
 
                 <button onClick={() => {
                   if (recipientStepIndex === 0) {
@@ -174,13 +174,16 @@ const Questionnaire = () => {
                     setRecipientStepIndex((i) => i - 1); setRecipientSubStep(3);
                   }
                 }}
-                  className="bg-rose-600 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition">
+                  className="bg-rose-600 text-white py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md hover:bg-rose-700 transition">
                   Back
                 </button>
 
                 <button onClick={() => setRecipientSubStep(2)}
                   disabled={!isStepValid}
-                  className={`px-4 py-2 rounded ${isStepValid ? "bg-rose-500 text-white" : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  className={`py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md transition
+  ${isStepValid
+    ? "bg-rose-600 text-white hover:bg-rose-700"
+    : "bg-gray-300 text-gray-500 cursor-not-allowed"
                     }`}>
                   Next
                 </button>
@@ -190,7 +193,7 @@ const Questionnaire = () => {
         )}
 
         {phase === "recipients" && recipientSubStep === 2 && (
-          <div className="bg-white p-6 rounded-xl shadow-md border border-rose-300 mb-6">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-rose-300 mb-6">
             <h2 className="text-xl font-semibold mb-4">
               Number of gifts for recipient {recipientStepIndex + 1}
             </h2>
@@ -215,7 +218,7 @@ const Questionnaire = () => {
                   onChange={(e) =>
                     handleGiftCountChange(currentRecipient.id, e.target.value)
                   }
-                  className="w-full border border-rose-300 p-2 rounded-md"
+                  className="w-full border border-rose-300 p-3 rounded-md"
                 >
                   {[...Array(maxSelectable).keys()]
                     .map((i) => i + minSelectable)
@@ -228,16 +231,16 @@ const Questionnaire = () => {
               );
             })()}
 
-            <div className="flex justify-between mt-6">
+            <div className="flex justify-between items-center mt-6">
               <button
                 onClick={() => setRecipientSubStep(1)}
-                className="bg-rose-600 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition"
+                className="bg-rose-600 text-white py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md hover:bg-rose-700 transition"
               >
                 Back
               </button>
               <button
                 onClick={() => setRecipientSubStep(3)}
-                className="bg-rose-600 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition"
+                className="bg-rose-600 text-white py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md hover:bg-rose-700 transition"
               >
                 Next
               </button>
@@ -247,7 +250,7 @@ const Questionnaire = () => {
 
 
         {phase === "recipients" && recipientSubStep === 3 && (
-          <div className="bg-white p-6 rounded-xl shadow-md border border-rose-300 mb-6">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-rose-300 mb-6">
             <h2 className="text-2xl font-semibold text-rose-600 mb-4 text-center">
               Gift Details - Recipient {recipientStepIndex + 1}
             </h2>
