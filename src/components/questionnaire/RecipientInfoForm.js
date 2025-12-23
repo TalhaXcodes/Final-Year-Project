@@ -109,9 +109,6 @@ useEffect(() => {
 }, [forceAdult, recipient.ageType, handleChange]);
 
 
-
-
-
   return (
     <div className="mb-6 space-y-4">
       {/* Occasion */}

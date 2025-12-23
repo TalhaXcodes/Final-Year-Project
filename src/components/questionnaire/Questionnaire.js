@@ -99,8 +99,14 @@ const Questionnaire = () => {
 
 
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return; // 🚫 block duplicates
+    setIsSubmitting(true);
 
     try {
       await addDoc(collection(db, "questionnaireResponses"), {
@@ -115,6 +121,7 @@ const Questionnaire = () => {
     } catch (error) {
       console.error("Error saving data:", error);
       alert("Something went wrong while submitting.");
+      setIsSubmitting(false); // allow retry only if failed
     }
   };
 
@@ -425,9 +432,10 @@ const Questionnaire = () => {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="bg-rose-600 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition"
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </div>
