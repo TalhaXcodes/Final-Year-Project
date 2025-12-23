@@ -21,6 +21,16 @@ const DEFAULT_PERSONALITY_VALUES = {
 
 const PersonalityAnalysisForm = ({ personalityData, setPersonalityData }) => {
 
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+
+
   useEffect(() => {
     setPersonalityData((prev) => {
       const updated = { ...prev };
