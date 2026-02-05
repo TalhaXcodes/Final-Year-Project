@@ -11,6 +11,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* Hide native password reveal icons */
+input::-ms-reveal,
+input::-webkit-password-toggle-button {
+  display: none;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
