@@ -9,6 +9,9 @@ import ThankYou from "./components/pages/Thankyou";
 import LandingPage from "./components/pages/LandingPage";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
+import Dashboard from "./components/dashboard/Dashboard";
+import AdminDashboard from "./components/dashboard/AdminDashboard";
+import UserProfile from "./components/profile/UserProfile";
 
 function App() {
   return (
@@ -31,6 +34,10 @@ function App() {
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/profile" element={<UserProfile />} />
+
 
               </Routes>
             </>

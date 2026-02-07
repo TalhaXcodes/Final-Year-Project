@@ -119,8 +119,8 @@ const Questionnaire = () => {
       });
       navigate("/thank-you");
     } catch (error) {
-      console.error("Error saving data:", error);
-      alert("Something went wrong while submitting.");
+       console.error("FIRESTORE ERROR:", error);
+  alert(error.message);
       setIsSubmitting(false); // allow retry only if failed
     }
   };
