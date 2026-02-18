@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import { updateProfile, updatePassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { EmailAuthProvider } from "firebase/auth";
 
 export default function UserProfile() {
   const user = auth.currentUser;
@@ -49,7 +50,9 @@ export default function UserProfile() {
   };
 
   // Determine if user signed up with email/password
-  const isEmailPasswordUser = user?.providerData[0]?.providerId === "password";
+  const isEmailPasswordUser = user?.providerData?.some(
+    (provider) => provider.providerId === EmailAuthProvider.PROVIDER_ID
+  );
 
   return (
     <div className="min-h-screen bg-rose-50 flex items-center justify-center px-4 py-10">
@@ -82,27 +85,39 @@ export default function UserProfile() {
 
         {/* Change Password */}
         {isEmailPasswordUser ? (
-          <form onSubmit={handleChangePassword}>
-            <label className="block text-gray-700 mb-2">Change Password</label>
-            <input
-              type="password"
-              placeholder="Enter new password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full border border-rose-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-400 mb-4"
-            />
-            <button
-              type="submit"
-              className="w-full bg-rose-600 text-white py-2 rounded-md hover:bg-rose-700 transition"
-            >
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold text-rose-600 mb-2">
               Change Password
-            </button>
-          </form>
+            </h3>
+
+            <form onSubmit={handleChangePassword} className="space-y-4">
+              <input
+                type="password"
+                placeholder="Enter a new password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="w-full border border-rose-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-400"
+                required
+                minLength={6}
+              />
+
+              <button
+                type="submit"
+                className="w-full bg-rose-600 text-white py-2 rounded-md hover:bg-rose-700 transition font-medium"
+              >
+                Update Password
+              </button>
+            </form>
+          </div>
         ) : (
-          <p className="text-sm text-gray-500 mb-4">
-            Your account is linked with Google. Password cannot be changed here.
-          </p>
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-500">
+              This account was created using Google Sign-In only.
+              Please manage your password from your Google account.
+            </p>
+          </div>
         )}
+
 
       </div>
     </div>

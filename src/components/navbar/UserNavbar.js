@@ -146,6 +146,13 @@ const UserNavbar = () => {
           >
             Contact
           </NavLink>
+          <NavLink
+            to="/catalogue"
+            onClick={() => setOpen(false)}
+            className="text-gray-700 hover:text-rose-600"
+          >
+            Catalogue
+          </NavLink>
 
           {/* Profile Icon for Mobile */}
           {user && (

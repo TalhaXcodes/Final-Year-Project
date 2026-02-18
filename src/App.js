@@ -12,6 +12,7 @@ import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import AdminDashboard from "./components/dashboard/AdminDashboard";
 import UserProfile from "./components/profile/UserProfile";
+import Catalogue from "./components/catalogue/Catalogue";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/catalogue" element={<Catalogue />} />
 
 
               </Routes>
