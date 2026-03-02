@@ -1,115 +1,190 @@
-import React, { useEffect, useState } from "react";
-import { auth } from "../../firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { Heart, Package, Sparkles, TrendingUp, ArrowRight } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { mockRecommendations } from "../../data/recommendations";
+import Footer from "../Footer";
 
 const Dashboard = () => {
+  const { user, isAuthenticated } = useAuth();
+  const { favorites } = useCart();
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // prevents flashing login page
+  const location = useLocation();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        navigate("/login");
-      }
-      setLoading(false);
-    });
+    if (!isAuthenticated) {
+      navigate("/login", { state: { from: location } });
+    }
+  }, [isAuthenticated, navigate, location]);
 
-    return () => unsubscribe();
-  }, [navigate]);
+  if (!isAuthenticated) {
+    return null;
+  }
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  if (!user) return null;
-
-  const displayName = user?.displayName || "User";
-
-  const handleLogout = async () => {
-    await signOut(auth);
-    navigate("/login");
-  };
+  const displayName = user?.displayName || user?.name || "User";
 
   return (
-    <div className="min-h-screen bg-rose-50 px-4 py-10">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-rose-50 py-12 px-4">
+      <div className="max-w-7xl mx-auto">
 
-        {/* SECTION 1 */}
-        <div className="bg-white rounded-xl shadow-md border border-rose-300 p-8 text-center mb-10">
-          <h1 className="text-3xl font-bold text-rose-600 mb-4">
-            Hello {displayName} 👋
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-rose-900 mb-2">
+            Welcome back, {displayName}!
           </h1>
-          <p className="text-gray-600 max-w-xl mx-auto">
-            Start your journey to find the perfect personalized gift using our
-            AI-powered recommendations.
+          <p className="text-gray-600">
+            Manage your saved favorites and view past recommendations
           </p>
         </div>
 
-        {/* SECTION 2 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          {/* Card 1 */}
-          <div className="bg-white rounded-xl shadow-md border border-rose-300 p-6 text-center flex flex-col">
-            <h2 className="text-xl font-semibold text-rose-600 mb-2">
-              Personality Questionnaire
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Answer a few questions to help our AI understand your preferences.
-            </p>
-            <button
-              onClick={() => navigate("/questionnaire")}
-              className="w-full bg-rose-600 text-white py-3 rounded-md hover:bg-rose-700 transition mt-auto"
-            >
-              Start Questionnaire
-            </button>
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white border border-rose-300 rounded-xl shadow-sm p-6 flex items-center gap-4">
+            <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center">
+              <Heart className="w-6 h-6 text-rose-600" />
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-rose-900">{favorites.length}</div>
+              <div className="text-sm text-gray-600">Saved Favorites</div>
+            </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-white rounded-xl shadow-md border border-rose-300 p-6 text-center flex flex-col">
-            <h2 className="text-xl font-semibold text-rose-600 mb-2">
-              Gift Recommendations
-            </h2>
-            <p className="text-gray-600 mb-6">
-              View AI-generated gifts tailored for you.
-            </p>
-            <button
-              onClick={() => navigate("/recommendations")}
-              className="w-full bg-rose-600 text-white py-3 rounded-md hover:bg-rose-700 transition mt-auto"
-            >
-              View Recommendations
-            </button>
+          <div className="bg-white border border-rose-300 rounded-xl shadow-sm p-6 flex items-center gap-4">
+            <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center">
+              <Package className="w-6 h-6 text-rose-600" />
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-rose-900">0</div>
+              <div className="text-sm text-gray-600">Orders Placed</div>
+            </div>
           </div>
 
-          {/* Card 3 */}
-          <div className="bg-white rounded-xl shadow-md border border-rose-300 p-6 text-center flex flex-col">
-            <h2 className="text-xl font-semibold text-rose-600 mb-2">
-              Favourites
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Access gifts you have saved for later.
-            </p>
-            <button
-              onClick={() => navigate("/favourites")}
-              className="w-full bg-rose-600 text-white py-3 rounded-md hover:bg-rose-700 transition mt-auto"
-            >
-              View Favourites
-            </button>
+          <div className="bg-white border border-rose-300 rounded-xl shadow-sm p-6 flex items-center gap-4">
+            <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center">
+              <Sparkles className="w-6 h-6 text-rose-600" />
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-rose-900">1</div>
+              <div className="text-sm text-gray-600">AI Sessions</div>
+            </div>
           </div>
-
         </div>
 
-        {/* Logout */}
-        <div className="text-center mt-10">
-          <button
-            onClick={handleLogout}
-            className="text-sm text-gray-500 hover:text-rose-600 underline"
-          >
-            Logout
-          </button>
+        {/* Favorites Section */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-rose-900">Saved Favorites</h2>
+            <Link
+              to="/shop"
+              className="text-rose-600 hover:text-rose-700 flex items-center gap-2"
+            >
+              Browse More
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {favorites.length === 0 ? (
+            <div className="bg-white border border-rose-300 rounded-xl shadow-sm p-12 text-center">
+              <Heart className="w-16 h-16 text-rose-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-rose-900 mb-2">
+                No favorites yet
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Start adding gifts to your favorites to see them here
+              </p>
+              <Link
+                to="/shop"
+                className="inline-flex items-center gap-2 bg-rose-600 text-white px-6 py-3 rounded-xl hover:bg-rose-700 transition-colors"
+              >
+                Browse Gifts
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {favorites.map((gift) => (
+                <div
+                  key={gift.id}
+                  className="bg-white border border-rose-300 rounded-xl shadow-sm overflow-hidden"
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <ImageWithFallback
+                      src={gift.image}
+                      alt={gift.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold text-rose-900 mb-2">{gift.name}</h3>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-bold text-rose-900">Rs {gift.price}</span>
+                      <Link
+                        to={`/product/${gift.id}`}
+                        className="px-4 py-2 bg-rose-600 text-white rounded-xl hover:bg-rose-700 transition-colors text-sm"
+                      >
+                        View
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        {/* Previous Recommendations */}
+        <div>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-rose-900">Previous Recommendations</h2>
+            <Link
+              to="/recommendations"
+              className="text-rose-600 hover:text-rose-700 flex items-center gap-2"
+            >
+              View All
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {mockRecommendations.slice(0, 3).map((gift) => (
+              <div
+                key={gift.id}
+                className="bg-white border border-rose-300 rounded-xl shadow-sm overflow-hidden"
+              >
+                <div className="relative aspect-square overflow-hidden">
+                  <ImageWithFallback
+                    src={gift.image}
+                    alt={gift.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full shadow-md border border-rose-200">
+                    <div className="flex items-center gap-1">
+                      <TrendingUp className="w-4 h-4 text-rose-600" />
+                      <span className="text-sm font-semibold text-rose-900">
+                        {gift.matchScore}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold text-rose-900 mb-2">{gift.name}</h3>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xl font-bold text-rose-900">Rs {gift.price}</span>
+                    <Link
+                      to={`/product/${gift.id}`}
+                      className="px-4 py-2 bg-rose-600 text-white rounded-xl hover:bg-rose-700 transition-colors text-sm"
+                    >
+                      View
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
+      <Footer />
     </div>
   );
 };

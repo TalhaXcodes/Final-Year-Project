@@ -1,186 +1,185 @@
-import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { auth } from "../../firebase";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
+import { ShoppingCart, Heart, User, LayoutDashboard, LogOut } from "lucide-react";
 
 const UserNavbar = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const user = auth.currentUser;
+  const { user, isAuthenticated, logout } = useAuth();
+  const { favorites } = useCart();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
+
+  const isActive = (path) => window.location.pathname === path;
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-between items-center h-16">
+    <nav className="bg-white shadow-sm sticky top-0 z-50 border-b border-rose-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center h-16 justify-between">
+          
+          {/* Left: Logo */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center gap-2">
+              <span className="text-2xl font-semibold text-rose-900">BASKETRIES</span>
+            </Link>
+          </div>
 
-          {/* Logo */}
-          <NavLink
-            to="/"
-            className="text-rose-700 font-bold text-2xl tracking-wide hover:text-rose-600"
-          >
-            BASKETRIES
-          </NavLink>
-
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Center: Pages */}
+          <div className="hidden md:flex space-x-6 mx-auto">
             <NavLink
               to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-rose-700 font-semibold"
-                  : "text-gray-700 hover:text-rose-600"
-              }
+              className={isActive("/") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
             >
               Home
             </NavLink>
             <NavLink
-              to="/questionnaire"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-rose-700 font-semibold"
-                  : "text-gray-700 hover:text-rose-600"
-              }
+              to="/shop"
+              className={isActive("/shop") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
             >
-              Questionnaire
+              Shop
             </NavLink>
             <NavLink
               to="/about"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-rose-700 font-semibold"
-                  : "text-gray-700 hover:text-rose-600"
-              }
+              className={isActive("/about") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
             >
               About
             </NavLink>
             <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-rose-700 font-semibold"
-                  : "text-gray-700 hover:text-rose-600"
-              }
-            >
-              Services
-            </NavLink>
-            <NavLink
               to="/contact"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-rose-700 font-semibold"
-                  : "text-gray-700 hover:text-rose-600"
-              }
+              className={isActive("/contact") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
             >
               Contact
             </NavLink>
+          </div>
 
-            {/* Profile Icon */}
-            {user && (
+          {/* Right: Cart, Favourites, Profile */}
+          <div className="flex items-center gap-4 relative">
+            <Link to="/cart" className="relative">
+              <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition-colors" />
+            </Link>
+
+            {isAuthenticated && (
+              <Link to="/favourites" className="relative">
+                <Heart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition-colors" />
+                {favorites.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-rose-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {favorites.length}
+                  </span>
+                )}
+              </Link>
+            )}
+
+            {/* Profile Dropdown */}
+            {isAuthenticated ? (
+              <div className="relative group">
+                <button className="flex items-center gap-1 text-gray-700 hover:text-rose-600 transition-colors">
+                  <User className="w-5 h-5" />
+                  <span className="hidden lg:block">{user?.displayName || user?.name || "User"}</span>
+                </button>
+
+                {/* Dropdown */}
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-rose-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                  <Link
+                    to="/dashboard"
+                    className="flex items-center gap-2 px-4 py-2 hover:bg-rose-50 rounded-t-xl"
+                  >
+                    <LayoutDashboard className="w-4 h-4" />
+                    Dashboard
+                  </Link>
+                  {user?.isAdmin && (
+                    <Link
+                      to="/admin"
+                      className="flex items-center gap-2 px-4 py-2 hover:bg-rose-50"
+                    >
+                      <LayoutDashboard className="w-4 h-4" />
+                      Admin Panel
+                    </Link>
+                  )}
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center gap-2 px-4 py-2 hover:bg-rose-50 rounded-b-xl w-full text-left"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Logout
+                  </button>
+                </div>
+              </div>
+            ) : (
               <button
-                onClick={() => navigate("/profile")}
-                className="text-gray-700 hover:text-rose-600 transition"
+                onClick={() => navigate("/login")}
+                className="px-3 py-1 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition"
               >
-                {/* Simple profile SVG icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                Login
+              </button>
+            )}
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-2xl text-rose-700 ml-2"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? "✕" : "☰"}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {open && (
+          <div className="md:hidden bg-white shadow-md py-4 flex flex-col items-center space-y-4">
+            <NavLink to="/" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+              Home
+            </NavLink>
+            <NavLink to="/shop" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+              Shop
+            </NavLink>
+            <NavLink to="/about" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+              About
+            </NavLink>
+            <NavLink to="/contact" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+              Contact
+            </NavLink>
+
+            {isAuthenticated && (
+              <>
+                <Link to="/cart" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+                  Cart
+                </Link>
+                <Link to="/favourites" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+                  Favourites
+                </Link>
+                <Link to="/dashboard" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+                  Dashboard
+                </Link>
+                {user?.isAdmin && (
+                  <Link to="/admin" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+                    Admin Panel
+                  </Link>
+                )}
+                <button
+                  onClick={() => { setOpen(false); handleLogout(); }}
+                  className="text-gray-700 hover:text-rose-600 w-full text-left px-2"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
+                  Logout
+                </button>
+              </>
+            )}
+
+            {!isAuthenticated && (
+              <button
+                onClick={() => { setOpen(false); navigate("/login"); }}
+                className="px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition"
+              >
+                Login
               </button>
             )}
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-rose-700 text-2xl"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? "✕" : "☰"}
-          </button>
-        </div>
+        )}
       </div>
-
-      {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-white shadow-md py-4 flex flex-col items-center space-y-4">
-          <NavLink
-            to="/"
-            onClick={() => setOpen(false)}
-            className="text-gray-700 hover:text-rose-600"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/questionnaire"
-            onClick={() => setOpen(false)}
-            className="text-gray-700 hover:text-rose-600"
-          >
-            Questionnaire
-          </NavLink>
-          <NavLink
-            to="/about"
-            onClick={() => setOpen(false)}
-            className="text-gray-700 hover:text-rose-600"
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/services"
-            onClick={() => setOpen(false)}
-            className="text-gray-700 hover:text-rose-600"
-          >
-            Services
-          </NavLink>
-          <NavLink
-            to="/contact"
-            onClick={() => setOpen(false)}
-            className="text-gray-700 hover:text-rose-600"
-          >
-            Contact
-          </NavLink>
-          <NavLink
-            to="/catalogue"
-            onClick={() => setOpen(false)}
-            className="text-gray-700 hover:text-rose-600"
-          >
-            Catalogue
-          </NavLink>
-
-          {/* Profile Icon for Mobile */}
-          {user && (
-            <button
-              onClick={() => {
-                setOpen(false);
-                navigate("/profile");
-              }}
-              className="text-gray-700 hover:text-rose-600 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </button>
-          )}
-        </div>
-      )}
     </nav>
   );
 };
