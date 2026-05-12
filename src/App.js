@@ -6,7 +6,7 @@ import Services from "./components/pages/Services";
 import Contact from "./components/pages/Contact";
 import Home from "./components/pages/Home";
 import ThankYou from "./components/pages/Thankyou";
-import LandingPage from "./components/pages/LandingPage";
+import Predictor from "./components/pages/Predictor";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -17,34 +17,22 @@ import Catalogue from "./components/catalogue/Catalogue";
 function App() {
   return (
     <>
-      {/* Navbar will NOT show on landing page */}
+      <UserNavbar />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-
-        <Route
-          path="/*"
-          element={
-            <>
-              <UserNavbar />
-              <Routes>
-                <Route path="/home" element={<Home />} />
-                <Route path="/questionnaire" element={<Questionnaire />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/thank-you" element={<ThankYou />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/admin" element={<AdminDashboard />} />
-                <Route path="/profile" element={<UserProfile />} />
-                <Route path="/catalogue" element={<Catalogue />} />
-
-
-              </Routes>
-            </>
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/questionnaire" element={<Questionnaire />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/predict" element={<Predictor />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/catalogue" element={<Catalogue />} />
       </Routes>
     </>
   );

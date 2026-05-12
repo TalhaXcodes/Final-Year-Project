@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
+import { initializeUserProfile } from "../services/firestore/profileService";
 
 const AuthContext = createContext();
 
@@ -15,7 +16,23 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        console.log("👤 AuthContext: User logged in/signed up:", currentUser.uid);
+        try {
+          console.log("🔄 AuthContext: Attempting to initialize user profile...");
+          await initializeUserProfile(currentUser.uid, currentUser);
+          console.log("✅ AuthContext: User profile initialized successfully");
+        } catch (error) {
+          console.error("❌ AuthContext: Failed to initialize user profile:", {
+            uid: currentUser.uid,
+            error: error.message,
+            code: error.code,
+          });
+        }
+      } else {
+        console.log("👤 AuthContext: User logged out");
+      }
       setUser(currentUser);
       setIsAuthenticated(!!currentUser);
       setLoading(false);

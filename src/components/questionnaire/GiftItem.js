@@ -129,17 +129,6 @@ const GiftItem = ({
       )}
 
 
-      {/* {gift.type === "Perfume" && (
-        <PerfumeGiftDetails
-          gift={gift}
-          recipientId={recipientId}
-          index={index}
-          handleGiftSelection={handleGiftSelection}
-          ageType={ageType}
-          setGiftValid={setGiftValid}
-        />
-      )} */}
-
       {gift.type === "Edible Stuff" && ageType !== "Kid" && (
         <EdibleGiftDetails
           gift={gift}
@@ -173,19 +162,7 @@ const GiftItem = ({
           setGiftValid={setGiftValid}
         />
       )}
-
-      {/* Show KidGiftDetails for kids
-      {ageType === "Kid" && (
-        <KidGiftDetails
-          gift={gift}
-          recipientId={recipientId}
-          index={index}
-          handleGiftSelection={handleGiftSelection}
-          ageType={ageType}
-          setGiftValid={setGiftValid}
-        />
-      )} */}
-
+      
       {ageType === "Kid" ? (
         <KidGiftDetails
           gift={gift}

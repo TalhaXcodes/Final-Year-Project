@@ -1,0 +1,560 @@
+gender,age_group,age_type,relationship,occasion,gift_type,price,color,product_style,gift_item_style,container_type,size,scent,personality_score
+female,16–20,adult,friend,birthday,clothing,5000 PKR,Maroon,Frock,Handmade & Crafted,simple box,XS,,3.6923076923076925
+male,25–35,adult,friend,birthday,jewellery,2000–3000 PKR,Silver,Bracelet,"Funny & Lighthearted, Handmade & Crafted",simple box,,,4.3076923076923075
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 – 5500 PKR,,,,basket with net,,,3.6923076923076925
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 – 5500 PKR,,,,basket with net,,,3.6923076923076925
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 – 5500 PKR,,,,basket with net,,,3.6923076923076925
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 – 5500 PKR,,,,basket with net,,,3.6923076923076925
+male,20–25,adult,"extended family (aunt, uncle, cousin)",graduation,edible stuff,3000–4000 PKR,,,Handmade & Crafted,basket with net,,,3.6923076923076925
+male,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,3000–4000 PKR,Gold,Rings,Quirky & Unique,basket with ribbon,,,3.8461538461538463
+female,6–9,kid,"extended family (aunt, uncle, cousin)",holiday,toys,3500 – 5500 PKR,,,,basket with ribbon,,,3.8461538461538463
+female,6–9,kid,"extended family (aunt, uncle, cousin)",holiday,accessories,4000–5000 PKR,Green,Bracelets,,basket with ribbon,,,3.8461538461538463
+male,20–25,adult,"close family(parent, sibling, child)",holiday,perfume,"7000–10,000 PKR",,,Handmade & Crafted,simple box,,Floral,3.0
+female,12–15,kid,other,birthday,toys,3500 PKR,,,,simple box,,,3.0
+male,16–20,adult,friend,birthday,perfume,5000 PKR,,,Funny & Lighthearted,acrylic box,,Sweet,3.076923076923077
+male,20–25,adult,friend,birthday,clothing,5000 PKR,Black,Kurta,Handmade & Crafted,simple box,L,,3.0
+male,20–25,adult,friend,birthday,clothing,5000 PKR,Black,Kurta,Handmade & Crafted,simple box,L,,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with ribbon,,Spicy,3.0
+male,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"12,000–15,000 PKR",,,,basket with ribbon,,Spicy,3.0
+female,20–25,adult,friend,birthday,edible stuff,1000 PKR,,,Handmade & Crafted,basket with net,,,3.0
+female,20–25,adult,friend,birthday,jewellery,1000–2000 PKR,Silver,Earrings,Handmade & Crafted,basket with net,,,3.0
+female,20–25,adult,friend,birthday,bag/wallet,3000–5000 PKR,Black,Tote bags,Handmade & Crafted,basket with net,,,3.0
+female,20–25,adult,friend,birthday,perfume,5000 PKR,,,Handmade & Crafted,basket with net,,Floral,3.0
+female,20–25,adult,friend,birthday,edible stuff,1000 PKR,,,Handmade & Crafted,basket with net,,,3.0
+male,20–25,adult,friend,thank you gift,edible stuff,1000–2000 PKR,,,Handmade & Crafted,basket with net,,,4.769230769230769
+female,25–35,adult,colleague/professional,birthday,bag/wallet,"10,000–15,000 PKR",Blue,Mini wallets,Quirky & Unique,acrylic box,,,4.538461538461538
+female,20–25,adult,"close family(parent, sibling, child)",graduation,jewellery,2000–3000 PKR,Gold,Earrings,Handmade & Crafted,acrylic box,,,4.538461538461538
+male,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000–8000 PKR,Purple,,Funny & Lighthearted,acrylic box,,,4.538461538461538
+male,25–35,adult,"extended family (aunt, uncle, cousin)",birthday,edible stuff,1000 PKR,,,Quirky & Unique,acrylic box,,,4.538461538461538
+female,20–25,adult,friend,birthday,makeup products,4000–5000 PKR,,,Funny & Lighthearted,acrylic box,,,4.538461538461538
+female,25–35,adult,"close family(parent, sibling, child)",graduation,edible stuff,1000–2000 PKR,,,Quirky & Unique,acrylic box,,,4.538461538461538
+male,More than 35 years,adult,colleague/professional,birthday,shoes,"5000–10,000 PKR",Light brown,Formal shoes,Quirky & Unique,acrylic box,42,,4.538461538461538
+female,25–35,adult,colleague/professional,anniversary,clothing,5000 PKR,Yellow,Frock,Handmade & Crafted,acrylic box,S,,4.538461538461538
+male,25–35,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,edible stuff,1000–2000 PKR,,,"Handmade & Crafted, Quirky & Unique",acrylic box,,,4.538461538461538
+female,12–15,kid,"close family(parent, sibling, child)",birthday,accessories,1000–2000 PKR,Blue,Bracelets,,acrylic box,,,4.538461538461538
+male,20–25,adult,"extended family (aunt, uncle, cousin)",holiday,jewellery,3000–4000 PKR,Silver,Wrist bands,Quirky & Unique,basket with ribbon,,,3.1538461538461537
+male,20–25,adult,"extended family (aunt, uncle, cousin)",holiday,clothing,"10,000–15,000 PKR",Yellow,,Funny & Lighthearted,basket with ribbon,,,3.1538461538461537
+male,20–25,adult,"extended family (aunt, uncle, cousin)",holiday,clothing,5000–8000 PKR,Black,Waistcoats,Quirky & Unique,basket with ribbon,L,,3.1538461538461537
+female,20–25,adult,colleague/professional,birthday,perfume,5000–7000 PKR,,,Handmade & Crafted,basket with ribbon,,Floral,3.1538461538461537
+female,20–25,adult,colleague/professional,birthday,jewellery,3000–4000 PKR,Gold,Jhumkis,Funny & Lighthearted,basket with ribbon,,,3.1538461538461537
+female,20–25,adult,spouse,other,edible stuff,1000–2000 PKR,,,Funny & Lighthearted,basket with ribbon,,,3.1538461538461537
+female,20–25,adult,spouse,other,clothing,5000–8000 PKR,Red,Shirt,Funny & Lighthearted,basket with ribbon,L,,3.1538461538461537
+female,20–25,adult,spouse,other,jewellery,4000–5000 PKR,Gold,Necklace,Funny & Lighthearted,basket with ribbon,,,3.1538461538461537
+female,20–25,adult,spouse,other,makeup products,4000–5000 PKR,,,Quirky & Unique,basket with ribbon,,,3.1538461538461537
+male,25–35,adult,colleague/professional,thank you gift,wallet,"8000–10,000 PKR",Camel brown,Front-pocket wallets,Funny & Lighthearted,basket with ribbon,,,3.1538461538461537
+male,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,More than 5000 PKR,Silver,Chain,Handmade & Crafted,simple box,,,3.0
+male,20–25,adult,friend,birthday,wallet,"8000–10,000 PKR",Black,Bifold wallets,Handmade & Crafted,basket with ribbon,,,3.0
+male,25–35,adult,"extended family (aunt, uncle, cousin)",holiday,clothing,5000–8000 PKR,White,,Handmade & Crafted,simple box,,,3.0
+male,25–35,adult,"close family(parent, sibling, child)",birthday,clothing,"10,000–15,000 PKR",Blue,Shalwar kameez,Handmade & Crafted,basket with ribbon,L,,3.0
+male,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"10,000–12,000 PKR",,,Quirky & Unique,basket with ribbon,,Spicy,3.0
+male,25–35,adult,"close family(parent, sibling, child)",birthday,wallet,"8000–10,000 PKR",Camel brown,Travelling wallets,Funny & Lighthearted,basket with ribbon,,,3.0
+female,25–35,adult,"close family(parent, sibling, child)",thank you gift,edible stuff,3000–4000 PKR,,,Quirky & Unique,basket with ribbon,,,3.0
+female,More than 35 years,adult,"extended family (aunt, uncle, cousin)",anniversary,jewellery,4000–5000 PKR,Gold,Jhumkis,Handmade & Crafted,basket with ribbon,,,3.0
+female,20–25,adult,colleague/professional,other,edible stuff,5000–6000 PKR,,,Funny & Lighthearted,simple box,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,edible stuff,1000–2000 PKR,,,Handmade & Crafted,basket with net,,,3.076923076923077
+male,20–25,adult,"extended family (aunt, uncle, cousin)",holiday,clothing,5000–8000 PKR,Grey,,Funny & Lighthearted,basket with ribbon,,,2.6923076923076925
+male,20–25,adult,"extended family (aunt, uncle, cousin)",holiday,perfume,5000 PKR,,,Handmade & Crafted,basket with ribbon,,Spicy,2.6923076923076925
+female,16–20,adult,"extended family (aunt, uncle, cousin)",birthday,jewellery,3000–4000 PKR,Gold,Jhumkis,Funny & Lighthearted,basket with ribbon,,,2.6923076923076925
+female,16–20,adult,"extended family (aunt, uncle, cousin)",birthday,makeup products,1000–3000 PKR,,,Funny & Lighthearted,basket with ribbon,,,2.6923076923076925
+female,16–20,adult,"extended family (aunt, uncle, cousin)",birthday,shoes,"5000–10,000 PKR",White,Sliders,Funny & Lighthearted,basket with ribbon,37,,2.6923076923076925
+female,16–20,adult,"extended family (aunt, uncle, cousin)",birthday,edible stuff,3000–4000 PKR,,,Quirky & Unique,basket with ribbon,,,2.6923076923076925
+female,20–25,adult,colleague/professional,graduation,clothing,"10,000–15,000 PKR",Maroon,,Funny & Lighthearted,basket with ribbon,,,2.6923076923076925
+male,20–25,adult,spouse,birthday,clothing,"10,000–15,000 PKR",Black,,Handmade & Crafted,acrylic box,,,3.0
+male,20–25,adult,spouse,birthday,perfume,5000–7000 PKR,,,Quirky & Unique,acrylic box,,Floral,3.0
+male,25–35,adult,"close family(parent, sibling, child)",anniversary,shoes,"10,000–15,000 PKR",Black,Loafers,Handmade & Crafted,acrylic box,41,,3.0
+male,20–25,adult,"close family(parent, sibling, child)",wedding/engagement gift,edible stuff,4000–5000 PKR,,,Handmade & Crafted,acrylic box,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",other,bag/wallet,3000–5000 PKR,Red,Mini wallets,Quirky & Unique,basket with ribbon,,,4.153846153846154
+female,20–25,adult,friend,get well soon,edible stuff,1000–2000 PKR,,,Quirky & Unique,basket with ribbon,,,4.153846153846154
+female,20–25,adult,friend,get well soon,perfume,5000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,4.153846153846154
+female,20–25,adult,friend,get well soon,jewellery,2000–3000 PKR,Gold,Rings,"Funny & Lighthearted, Quirky & Unique",basket with ribbon,,,4.153846153846154
+female,20–25,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,clothing,5000–8000 PKR,Maroon,,"Handmade & Crafted, Quirky & Unique",basket with ribbon,,,4.153846153846154
+female,20–25,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,bag/wallet,3000–5000 PKR,Black,Clutch,Handmade & Crafted,basket with ribbon,,,4.153846153846154
+male,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,4000–5000 PKR,Gold,Bracelet,Handmade & Crafted,basket with net,,,3.6153846153846154
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Funny & Lighthearted,simple box,,Sweet,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000–8000 PKR,Grey,Kurta,Quirky & Unique,simple box,M,,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,More than 5000 PKR,Gold,Chain,Handmade & Crafted,acrylic box,,,4.846153846153846
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,Handmade & Crafted,basket with net,,Floral,3.0
+male,25–35,adult,colleague/professional,get well soon,perfume,"10,000–12,000 PKR",,,"Funny & Lighthearted, Handmade & Crafted",simple box,,Sweet,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000 PKR,Blue,Frock,Handmade & Crafted,basket with ribbon,XS,,3.0
+female,16–20,adult,"close family(parent, sibling, child)",birthday,jewellery,2000–3000 PKR,Silver,Bracelet,Handmade & Crafted,basket with ribbon,,,3.0
+male,20–25,adult,"close family(parent, sibling, child)",anniversary,edible stuff,1000 PKR,,,Handmade & Crafted,basket with ribbon,,,3.0
+male,25–35,adult,colleague/professional,wedding/engagement gift,edible stuff,6000–7000 PKR,,,"Funny & Lighthearted, Quirky & Unique",basket with ribbon,,,3.4615384615384617
+female,20–25,adult,spouse,get well soon,jewellery,4000–5000 PKR,Gold,Necklace,Handmade & Crafted,acrylic box,,,3.8461538461538463
+female,20–25,adult,spouse,get well soon,clothing,5000–8000 PKR,Maroon,Shalwar,"Funny & Lighthearted, Quirky & Unique",acrylic box,S,,3.8461538461538463
+female,16–20,adult,other,get well soon,makeup products,4000–5000 PKR,,,Handmade & Crafted,simple box,,,3.0
+male,More than 35 years,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,acrylic box,,Floral,3.0
+male,16–20,adult,"close family(parent, sibling, child)",graduation,edible stuff,4000–5000 PKR,,,Funny & Lighthearted,acrylic box,,,3.0
+male,20–25,adult,spouse,holiday,wallet,5000–6000 PKR,Black,Bifold wallets,Quirky & Unique,acrylic box,,,3.0
+female,20–25,adult,friend,get well soon,makeup products,"10,000–15,000 PKR",,,Handmade & Crafted,acrylic box,,,3.0
+male,20–25,adult,spouse,thank you gift,shoes,"20,000–25,000 PKR",Black,Formal shoes,Handmade & Crafted,acrylic box,42,,3.0
+female,20–25,adult,spouse,anniversary,clothing,"10,000–15,000 PKR",Maroon,Shirt,Quirky & Unique,acrylic box,M,,3.0
+female,1–3,kid,"close family(parent, sibling, child)",birthday,toys,3500 PKR,,,,basket with net,,,3.076923076923077
+male,20–25,adult,friend,thank you gift,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with ribbon,,Spicy,3.0
+female,20–25,adult,"close family(parent, sibling, child)",thank you gift,jewellery,3000–4000 PKR,Silver,Rings,Handmade & Crafted,basket with ribbon,,,3.0
+male,20–25,adult,colleague/professional,anniversary,shoes,"5000–10,000 PKR",Light brown,Sandals,Handmade & Crafted,basket with ribbon,43,,3.0
+male,6–9,kid,other,birthday,edible stuff,4000–5000 PKR,,,,basket with ribbon,,,3.0
+male,20–25,adult,"close family(parent, sibling, child)",anniversary,jewellery,4000–5000 PKR,Silver,Chain,Handmade & Crafted,basket with ribbon,,,3.0
+male,20–25,adult,colleague/professional,wedding/engagement gift,perfume,"12,000–15,000 PKR",,,Quirky & Unique,basket with ribbon,,Spicy,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,shoes,"5000–10,000 PKR",Brown,Formal shoes,Handmade & Crafted,basket with ribbon,41,,2.8461538461538463
+female,20–25,adult,colleague/professional,other,jewellery,2000–3000 PKR,Gold,Chokr,Quirky & Unique,basket with net,,,3.1538461538461537
+female,20–25,adult,colleague/professional,other,perfume,5000 PKR,,,Funny & Lighthearted,basket with net,,Floral,3.1538461538461537
+female,20–25,adult,colleague/professional,other,edible stuff,3000–4000 PKR,,,Quirky & Unique,basket with net,,,3.1538461538461537
+female,20–25,adult,colleague/professional,other,makeup products,"10,000–15,000 PKR",,,Quirky & Unique,basket with net,,,3.1538461538461537
+male,1–3,kid,"extended family (aunt, uncle, cousin)",thank you gift,perfume,2500–3000 PKR,,,,acrylic box,,Floral,3.8461538461538463
+male,1–3,kid,"extended family (aunt, uncle, cousin)",thank you gift,accessories,3000–4000 PKR,White,Bow style hairband,,acrylic box,,,3.8461538461538463
+male,1–3,kid,"extended family (aunt, uncle, cousin)",thank you gift,toys,5500 – 7500 PKR,,,,acrylic box,,,3.8461538461538463
+male,1–3,kid,"extended family (aunt, uncle, cousin)",thank you gift,edible stuff,3000–4000 PKR,,,,acrylic box,,,3.8461538461538463
+female,20–25,adult,friend,wedding/engagement gift,makeup products,"10,000–15,000 PKR",,,Handmade & Crafted,acrylic box,,,3.0
+male,More than 35 years,adult,"close family(parent, sibling, child)",get well soon,wallet,3000–5000 PKR,Camel brown,Bifold wallets,Quirky & Unique,simple box,,,3.6153846153846154
+female,20–25,adult,spouse,birthday,jewellery,4000–5000 PKR,Gold,Rings,Handmade & Crafted,basket with net,,,4.230769230769231
+female,9–12,kid,friend,birthday,perfume,1000–1500 PKR,,,,simple box,,Fruity,3.0
+female,9–12,kid,friend,birthday,toys,3500 PKR,,,,simple box,,,3.0
+male,20–25,adult,friend,birthday,shoes,"20,000–25,000 PKR",Light brown,Peshawari style,Handmade & Crafted,simple box,41,,3.0
+male,20–25,adult,friend,birthday,shoes,5000 PKR,Light brown,Peshawari style,Handmade & Crafted,simple box,41,,3.0
+female,16–20,kid,"close family(parent, sibling, child)",birthday,toys,3500 PKR,,,,simple box,,,3.3846153846153846
+female,20–25,adult,spouse,birthday,jewellery,4000–5000 PKR,Silver,Chokr,Quirky & Unique,acrylic box,,,3.0
+male,16–20,adult,other,birthday,clothing,5000 PKR,Red,Kurta,Funny & Lighthearted,basket with ribbon,S,,5.0
+female,20–25,adult,spouse,wedding/engagement gift,jewellery,More than 5000 PKR,Gold,Bracelet,Quirky & Unique,simple box,,,3.3846153846153846
+male,20–25,adult,other,birthday,wallet,6000–8000 PKR,Brown,Bifold wallets,Quirky & Unique,acrylic box,,,4.076923076923077
+male,20–25,adult,other,other,perfume,"7000–10,000 PKR",,,Quirky & Unique,acrylic box,,Floral,4.076923076923077
+male,16–20,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,,basket with ribbon,,Floral,2.769230769230769
+male,25–35,adult,friend,birthday,perfume,5000–7000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,4.846153846153846
+female,12–15,kid,"close family(parent, sibling, child)",birthday,accessories,1000–2000 PKR,Red,Rings,,simple box,,,3.1538461538461537
+female,12–15,kid,"close family(parent, sibling, child)",birthday,edible stuff,1000–2000 PKR,,,,simple box,,,3.1538461538461537
+female,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,5000–7000 PKR,,,Quirky & Unique,simple box,,Spicy,3.0
+female,Less than a year,kid,friend,birthday,accessories,3000–4000 PKR,Purple,Bracelets,,simple box,,,3.0
+female,16–20,adult,"close family(parent, sibling, child)",birthday,jewellery,More than 5000 PKR,Silver,Earrings,"Funny & Lighthearted, Handmade & Crafted, Quirky & Unique",basket with ribbon,,,4.0
+female,16–20,adult,"close family(parent, sibling, child)",birthday,bag/wallet,"5000–10,000 PKR",Black,Tote bags,Handmade & Crafted,basket with net,,,3.4615384615384617
+female,20–25,adult,friend,anniversary,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with net,,Floral,3.4615384615384617
+female,25–35,adult,"close family(parent, sibling, child)",wedding/engagement gift,clothing,"8000–10,000 PKR",Black,Shirt,Handmade & Crafted,basket with net,L,,3.4615384615384617
+female,More than 35 years,adult,"close family(parent, sibling, child)",anniversary,clothing,"10,000–15,000 PKR",Maroon,Shirt,Handmade & Crafted,basket with net,M,,3.4615384615384617
+male,20–25,adult,friend,birthday,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with net,,Floral,3.4615384615384617
+male,20–25,adult,colleague/professional,birthday,perfume,5000–7000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,3.0
+male,25–35,adult,colleague/professional,other,perfume,"7000–10,000 PKR",,,Funny & Lighthearted,simple box,,Spicy,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000–7000 PKR,,,Handmade & Crafted,basket with ribbon,,Spicy,4.0
+female,20–25,adult,other,thank you gift,clothing,"8000–10,000 PKR",Black,,Quirky & Unique,simple box,,,3.0
+male,25–35,adult,colleague/professional,get well soon,perfume,"12,000–15,000 PKR",,,Funny & Lighthearted,simple box,,Floral,3.3076923076923075
+female,1–3,kid,other,birthday,toys,3500 – 5500 PKR,,,,basket with net,,,3.0
+male,20–25,adult,friend,birthday,edible stuff,1000–2000 PKR,,,Funny & Lighthearted,simple box,,,3.0
+male,20–25,adult,"extended family (aunt, uncle, cousin)",graduation,perfume,5000–7000 PKR,,,"Handmade & Crafted, Quirky & Unique",basket with ribbon,,Floral,4.615384615384615
+male,16–20,adult,"close family(parent, sibling, child)",birthday,edible stuff,1000 PKR,,,Funny & Lighthearted,basket with ribbon,,,4.615384615384615
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,bag/wallet,"5000–10,000 PKR",Red,Tote bags,Handmade & Crafted,basket with ribbon,,,4.615384615384615
+male,More than 35 years,adult,friend,wedding/engagement gift,clothing,"8000–10,000 PKR",Black,Shalwar kameez,"Handmade & Crafted, Quirky & Unique",basket with ribbon,XL,,4.615384615384615
+male,25–35,adult,"close family(parent, sibling, child)",get well soon,wallet,5000–6000 PKR,Black,Card wallets,Quirky & Unique,basket with ribbon,,,4.615384615384615
+male,25–35,adult,friend,thank you gift,perfume,5000–7000 PKR,,,Funny & Lighthearted,basket with ribbon,,Spicy,4.615384615384615
+male,20–25,adult,colleague/professional,other,edible stuff,3000–4000 PKR,,,"Funny & Lighthearted, Quirky & Unique",basket with ribbon,,,4.615384615384615
+male,20–25,adult,"extended family (aunt, uncle, cousin)",holiday,jewellery,1000–2000 PKR,Silver,Bracelet,Handmade & Crafted,simple box,,,4.076923076923077
+female,16–20,adult,friend,birthday,clothing,5000–8000 PKR,Purple,,Quirky & Unique,acrylic box,,,4.6923076923076925
+female,20–25,adult,colleague/professional,wedding/engagement gift,jewellery,4000–5000 PKR,Gold,Rings,"Funny & Lighthearted, Quirky & Unique",basket with ribbon,,,3.3076923076923075
+female,16–20,adult,other,wedding/engagement gift,jewellery,3000–4000 PKR,Silver,Jhumkis,Handmade & Crafted,acrylic box,,,3.4615384615384617
+female,25–35,adult,friend,graduation,makeup products,7000–8000 PKR,,,Quirky & Unique,simple box,,,3.0
+male,20–25,adult,spouse,wedding/engagement gift,perfume,"7000–10,000 PKR",,,"Handmade & Crafted, Quirky & Unique",basket with ribbon,,Spicy,3.0
+male,3–6,kid,friend,holiday,edible stuff,3000–4000 PKR,,,,basket with ribbon,,,3.0
+male,25–35,adult,"close family(parent, sibling, child)",holiday,edible stuff,5000–6000 PKR,,,Funny & Lighthearted,basket with ribbon,,,3.0
+male,3–6,kid,"extended family (aunt, uncle, cousin)",holiday,toys,3500 – 5500 PKR,,,,basket with ribbon,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",graduation,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with net,,Spicy,4.6923076923076925
+female,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with net,,Spicy,4.6923076923076925
+female,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with net,,Spicy,4.6923076923076925
+male,25–35,adult,spouse,holiday,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with net,,Spicy,4.6923076923076925
+female,25–35,adult,friend,get well soon,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with net,,Spicy,4.6923076923076925
+female,25–35,adult,friend,get well soon,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with net,,Spicy,4.6923076923076925
+female,25–35,adult,friend,get well soon,jewellery,More than 5000 PKR,Gold,Rings,Quirky & Unique,basket with net,,,4.6923076923076925
+female,25–35,adult,friend,get well soon,jewellery,More than 5000 PKR,Silver,Rings,Quirky & Unique,basket with net,,,4.6923076923076925
+male,25–35,adult,spouse,thank you gift,jewellery,More than 5000 PKR,Gold,Rings,Quirky & Unique,basket with net,,,4.6923076923076925
+male,25–35,adult,spouse,thank you gift,jewellery,More than 5000 PKR,Gold,Rings,Quirky & Unique,basket with net,,,4.6923076923076925
+male,20–25,adult,friend,graduation,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with ribbon,,Floral,3.8461538461538463
+female,20–25,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,bag/wallet,"10,000–15,000 PKR",Black,Handbags,"Handmade & Crafted, Quirky & Unique",basket with ribbon,,,3.8461538461538463
+male,16–20,adult,friend,birthday,clothing,"10,000–15,000 PKR","Grey,Maroon",Kurta,Quirky & Unique,acrylic box,S,,3.0
+male,25–35,adult,other,holiday,perfume,"12,000–15,000 PKR",,,Quirky & Unique,simple box,,Sweet,3.1538461538461537
+male,More than 35 years,adult,friend,thank you gift,clothing,"10,000–15,000 PKR",Grey,Shalwar kameez,Quirky & Unique,simple box,L,,3.4615384615384617
+female,25–35,adult,spouse,wedding/engagement gift,shoes,"5000–10,000 PKR",Black,Heels,Handmade & Crafted,simple box,37,,3.0
+male,20–25,adult,friend,graduation,edible stuff,6000–7000 PKR,,,Funny & Lighthearted,acrylic box,,,3.769230769230769
+female,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Quirky & Unique,basket with net,,Floral,3.076923076923077
+male,20–25,adult,"close family(parent, sibling, child)",graduation,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with ribbon,,Sweet,4.461538461538462
+male,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with ribbon,,Floral,3.6923076923076925
+male,25–35,adult,"close family(parent, sibling, child)",birthday,jewellery,More than 5000 PKR,Gold,Chain,Quirky & Unique,basket with ribbon,,,3.6923076923076925
+male,25–35,adult,"close family(parent, sibling, child)",birthday,clothing,"15,000–20,000 PKR","Red,Blue",,Funny & Lighthearted,basket with ribbon,,,3.6923076923076925
+male,25–35,adult,"close family(parent, sibling, child)",birthday,wallet,"8000–10,000 PKR",Black,Bifold wallets,Quirky & Unique,basket with ribbon,,,3.6923076923076925
+male,16–20,adult,"close family(parent, sibling, child)",birthday,jewellery,3000–4000 PKR,Gold,Bracelet,Handmade & Crafted,basket with ribbon,,,3.6923076923076925
+female,20–25,adult,friend,thank you gift,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with ribbon,,Floral,3.6923076923076925
+male,More than 35 years,adult,other,get well soon,shoes,"20,000–25,000 PKR",Black,Peshawari style,Handmade & Crafted,basket with ribbon,42,,3.6923076923076925
+male,More than 35 years,adult,colleague/professional,get well soon,edible stuff,4000–5000 PKR,,,Funny & Lighthearted,acrylic box,,,3.0
+male,20–25,adult,"close family(parent, sibling, child)",get well soon,edible stuff,5000–6000 PKR,,,Handmade & Crafted,basket with net,,,3.1538461538461537
+female,20–25,adult,"extended family (aunt, uncle, cousin)",birthday,shoes,"15,000–20,000 PKR",Black,Formal shoes,Funny & Lighthearted,simple box,39,,3.4615384615384617
+male,20–25,adult,"close family(parent, sibling, child)",graduation,perfume,5000 PKR,,,Quirky & Unique,basket with net,,Floral,3.3076923076923075
+male,20–25,adult,"close family(parent, sibling, child)",graduation,edible stuff,1000–2000 PKR,,,Handmade & Crafted,basket with net,,,3.3076923076923075
+male,20–25,adult,"close family(parent, sibling, child)",graduation,shoes,"10,000–15,000 PKR",Light brown,Loafers,Quirky & Unique,basket with net,42,,3.3076923076923075
+male,25–35,adult,"extended family (aunt, uncle, cousin)",birthday,clothing,"15,000–20,000 PKR",Grey,Shalwar kameez,Handmade & Crafted,basket with net,XL,,3.3076923076923075
+female,20–25,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,bag/wallet,"20,000–25,000 PKR",Black,Clutch,Quirky & Unique,basket with net,,,3.3076923076923075
+male,25–35,adult,spouse,other,edible stuff,4000–5000 PKR,,,Funny & Lighthearted,basket with net,,,3.3076923076923075
+male,25–35,adult,spouse,other,jewellery,More than 5000 PKR,Gold,Bracelet,Handmade & Crafted,basket with net,,,3.3076923076923075
+male,20–25,adult,friend,birthday,clothing,5000 PKR,Black,Shalwar kameez,"Funny & Lighthearted, Handmade & Crafted",basket with ribbon,M,,3.1538461538461537
+male,20–25,adult,friend,birthday,edible stuff,1000 PKR,,,Quirky & Unique,basket with ribbon,,,3.1538461538461537
+male,25–35,adult,"close family(parent, sibling, child)",birthday,wallet,5000–6000 PKR,Brown,Card wallets,Quirky & Unique,basket with ribbon,,,3.1538461538461537
+female,More than 35 years,adult,colleague/professional,holiday,perfume,5000 PKR,,,Funny & Lighthearted,basket with ribbon,,Floral,3.1538461538461537
+male,6–9,kid,"close family(parent, sibling, child)",holiday,toys,3500 PKR,,,,basket with ribbon,,,3.1538461538461537
+female,12–15,kid,"extended family (aunt, uncle, cousin)",other,toys,3500 PKR,,,,basket with ribbon,,,3.1538461538461537
+male,3–6,kid,other,get well soon,edible stuff,4000–5000 PKR,,,,basket with ribbon,,,3.0
+female,20–25,adult,other,birthday,perfume,5000 PKR,,,Quirky & Unique,simple box,,Floral,3.6923076923076925
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,"Handmade & Crafted, Quirky & Unique",simple box,,Floral,3.076923076923077
+female,25–35,adult,"close family(parent, sibling, child)",birthday,jewellery,4000–5000 PKR,Gold,Bracelet,Handmade & Crafted,basket with net,,,4.230769230769231
+female,25–35,adult,"close family(parent, sibling, child)",birthday,jewellery,4000–5000 PKR,Silver,Rings,Quirky & Unique,basket with net,,,4.230769230769231
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Quirky & Unique,basket with net,,Sweet,4.230769230769231
+male,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000 PKR,Blue,Kurta,Quirky & Unique,basket with net,M,,4.230769230769231
+male,20–25,adult,"close family(parent, sibling, child)",birthday,shoes,"5000–10,000 PKR",Brown,Formal shoes,Handmade & Crafted,basket with net,44,,4.230769230769231
+male,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000 PKR,Blue,Kurta,Quirky & Unique,basket with net,XL,,4.230769230769231
+male,More than 35 years,adult,spouse,birthday,perfume,5000 PKR,,,Quirky & Unique,basket with net,,Sweet,4.230769230769231
+male,More than 35 years,adult,spouse,birthday,wallet,5000–6000 PKR,Camel brown,Trifold wallets,Quirky & Unique,basket with net,,,4.230769230769231
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 PKR,,,,basket with net,,,4.230769230769231
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 PKR,,,,basket with net,,,4.230769230769231
+female,25–35,adult,friend,graduation,edible stuff,6000–7000 PKR,,,Quirky & Unique,basket with net,,,4.153846153846154
+male,25–35,adult,friend,thank you gift,perfume,"12,000–15,000 PKR",,,Funny & Lighthearted,acrylic box,,Sweet,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,edible stuff,6000–7000 PKR,,,Quirky & Unique,acrylic box,,,5.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000–8000 PKR,Maroon,Frock,Quirky & Unique,basket with net,M,,4.769230769230769
+male,25–35,adult,spouse,get well soon,perfume,"12,000–15,000 PKR",,,"Funny & Lighthearted, Handmade & Crafted, Quirky & Unique",simple box,,Floral,3.0
+female,9–12,kid,friend,birthday,edible stuff,3000–4000 PKR,,,,acrylic box,,,4.923076923076923
+female,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Quirky & Unique,simple box,,Floral,3.8461538461538463
+male,25–35,adult,other,other,shoes,"10,000–15,000 PKR",Light brown,Sandals,Funny & Lighthearted,basket with net,41,,3.0
+female,20–25,adult,"extended family (aunt, uncle, cousin)",thank you gift,jewellery,4000–5000 PKR,Silver,Rings,Handmade & Crafted,simple box,,,3.0
+female,20–25,adult,spouse,birthday,jewellery,3000–4000 PKR,Gold,Pendant,Handmade & Crafted,basket with net,,,3.0
+female,20–25,adult,spouse,birthday,clothing,5000 PKR,Purple,,Handmade & Crafted,basket with net,,,3.0
+female,20–25,adult,spouse,birthday,edible stuff,3000–4000 PKR,,,Quirky & Unique,basket with net,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,bag/wallet,3000–5000 PKR,Black,Mini wallets,Quirky & Unique,basket with net,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,edible stuff,3000–4000 PKR,,,Quirky & Unique,basket with net,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,makeup products,4000–5000 PKR,,,Quirky & Unique,basket with net,,,3.0
+male,20–25,adult,other,birthday,shoes,5000 PKR,Black,Formal shoes,Handmade & Crafted,simple box,44,,3.0
+male,25–35,adult,friend,anniversary,perfume,"7000–10,000 PKR",,,Handmade & Crafted,simple box,,Floral,3.0
+female,20–25,adult,"close family(parent, sibling, child)",holiday,clothing,5000–8000 PKR,Maroon,Shirt,Handmade & Crafted,basket with ribbon,S,,3.076923076923077
+female,20–25,adult,friend,birthday,jewellery,3000–4000 PKR,Silver,Rings,Handmade & Crafted,basket with ribbon,,,3.0
+male,16–20,adult,"close family(parent, sibling, child)",birthday,wallet,5000–6000 PKR,Camel brown,Card wallets,Quirky & Unique,simple box,,,3.0
+male,16–20,adult,"close family(parent, sibling, child)",birthday,perfume,5000–7000 PKR,,,Funny & Lighthearted,simple box,,Sweet,3.0
+female,16–20,adult,"close family(parent, sibling, child)",thank you gift,edible stuff,1000–2000 PKR,,,Handmade & Crafted,basket with net,,,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,wallet,3000–5000 PKR,Black,Bifold wallets,Handmade & Crafted,simple box,,,3.076923076923077
+male,20–25,adult,friend,birthday,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with net,,Floral,3.0
+female,25–35,adult,friend,graduation,jewellery,More than 5000 PKR,Gold,Necklace,Quirky & Unique,acrylic box,,,3.923076923076923
+female,25–35,adult,"close family(parent, sibling, child)",birthday,clothing,5000 PKR,"Black,Pink",Gown,Funny & Lighthearted,basket with net,M,,3.0
+female,25–35,adult,"close family(parent, sibling, child)",birthday,shoes,"15,000–20,000 PKR",Green,Sliders,Handmade & Crafted,basket with net,40,,3.0
+female,25–35,adult,"close family(parent, sibling, child)",birthday,makeup products,7000–8000 PKR,,,Quirky & Unique,basket with net,,,3.0
+male,20–25,adult,spouse,birthday,jewellery,3000–4000 PKR,Gold,Chain,Funny & Lighthearted,basket with net,,,3.0
+male,20–25,adult,spouse,birthday,wallet,6000–8000 PKR,Camel brown,Card wallets,Handmade & Crafted,basket with net,,,3.0
+male,20–25,adult,spouse,birthday,clothing,"8000–10,000 PKR","Black,Yellow",,Funny & Lighthearted,basket with net,,,3.0
+male,6–9,kid,"extended family (aunt, uncle, cousin)",other,toys,More than 7500 PKR,,,,basket with net,,,3.0
+male,6–9,kid,"extended family (aunt, uncle, cousin)",other,perfume,2000–2500 PKR,,,,basket with net,,Woody,3.0
+male,6–9,kid,"extended family (aunt, uncle, cousin)",other,edible stuff,4000–5000 PKR,,,,basket with net,,,3.0
+male,6–9,kid,"extended family (aunt, uncle, cousin)",other,accessories,More than 5000 PKR,Purple,Bangles,,basket with net,,,3.0
+female,25–35,adult,friend,graduation,clothing,"10,000–15,000 PKR",Maroon,Shirt,"Funny & Lighthearted, Handmade & Crafted",simple box,L,,3.1538461538461537
+female,20–25,adult,friend,graduation,makeup products,4000–5000 PKR,,,Funny & Lighthearted,simple box,,,3.1538461538461537
+male,25–35,adult,"extended family (aunt, uncle, cousin)",thank you gift,wallet,"8000–10,000 PKR",Brown,Bifold wallets,"Handmade & Crafted, Quirky & Unique",simple box,,,3.6153846153846154
+male,20–25,adult,friend,birthday,perfume,"12,000–15,000 PKR",,,Funny & Lighthearted,basket with net,,Sweet,3.0
+female,16–20,adult,other,get well soon,bag/wallet,"5000–10,000 PKR",Black,Tote bags,Quirky & Unique,simple box,,,3.0
+male,20–25,adult,friend,birthday,perfume,"10,000–12,000 PKR",,,Handmade & Crafted,acrylic box,,Sweet,3.1538461538461537
+male,20–25,adult,friend,birthday,clothing,"10,000–15,000 PKR",Black,,Handmade & Crafted,acrylic box,,,3.1538461538461537
+male,More than 35 years,adult,"close family(parent, sibling, child)",birthday,shoes,"5000–10,000 PKR",Light brown,Formal shoes,Quirky & Unique,basket with net,41,,3.1538461538461537
+male,25–35,adult,friend,thank you gift,edible stuff,1000–2000 PKR,,,Funny & Lighthearted,basket with net,,,3.1538461538461537
+male,20–25,adult,spouse,wedding/engagement gift,jewellery,More than 5000 PKR,Gold,Rings,Quirky & Unique,acrylic box,,,3.3076923076923075
+male,20–25,adult,spouse,wedding/engagement gift,wallet,"8000–10,000 PKR",Black,Formal bag,Quirky & Unique,acrylic box,,,3.3076923076923075
+male,25–35,adult,other,other,jewellery,More than 5000 PKR,Silver,Rings,Funny & Lighthearted,simple box,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,shoes,5000 PKR,Black,Heels,Handmade & Crafted,simple box,37,,3.3076923076923075
+female,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,1000–2000 PKR,Silver,Rings,Funny & Lighthearted,simple box,,,3.3076923076923075
+female,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,1000–2000 PKR,,,Funny & Lighthearted,simple box,,Sweet,3.3076923076923075
+male,20–25,adult,"close family(parent, sibling, child)",birthday,wallet,5000–6000 PKR,Camel brown,Trifold wallets,Quirky & Unique,simple box,,,3.3076923076923075
+male,25–35,adult,colleague/professional,anniversary,edible stuff,4000–5000 PKR,,,Handmade & Crafted,simple box,,,3.3076923076923075
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000–7000 PKR,,,Quirky & Unique,basket with net,,Floral,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with net,,Spicy,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,"8000–10,000 PKR",Red,Kurta,Funny & Lighthearted,basket with net,L,,3.0
+female,25–35,adult,friend,get well soon,bag/wallet,"10,000–15,000 PKR",Black,Tote bags,Quirky & Unique,basket with ribbon,,,3.4615384615384617
+female,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Quirky & Unique,acrylic box,,Floral,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Handmade & Crafted,basket with net,,Spicy,4.0
+female,20–25,adult,"close family(parent, sibling, child)",anniversary,bag/wallet,3000–5000 PKR,Black,Clutch,Quirky & Unique,basket with net,,,3.4615384615384617
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,Handmade & Crafted,acrylic box,,Spicy,3.923076923076923
+female,20–25,adult,friend,birthday,makeup products,4000–5000 PKR,,,Quirky & Unique,basket with net,,,3.923076923076923
+female,20–25,adult,friend,birthday,clothing,5000–8000 PKR,Purple,Frock,Quirky & Unique,basket with net,M,,3.923076923076923
+female,20–25,adult,friend,birthday,edible stuff,3000–4000 PKR,,,Funny & Lighthearted,basket with net,,,3.923076923076923
+female,20–25,adult,friend,birthday,jewellery,3000–4000 PKR,Silver,Jhumkis,Quirky & Unique,basket with net,,,3.923076923076923
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,Handmade & Crafted,basket with net,,Spicy,3.923076923076923
+male,20–25,adult,friend,birthday,jewellery,More than 5000 PKR,Silver,Wrist bands,Quirky & Unique,basket with net,,,3.923076923076923
+male,20–25,adult,friend,birthday,shoes,5000 PKR,Black,Formal shoes,Handmade & Crafted,basket with net,41,,3.923076923076923
+female,20–25,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,clothing,5000 PKR,Black,Gown,Handmade & Crafted,basket with net,M,,3.923076923076923
+female,20–25,adult,"close family(parent, sibling, child)",wedding/engagement gift,makeup products,3000–4000 PKR,,,"Handmade & Crafted, Quirky & Unique",basket with net,,,3.923076923076923
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,Handmade & Crafted,basket with ribbon,,Floral,3.5384615384615383
+female,20–25,adult,other,birthday,perfume,5000 PKR,Black,,Quirky & Unique,basket with ribbon,,Floral,4.230769230769231
+male,20–25,adult,friend,birthday,clothing,"8000–10,000 PKR",Black,,Handmade & Crafted,basket with net,,,4.6923076923076925
+male,20–25,adult,spouse,anniversary,clothing,"8000–10,000 PKR",Blue,Shalwar kameez,Quirky & Unique,basket with ribbon,L,,2.8461538461538463
+male,20–25,adult,spouse,anniversary,shoes,5000 PKR,Black,Formal shoes,Funny & Lighthearted,basket with ribbon,40,,2.8461538461538463
+male,25–35,adult,spouse,anniversary,wallet,5000–6000 PKR,Camel brown,Card wallets,Quirky & Unique,basket with ribbon,,,2.8461538461538463
+female,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000–8000 PKR,Purple,,Handmade & Crafted,acrylic box,,,3.3076923076923075
+male,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"12,000–15,000 PKR",,,,basket with net,,Spicy,2.769230769230769
+female,16–20,adult,colleague/professional,anniversary,edible stuff,1000–2000 PKR,,,,basket with net,,,2.769230769230769
+female,25–35,adult,spouse,anniversary,jewellery,More than 5000 PKR,Gold,Earrings,Handmade & Crafted,acrylic box,,,3.6923076923076925
+female,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,More than 5000 PKR,Silver,Earrings,Handmade & Crafted,simple box,,,3.3076923076923075
+female,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,Handmade & Crafted,acrylic box,,Floral,3.0
+male,12–15,kid,"close family(parent, sibling, child)",graduation,toys,3500 PKR,,,,acrylic box,,,3.0
+female,20–25,adult,friend,birthday,clothing,"8000–10,000 PKR",Maroon,Shirt,Quirky & Unique,basket with ribbon,M,,3.6153846153846154
+female,20–25,adult,friend,birthday,shoes,5000 PKR,Black,Heels,Quirky & Unique,basket with ribbon,37,,3.6153846153846154
+female,20–25,adult,friend,wedding/engagement gift,clothing,"8000–10,000 PKR",Maroon,Shirt,Quirky & Unique,basket with ribbon,M,,3.6153846153846154
+female,20–25,adult,friend,wedding/engagement gift,shoes,5000 PKR,Black,Heels,Quirky & Unique,basket with ribbon,37,,3.6153846153846154
+female,20–25,adult,friend,wedding/engagement gift,jewellery,2000–3000 PKR,Silver,Rings,Quirky & Unique,basket with ribbon,,,3.6153846153846154
+female,20–25,adult,"close family(parent, sibling, child)",wedding/engagement gift,jewellery,1000–2000 PKR,Silver,Pendant,Funny & Lighthearted,basket with ribbon,,,3.6153846153846154
+female,20–25,adult,"close family(parent, sibling, child)",wedding/engagement gift,perfume,5000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,3.6153846153846154
+female,25–35,adult,friend,wedding/engagement gift,edible stuff,1000 PKR,,,Quirky & Unique,basket with ribbon,,,3.6153846153846154
+female,20–25,adult,spouse,anniversary,makeup products,4000–5000 PKR,,,Handmade & Crafted,basket with ribbon,,,3.6153846153846154
+female,20–25,adult,"close family(parent, sibling, child)",other,jewellery,3000–4000 PKR,Silver,Bracelet,Quirky & Unique,basket with ribbon,,,3.6153846153846154
+male,More than 35 years,adult,"close family(parent, sibling, child)",anniversary,shoes,"10,000–15,000 PKR",Light brown,Loafers,Handmade & Crafted,basket with ribbon,40,,3.6923076923076925
+male,25–35,adult,"close family(parent, sibling, child)",birthday,shoes,"20,000–25,000 PKR",Black,Formal shoes,Funny & Lighthearted,basket with ribbon,41,,3.0
+female,20–25,adult,friend,birthday,perfume,5000–7000 PKR,,,Funny & Lighthearted,basket with ribbon,,Floral,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000 PKR,"Black,Purple,Red,Blue",,"Funny & Lighthearted, Handmade & Crafted",basket with ribbon,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,bag/wallet,3000–5000 PKR,Blue,Handbags,Handmade & Crafted,basket with ribbon,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",anniversary,jewellery,2000–3000 PKR,Gold,Rings,Funny & Lighthearted,basket with ribbon,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",get well soon,perfume,5000 PKR,,,Funny & Lighthearted,basket with ribbon,,Floral,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,makeup products,5000–6000 PKR,,,Funny & Lighthearted,basket with ribbon,,,3.0
+female,20–25,adult,friend,wedding/engagement gift,jewellery,4000–5000 PKR,Gold,Jhumkis,Funny & Lighthearted,basket with ribbon,,,3.0
+female,25–35,adult,friend,graduation,bag/wallet,"5000–10,000 PKR",Blue,Clutch,Funny & Lighthearted,basket with ribbon,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",anniversary,edible stuff,3000–4000 PKR,,,Funny & Lighthearted,basket with ribbon,,,3.0
+female,25–35,adult,friend,thank you gift,perfume,5000 PKR,,,Handmade & Crafted,basket with ribbon,,Sweet,3.0
+female,20–25,adult,friend,wedding/engagement gift,shoes,5000 PKR,Black,Sandals,Handmade & Crafted,basket with ribbon,41,,3.0
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 – 5500 PKR,,,,basket with ribbon,,,4.076923076923077
+female,20–25,adult,colleague/professional,anniversary,jewellery,More than 5000 PKR,Silver,Chokr,Quirky & Unique,acrylic box,,,3.0
+male,20–25,adult,friend,wedding/engagement gift,shoes,"5000–10,000 PKR",Brown,Peshawari style,Handmade & Crafted,basket with ribbon,42,,5.0
+male,20–25,adult,friend,thank you gift,clothing,5000 PKR,Maroon,,Handmade & Crafted,basket with ribbon,,,5.0
+male,20–25,adult,friend,get well soon,perfume,5000 PKR,,,Handmade & Crafted,basket with ribbon,,Spicy,5.0
+female,20–25,adult,friend,birthday,bag/wallet,"10,000–15,000 PKR",Black,Handbags,Quirky & Unique,acrylic box,,,4.384615384615385
+male,16–20,adult,friend,birthday,perfume,5000 PKR,,,"Funny & Lighthearted, Quirky & Unique",simple box,,Spicy,3.5384615384615383
+male,More than 35 years,adult,"close family(parent, sibling, child)",wedding/engagement gift,perfume,5000–7000 PKR,,,Funny & Lighthearted,basket with ribbon,,Floral,4.384615384615385
+male,More than 35 years,adult,"close family(parent, sibling, child)",birthday,jewellery,3000–4000 PKR,Gold,Bracelet,Funny & Lighthearted,basket with ribbon,,,5.0
+male,More than 35 years,adult,"close family(parent, sibling, child)",birthday,wallet,6000–8000 PKR,Camel brown,Card wallets,Funny & Lighthearted,basket with ribbon,,,5.0
+female,20–25,adult,"extended family (aunt, uncle, cousin)",other,bag/wallet,"5000–10,000 PKR",Blue,Mini wallets,Quirky & Unique,basket with ribbon,,,5.0
+female,20–25,adult,"extended family (aunt, uncle, cousin)",other,edible stuff,1000 PKR,,,Funny & Lighthearted,basket with ribbon,,,5.0
+male,25–35,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with ribbon,,Floral,5.0
+male,25–35,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,clothing,"8000–10,000 PKR","Red,Green",Kurta,Quirky & Unique,basket with ribbon,L,,5.0
+female,20–25,adult,colleague/professional,thank you gift,makeup products,4000–5000 PKR,,,Funny & Lighthearted,basket with ribbon,,,5.0
+male,20–25,adult,friend,graduation,clothing,5000 PKR,White,Waistcoats,Funny & Lighthearted,basket with ribbon,M,,5.0
+female,25–35,adult,friend,graduation,perfume,"7000–10,000 PKR",,,Funny & Lighthearted,basket with ribbon,,Spicy,5.0
+male,Less than a year,kid,other,other,toys,3500 – 5500 PKR,,,,basket with ribbon,,,5.0
+male,16–20,adult,friend,thank you gift,perfume,5000 PKR,,,Handmade & Crafted,basket with net,,Floral,3.769230769230769
+male,16–20,adult,friend,thank you gift,wallet,3000–5000 PKR,Black,Card wallets,Quirky & Unique,basket with net,,,3.769230769230769
+female,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,1000–2000 PKR,Silver,Pendant,Funny & Lighthearted,basket with net,,,3.769230769230769
+female,20–25,adult,"close family(parent, sibling, child)",birthday,makeup products,1000–3000 PKR,,,Funny & Lighthearted,basket with net,,,3.769230769230769
+female,20–25,adult,friend,graduation,edible stuff,1000 PKR,,,Funny & Lighthearted,basket with net,,,3.769230769230769
+male,25–35,adult,"close family(parent, sibling, child)",anniversary,clothing,5000 PKR,"Maroon,White",Kurta,Quirky & Unique,basket with net,L,,3.769230769230769
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,3500 PKR,,,,basket with net,,,3.769230769230769
+female,20–25,adult,spouse,anniversary,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with net,,Floral,3.0
+male,25–35,adult,spouse,anniversary,clothing,5000–8000 PKR,Blue,Shalwar kameez,Quirky & Unique,basket with net,L,,3.1538461538461537
+male,25–35,adult,spouse,anniversary,wallet,5000–6000 PKR,Camel brown,Bifold wallets,Handmade & Crafted,basket with net,,,3.1538461538461537
+male,25–35,adult,spouse,anniversary,edible stuff,4000–5000 PKR,,,Funny & Lighthearted,basket with net,,,3.1538461538461537
+male,25–35,adult,spouse,anniversary,shoes,"10,000–15,000 PKR",Brown,Peshawari style,Quirky & Unique,basket with net,43,,3.1538461538461537
+male,25–35,adult,spouse,anniversary,perfume,5000–7000 PKR,,,Handmade & Crafted,basket with net,,Floral,3.1538461538461537
+male,25–35,adult,spouse,birthday,shoes,"20,000–25,000 PKR",Black,Sandals,Handmade & Crafted,basket with net,44,,3.1538461538461537
+male,25–35,adult,spouse,thank you gift,wallet,3000–5000 PKR,Black,Card wallets,Handmade & Crafted,basket with net,,,3.1538461538461537
+female,More than 35 years,adult,"close family(parent, sibling, child)",get well soon,bag/wallet,"10,000–15,000 PKR",Blue,Clutch,Handmade & Crafted,basket with net,,,3.1538461538461537
+female,More than 35 years,adult,"close family(parent, sibling, child)",get well soon,clothing,"10,000–15,000 PKR",Purple,,Quirky & Unique,basket with net,,,3.1538461538461537
+female,20–25,adult,"close family(parent, sibling, child)",graduation,clothing,5000–8000 PKR,Black,Gown,Funny & Lighthearted,basket with net,S,,3.1538461538461537
+female,16–20,adult,spouse,get well soon,jewellery,More than 5000 PKR,Gold,Pendant,Funny & Lighthearted,simple box,,,3.0
+male,More than 35 years,adult,colleague/professional,get well soon,edible stuff,6000–7000 PKR,,,Handmade & Crafted,simple box,,,3.230769230769231
+female,20–25,adult,friend,birthday,jewellery,4000–5000 PKR,Silver,Earrings,Handmade & Crafted,basket with net,,,4.6923076923076925
+female,20–25,adult,friend,birthday,perfume,5000–7000 PKR,,,Quirky & Unique,basket with net,,Sweet,4.6923076923076925
+female,20–25,adult,friend,birthday,clothing,5000–8000 PKR,"Black,Maroon,Purple",Shirt,Quirky & Unique,basket with net,L,,4.6923076923076925
+female,20–25,adult,friend,birthday,bag/wallet,"5000–10,000 PKR",Blue,Handbags,Quirky & Unique,basket with net,,,4.6923076923076925
+female,20–25,adult,friend,birthday,edible stuff,1000–2000 PKR,,,Funny & Lighthearted,basket with net,,,4.6923076923076925
+female,25–35,adult,friend,graduation,bag/wallet,"10,000–15,000 PKR",Red,Handbags,Handmade & Crafted,basket with ribbon,,,4.6923076923076925
+male,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,"Handmade & Crafted, Quirky & Unique",basket with net,,Sweet,4.0
+female,20–25,adult,friend,other,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with ribbon,,Floral,3.6923076923076925
+female,20–25,adult,friend,other,clothing,5000 PKR,Red,Shirt,Quirky & Unique,basket with ribbon,M,,3.6923076923076925
+female,20–25,adult,friend,other,jewellery,4000–5000 PKR,Gold,Pendant,Funny & Lighthearted,basket with ribbon,,,3.6923076923076925
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Handmade & Crafted,acrylic box,,Floral,3.8461538461538463
+female,9–12,kid,"extended family (aunt, uncle, cousin)",thank you gift,toys,5500 – 7500 PKR,,,,acrylic box,,,2.5384615384615383
+female,9–12,kid,"extended family (aunt, uncle, cousin)",thank you gift,edible stuff,1000–2000 PKR,,,,acrylic box,,,2.5384615384615383
+female,9–12,kid,"extended family (aunt, uncle, cousin)",thank you gift,edible stuff,3000–4000 PKR,,,,acrylic box,,,2.5384615384615383
+female,9–12,kid,"extended family (aunt, uncle, cousin)",thank you gift,accessories,More than 5000 PKR,Green,Bracelets,,acrylic box,,,2.5384615384615383
+female,9–12,kid,"extended family (aunt, uncle, cousin)",thank you gift,toys,3500 – 5500 PKR,,,,acrylic box,,,2.5384615384615383
+male,16–20,adult,"close family(parent, sibling, child)",birthday,edible stuff,3000–4000 PKR,,,"Funny & Lighthearted, Handmade & Crafted, Quirky & Unique",acrylic box,,,3.0
+male,20–25,adult,friend,birthday,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with net,,Floral,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,"10,000–12,000 PKR",,,Funny & Lighthearted,basket with net,,Sweet,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,Funny & Lighthearted,basket with net,,Sweet,3.0
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with net,,Sweet,3.0
+male,9–12,kid,"extended family (aunt, uncle, cousin)",graduation,edible stuff,4000–5000 PKR,,,,basket with net,,,3.0
+male,6–9,kid,friend,thank you gift,edible stuff,6000–7000 PKR,,,,basket with net,,,3.0
+male,25–35,adult,other,thank you gift,edible stuff,5000–6000 PKR,,,Quirky & Unique,basket with net,,,3.0
+male,25–35,adult,other,thank you gift,edible stuff,4000–5000 PKR,,,Quirky & Unique,basket with net,,,3.0
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,jewellery,4000–5000 PKR,Silver,Rings,Handmade & Crafted,simple box,,,4.461538461538462
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,perfume,"12,000–15,000 PKR",,,Quirky & Unique,simple box,,Floral,4.461538461538462
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,bag/wallet,"20,000–25,000 PKR",Black,Clutch,Handmade & Crafted,simple box,,,4.461538461538462
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,makeup products,"10,000–15,000 PKR",,,Quirky & Unique,simple box,,,4.461538461538462
+male,More than 35 years,adult,"extended family (aunt, uncle, cousin)",graduation,edible stuff,6000–7000 PKR,,,Funny & Lighthearted,simple box,,,4.461538461538462
+male,9–12,kid,"extended family (aunt, uncle, cousin)",graduation,toys,More than 7500 PKR,,,,simple box,,,4.461538461538462
+male,More than 35 years,adult,friend,holiday,perfume,5000 PKR,,,Handmade & Crafted,simple box,,Sweet,3.5384615384615383
+female,20–25,adult,friend,graduation,clothing,"10,000–15,000 PKR",White,Frock,Handmade & Crafted,simple box,M,,3.0
+male,9–12,kid,"close family(parent, sibling, child)",birthday,toys,3500 – 5500 PKR,,,,simple box,,,3.0
+male,9–12,kid,"close family(parent, sibling, child)",birthday,edible stuff,3000–4000 PKR,,,,simple box,,,3.0
+female,20–25,adult,spouse,get well soon,makeup products,"10,000–15,000 PKR",,,"Funny & Lighthearted, Handmade & Crafted",simple box,,,3.0
+female,20–25,adult,spouse,get well soon,edible stuff,6000–7000 PKR,,,"Funny & Lighthearted, Handmade & Crafted",simple box,,,3.0
+female,20–25,adult,spouse,get well soon,clothing,"15,000–20,000 PKR",Yellow,,Quirky & Unique,simple box,,,3.0
+male,20–25,adult,colleague/professional,holiday,shoes,"5000–10,000 PKR",Light brown,Formal shoes,Quirky & Unique,simple box,42,,3.0
+male,20–25,adult,colleague/professional,holiday,wallet,"8000–10,000 PKR",Camel brown,Card wallets,Quirky & Unique,simple box,,,3.0
+male,20–25,adult,colleague/professional,holiday,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,simple box,,Spicy,3.0
+male,20–25,adult,colleague/professional,holiday,edible stuff,6000–7000 PKR,,,,simple box,,,3.0
+male,25–35,adult,"close family(parent, sibling, child)",anniversary,wallet,6000–8000 PKR,Black,Card wallets,Handmade & Crafted,basket with net,,,3.4615384615384617
+male,Less than a year,kid,friend,thank you gift,toys,More than 7500 PKR,,,,simple box,,,3.0
+male,1–3,kid,"close family(parent, sibling, child)",thank you gift,toys,3500 PKR,,,,basket with net,,,3.0
+female,6–9,kid,friend,birthday,edible stuff,5000–6000 PKR,,,,acrylic box,,,3.230769230769231
+female,20–25,adult,friend,birthday,perfume,5000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,3.230769230769231
+female,More than 35 years,adult,"close family(parent, sibling, child)",birthday,clothing,"8000–10,000 PKR",Blue,Shirt,Handmade & Crafted,acrylic box,M,,4.0
+female,Less than a year,kid,"close family(parent, sibling, child)",other,accessories,More than 5000 PKR,Purple,Bow style hairband,,acrylic box,,,3.0
+female,20–25,adult,friend,other,jewellery,4000–5000 PKR,Gold,Bracelet,Funny & Lighthearted,acrylic box,,,3.0
+male,20–25,adult,"extended family (aunt, uncle, cousin)",thank you gift,edible stuff,3000–4000 PKR,,,Funny & Lighthearted,basket with ribbon,,,5.0
+male,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"10,000–12,000 PKR",,,Handmade & Crafted,basket with net,,Floral,3.923076923076923
+female,16–20,adult,spouse,thank you gift,bag/wallet,"5000–10,000 PKR",Black,Tote bags,Funny & Lighthearted,simple box,,,3.0
+female,20–25,adult,other,graduation,bag/wallet,"20,000–25,000 PKR",Black,Tote bags,,basket with ribbon,,,3.6923076923076925
+male,20–25,adult,"close family(parent, sibling, child)",birthday,clothing,5000–8000 PKR,White,Waistcoats,Handmade & Crafted,basket with ribbon,M,,3.8461538461538463
+male,25–35,adult,friend,thank you gift,wallet,3000–5000 PKR,Camel brown,Card wallets,Quirky & Unique,basket with ribbon,,,3.8461538461538463
+male,20–25,adult,other,graduation,wallet,3000–5000 PKR,Camel brown,Card wallets,Handmade & Crafted,basket with ribbon,,,3.8461538461538463
+male,20–25,adult,"extended family (aunt, uncle, cousin)",get well soon,jewellery,1000–2000 PKR,Gold,Bracelet,Handmade & Crafted,basket with ribbon,,,3.8461538461538463
+male,20–25,adult,"close family(parent, sibling, child)",holiday,edible stuff,1000 PKR,,,Handmade & Crafted,basket with ribbon,,,3.8461538461538463
+female,25–35,adult,friend,birthday,clothing,5000–8000 PKR,Green,,"Funny & Lighthearted, Quirky & Unique",basket with ribbon,,,3.4615384615384617
+male,16–20,adult,"close family(parent, sibling, child)",birthday,edible stuff,4000–5000 PKR,,,,basket with ribbon,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,edible stuff,1000 PKR,,,Quirky & Unique,basket with net,,,3.6923076923076925
+male,16–20,adult,other,thank you gift,perfume,5000 PKR,,,Handmade & Crafted,basket with net,,Sweet,3.6923076923076925
+female,20–25,adult,spouse,other,edible stuff,1000 PKR,,,Funny & Lighthearted,basket with net,,,3.6923076923076925
+female,9–12,kid,"close family(parent, sibling, child)",birthday,toys,3500 PKR,,,,basket with net,,,3.6923076923076925
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,"12,000–15,000 PKR",,,Quirky & Unique,basket with net,,Sweet,3.0
+male,16–20,adult,"close family(parent, sibling, child)",anniversary,perfume,5000 PKR,,,Handmade & Crafted,acrylic box,,Floral,3.0
+male,20–25,adult,friend,birthday,wallet,6000–8000 PKR,Black,Bifold wallets,Quirky & Unique,acrylic box,,,4.6923076923076925
+male,20–25,adult,other,other,wallet,3000–5000 PKR,Camel brown,Card wallets,Funny & Lighthearted,simple box,,,3.0
+male,20–25,adult,friend,holiday,perfume,5000–7000 PKR,,,"Handmade & Crafted, Quirky & Unique",basket with ribbon,,Floral,3.4615384615384617
+male,25–35,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with ribbon,,Floral,3.1538461538461537
+female,12–15,kid,"extended family (aunt, uncle, cousin)",birthday,toys,5500 – 7500 PKR,,,,basket with ribbon,,,3.1538461538461537
+male,More than 35 years,adult,colleague/professional,birthday,jewellery,More than 5000 PKR,Gold,Chain,Quirky & Unique,basket with ribbon,,,3.1538461538461537
+female,20–25,adult,"extended family (aunt, uncle, cousin)",birthday,perfume,"7000–10,000 PKR",,,Quirky & Unique,basket with ribbon,,Spicy,3.1538461538461537
+female,16–20,adult,"close family(parent, sibling, child)",anniversary,makeup products,"10,000–15,000 PKR",,,Funny & Lighthearted,basket with ribbon,,,3.1538461538461537
+female,25–35,adult,friend,get well soon,bag/wallet,"5000–10,000 PKR",Green,Clutch,Handmade & Crafted,basket with ribbon,,,3.1538461538461537
+female,20–25,adult,colleague/professional,holiday,perfume,5000–7000 PKR,,,Quirky & Unique,basket with ribbon,,Spicy,3.1538461538461537
+male,25–35,adult,friend,wedding/engagement gift,jewellery,4000–5000 PKR,Silver,Wrist bands,Handmade & Crafted,basket with ribbon,,,3.1538461538461537
+female,20–25,adult,other,thank you gift,edible stuff,5000–6000 PKR,,,Funny & Lighthearted,basket with ribbon,,,3.1538461538461537
+female,16–20,adult,"close family(parent, sibling, child)",birthday,perfume,"12,000–15,000 PKR",,,Funny & Lighthearted,basket with ribbon,,Floral,3.1538461538461537
+female,20–25,adult,"close family(parent, sibling, child)",thank you gift,bag/wallet,"5000–10,000 PKR",Red,Clutch,Handmade & Crafted,basket with ribbon,,,3.076923076923077
+male,20–25,adult,friend,graduation,edible stuff,3000–4000 PKR,,,,basket with net,,,3.0
+male,20–25,adult,friend,birthday,wallet,3000–5000 PKR,Camel brown,Trifold wallets,Funny & Lighthearted,simple box,,,3.6153846153846154
+female,20–25,adult,friend,anniversary,perfume,5000 PKR,,,Quirky & Unique,simple box,,Floral,3.6153846153846154
+female,25–35,adult,"close family(parent, sibling, child)",birthday,shoes,5000 PKR,Black,Formal shoes,Quirky & Unique,basket with net,38,,3.0
+female,16–20,adult,"close family(parent, sibling, child)",birthday,clothing,"15,000–20,000 PKR",Black,Shalwar,Quirky & Unique,basket with ribbon,L,,3.0
+female,25–35,adult,friend,other,jewellery,More than 5000 PKR,Silver,Earrings,"Funny & Lighthearted, Handmade & Crafted, Quirky & Unique",basket with net,,,3.0
+male,20–25,adult,friend,wedding/engagement gift,perfume,5000–7000 PKR,,,"Funny & Lighthearted, Handmade & Crafted",basket with ribbon,,Sweet,3.1538461538461537
+female,More than 35 years,adult,"extended family (aunt, uncle, cousin)",thank you gift,bag/wallet,"10,000–15,000 PKR",Black,Handbags,Quirky & Unique,basket with ribbon,,,3.1538461538461537
+male,25–35,adult,spouse,thank you gift,shoes,"10,000–15,000 PKR",Black,Formal shoes,Handmade & Crafted,simple box,40,,3.6923076923076925
+female,25–35,adult,colleague/professional,get well soon,jewellery,3000–4000 PKR,Gold,Pendant,Handmade & Crafted,acrylic box,,,3.8461538461538463
+female,16–20,adult,friend,birthday,clothing,5000–8000 PKR,Pink,Gown,Funny & Lighthearted,basket with net,XS,,3.8461538461538463
+male,20–25,adult,other,other,perfume,"12,000–15,000 PKR",,,Funny & Lighthearted,basket with ribbon,,Sweet,3.0
+male,20–25,adult,friend,thank you gift,wallet,3000–5000 PKR,Black,Formal bag,Funny & Lighthearted,basket with ribbon,,,3.3846153846153846
+male,20–25,adult,friend,thank you gift,wallet,6000–8000 PKR,Black,Travelling wallets,Handmade & Crafted,basket with ribbon,,,3.3846153846153846
+female,20–25,adult,colleague/professional,birthday,jewellery,1000–2000 PKR,Gold,Chokr,Quirky & Unique,basket with ribbon,,,3.8461538461538463
+female,20–25,adult,spouse,birthday,jewellery,More than 5000 PKR,Gold,Necklace,Handmade & Crafted,acrylic box,,,4.3076923076923075
+female,20–25,adult,friend,graduation,perfume,"10,000–12,000 PKR",,,"Handmade & Crafted, Quirky & Unique",basket with net,,Floral,3.6153846153846154
+female,20–25,adult,friend,graduation,edible stuff,4000–5000 PKR,,,Handmade & Crafted,basket with net,,,3.6923076923076925
+female,20–25,adult,friend,graduation,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with net,,Spicy,3.6923076923076925
+female,20–25,adult,friend,graduation,shoes,"10,000–15,000 PKR",Blue,Formal shoes,Handmade & Crafted,basket with net,39,,3.6923076923076925
+female,20–25,adult,friend,graduation,jewellery,4000–5000 PKR,Gold,Rings,Handmade & Crafted,basket with net,,,3.6923076923076925
+female,20–25,adult,friend,graduation,makeup products,7000–8000 PKR,,,Handmade & Crafted,basket with net,,,3.6923076923076925
+male,More than 35 years,adult,"close family(parent, sibling, child)",birthday,jewellery,4000–5000 PKR,Silver,Wrist bands,Funny & Lighthearted,acrylic box,,,2.4615384615384617
+female,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,2000–3000 PKR,Gold,Bracelet,Quirky & Unique,acrylic box,,,4.615384615384615
+female,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000 PKR,,,Handmade & Crafted,acrylic box,,Floral,4.615384615384615
+male,25–35,adult,"close family(parent, sibling, child)",birthday,clothing,5000 PKR,Red,,Funny & Lighthearted,simple box,,,3.0
+female,20–25,adult,friend,birthday,jewellery,1000–2000 PKR,Gold,Necklace,"Funny & Lighthearted, Handmade & Crafted, Quirky & Unique",acrylic box,,,5.0
+female,25–35,adult,"close family(parent, sibling, child)",birthday,clothing,5000–8000 PKR,Maroon,,Handmade & Crafted,basket with ribbon,,,3.4615384615384617
+female,16–20,adult,spouse,wedding/engagement gift,makeup products,"10,000–15,000 PKR",,,Quirky & Unique,simple box,,,1.9230769230769231
+male,20–25,adult,friend,graduation,shoes,"5000–10,000 PKR",Light brown,Loafers,Quirky & Unique,acrylic box,41,,3.0
+male,20–25,adult,friend,graduation,jewellery,3000–4000 PKR,Silver,Rings,Quirky & Unique,acrylic box,,,3.0
+female,20–25,adult,friend,thank you gift,perfume,"7000–10,000 PKR",,,Handmade & Crafted,acrylic box,,Floral,3.0
+female,20–25,adult,friend,thank you gift,perfume,"7000–10,000 PKR",,,Handmade & Crafted,acrylic box,,Floral,3.0
+female,20–25,adult,friend,thank you gift,perfume,5000–7000 PKR,,,Handmade & Crafted,acrylic box,,Sweet,3.0
+female,20–25,adult,friend,thank you gift,perfume,5000–7000 PKR,,,Handmade & Crafted,acrylic box,,Floral,3.0
+female,16–20,adult,spouse,birthday,shoes,5000 PKR,Black,Formal shoes,Handmade & Crafted,basket with net,40,,2.8461538461538463
+female,20–25,adult,"close family(parent, sibling, child)",birthday,makeup products,5000–6000 PKR,,,"Funny & Lighthearted, Handmade & Crafted",simple box,,,3.4615384615384617
+female,6–9,kid,"extended family (aunt, uncle, cousin)",birthday,perfume,1500–2000 PKR,,,,acrylic box,,Floral,3.1538461538461537
+female,More than 35 years,adult,"close family(parent, sibling, child)",birthday,bag/wallet,"20,000–25,000 PKR",Black,Handbags,Quirky & Unique,acrylic box,,,3.1538461538461537
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,Handmade & Crafted,acrylic box,,Spicy,3.4615384615384617
+female,20–25,adult,friend,anniversary,edible stuff,4000–5000 PKR,,,Handmade & Crafted,acrylic box,,,3.0
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,clothing,"10,000–15,000 PKR","Pink,Yellow,Black,White,Grey",,Quirky & Unique,simple box,,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,perfume,"10,000–12,000 PKR",,,Quirky & Unique,simple box,,Floral,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,bag/wallet,"5000–10,000 PKR",Black,Handbags,Quirky & Unique,simple box,,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,makeup products,"10,000–15,000 PKR",,,"Funny & Lighthearted, Quirky & Unique",simple box,,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,jewellery,More than 5000 PKR,Gold,Rings,Quirky & Unique,simple box,,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,shoes,"10,000–15,000 PKR",Black,Heels,,simple box,41,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,makeup products,"10,000–15,000 PKR",,,Quirky & Unique,simple box,,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,makeup products,"10,000–15,000 PKR",,,Quirky & Unique,simple box,,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,makeup products,"10,000–15,000 PKR",,,Quirky & Unique,simple box,,,3.923076923076923
+female,25–35,adult,"extended family (aunt, uncle, cousin)",anniversary,makeup products,"10,000–15,000 PKR",,,Quirky & Unique,simple box,,,3.923076923076923
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,"Funny & Lighthearted, Handmade & Crafted, Quirky & Unique",basket with net,,Spicy,3.0
+male,20–25,adult,friend,birthday,clothing,"8000–10,000 PKR","Green,Black,Blue,Yellow,White",Shalwar kameez,"Handmade & Crafted, Quirky & Unique",basket with net,M,,3.0
+male,20–25,adult,"extended family (aunt, uncle, cousin)",birthday,shoes,5000 PKR,Light brown,Sandals,Handmade & Crafted,basket with net,41,,3.0
+female,20–25,adult,friend,anniversary,perfume,5000–7000 PKR,,,Quirky & Unique,basket with net,,Floral,3.0
+male,25–35,adult,"extended family (aunt, uncle, cousin)",holiday,edible stuff,1000–2000 PKR,,,Handmade & Crafted,basket with net,,,3.0
+male,More than 35 years,adult,colleague/professional,other,edible stuff,5000–6000 PKR,,,Handmade & Crafted,simple box,,,3.0
+female,20–25,adult,other,birthday,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with ribbon,,Floral,4.384615384615385
+female,20–25,adult,other,birthday,bag/wallet,"5000–10,000 PKR",Black,Handbags,Handmade & Crafted,basket with ribbon,,,4.384615384615385
+female,16–20,adult,spouse,anniversary,bag/wallet,"10,000–15,000 PKR",Black,Tote bags,Handmade & Crafted,basket with ribbon,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,More than 5000 PKR,Gold,Necklace,Handmade & Crafted,basket with ribbon,,,3.6153846153846154
+female,25–35,adult,friend,birthday,perfume,5000–7000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,3.6153846153846154
+female,20–25,adult,friend,birthday,jewellery,3000–4000 PKR,Gold,Chokr,Funny & Lighthearted,basket with ribbon,,,3.6153846153846154
+female,20–25,adult,colleague/professional,anniversary,makeup products,5000–6000 PKR,,,Handmade & Crafted,acrylic box,,,3.0
+male,20–25,adult,friend,birthday,edible stuff,3000–4000 PKR,,,Quirky & Unique,basket with ribbon,,,4.846153846153846
+male,20–25,adult,friend,birthday,clothing,5000 PKR,Black,Waistcoats,Quirky & Unique,basket with ribbon,M,,4.846153846153846
+male,20–25,adult,friend,birthday,shoes,"5000–10,000 PKR",Black,Formal shoes,Handmade & Crafted,basket with ribbon,42,,4.846153846153846
+male,20–25,adult,friend,birthday,perfume,"12,000–15,000 PKR",,,Handmade & Crafted,basket with net,,Floral,3.0
+female,25–35,adult,friend,other,edible stuff,6000–7000 PKR,,,"Funny & Lighthearted, Handmade & Crafted",basket with ribbon,,,3.1538461538461537
+female,25–35,adult,friend,other,clothing,5000–8000 PKR,Yellow,,"Handmade & Crafted, Quirky & Unique",basket with ribbon,,Spicy,3.1538461538461537
+female,16–20,adult,friend,thank you gift,jewellery,4000–5000 PKR,Silver,Chokr,Handmade & Crafted,basket with ribbon,,,3.1538461538461537
+female,25–35,adult,colleague/professional,thank you gift,jewellery,4000–5000 PKR,Silver,Necklace,Funny & Lighthearted,simple box,,,3.1538461538461537
+male,More than 35 years,adult,"extended family (aunt, uncle, cousin)",get well soon,perfume,5000 PKR,,,Quirky & Unique,acrylic box,,Floral,3.1538461538461537
+male,20–25,adult,spouse,anniversary,clothing,"8000–10,000 PKR",Black,Shalwar kameez,Handmade & Crafted,basket with ribbon,S,,4.461538461538462
+female,25–35,adult,"close family(parent, sibling, child)",birthday,jewellery,More than 5000 PKR,Gold,Earrings,Handmade & Crafted,basket with net,,,3.0
+male,6–9,kid,"extended family (aunt, uncle, cousin)",thank you gift,edible stuff,5000–6000 PKR,,,,acrylic box,,,3.0
+male,More than 35 years,adult,colleague/professional,thank you gift,clothing,"10,000–15,000 PKR",White,,Funny & Lighthearted,simple box,,,3.0
+male,20–25,adult,friend,birthday,wallet,3000–5000 PKR,Black,Card wallets,Quirky & Unique,acrylic box,,,4.769230769230769
+male,20–25,adult,friend,birthday,perfume,5000 PKR,,,Quirky & Unique,acrylic box,,Floral,4.769230769230769
+female,20–25,adult,spouse,anniversary,perfume,"10,000–12,000 PKR",,,Quirky & Unique,acrylic box,,Sweet,3.0
+female,20–25,adult,spouse,anniversary,bag/wallet,3000–5000 PKR,Black,Mini wallets,Quirky & Unique,acrylic box,,,3.0
+male,20–25,adult,friend,graduation,edible stuff,6000–7000 PKR,,,Funny & Lighthearted,acrylic box,,,3.0
+male,20–25,adult,"extended family (aunt, uncle, cousin)",thank you gift,edible stuff,3000–4000 PKR,,,Funny & Lighthearted,acrylic box,,,3.0
+female,16–20,adult,friend,get well soon,makeup products,7000–8000 PKR,,,Funny & Lighthearted,acrylic box,,,3.0
+female,16–20,adult,friend,get well soon,shoes,"5000–10,000 PKR",Blue,Slippers,Quirky & Unique,acrylic box,37,,3.0
+female,16–20,adult,friend,get well soon,bag/wallet,3000–5000 PKR,Red,Tote bags,Funny & Lighthearted,acrylic box,,,3.0
+female,20–25,adult,spouse,other,perfume,5000 PKR,,,Handmade & Crafted,basket with net,,Sweet,3.923076923076923
+female,20–25,adult,other,birthday,perfume,"7000–10,000 PKR",,,Quirky & Unique,acrylic box,,Floral,3.0
+female,20–25,adult,other,birthday,clothing,"15,000–20,000 PKR",Black,Frock,Quirky & Unique,acrylic box,M,,3.0
+female,20–25,adult,other,holiday,shoes,"5000–10,000 PKR",Blue,Heels,Funny & Lighthearted,acrylic box,37,,3.0
+female,20–25,adult,friend,get well soon,edible stuff,3000–4000 PKR,,,Handmade & Crafted,acrylic box,,,3.0
+female,20–25,adult,other,other,bag/wallet,3000–5000 PKR,Black,Mini wallets,Handmade & Crafted,acrylic box,,,3.0
+female,20–25,adult,other,thank you gift,perfume,"7000–10,000 PKR",,,Quirky & Unique,acrylic box,,Floral,3.0
+female,20–25,adult,"extended family (aunt, uncle, cousin)",graduation,bag/wallet,"10,000–15,000 PKR",Black,Handbags,Quirky & Unique,acrylic box,,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",anniversary,jewellery,4000–5000 PKR,Gold,Pendant,Quirky & Unique,acrylic box,,,3.0
+male,16–20,adult,"close family(parent, sibling, child)",other,wallet,6000–8000 PKR,Camel brown,Travelling wallets,Funny & Lighthearted,acrylic box,,,3.0
+male,20–25,adult,other,birthday,perfume,"12,000–15,000 PKR",,,Quirky & Unique,acrylic box,,Floral,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,shoes,5000 PKR,Black,Formal shoes,Handmade & Crafted,basket with ribbon,39,,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000–7000 PKR,,,Handmade & Crafted,basket with ribbon,,Spicy,3.0
+female,20–25,adult,"close family(parent, sibling, child)",birthday,edible stuff,1000 PKR,,,Funny & Lighthearted,basket with ribbon,,,3.0
+female,20–25,adult,spouse,graduation,bag/wallet,"10,000–15,000 PKR",Black,Tote bags,Handmade & Crafted,basket with ribbon,,,3.0
+male,25–35,adult,"close family(parent, sibling, child)",holiday,shoes,5000 PKR,Brown,Formal shoes,Funny & Lighthearted,basket with ribbon,41,,2.923076923076923
+female,1–3,kid,"close family(parent, sibling, child)",birthday,perfume,2000–2500 PKR,,,,basket with ribbon,,Woody,3.0
+male,25–35,adult,"close family(parent, sibling, child)",birthday,shoes,"20,000–25,000 PKR",Brown,Sandals,,simple box,41,,3.230769230769231
+male,25–35,adult,"close family(parent, sibling, child)",birthday,wallet,5000–6000 PKR,Brown,Bifold wallets,,simple box,,,3.230769230769231
+male,25–35,adult,"close family(parent, sibling, child)",birthday,edible stuff,1000–2000 PKR,,,,simple box,,,3.230769230769231
+female,Less than a year,kid,"close family(parent, sibling, child)",get well soon,edible stuff,5000–6000 PKR,,,,acrylic box,,,3.0
+male,20–25,adult,"extended family (aunt, uncle, cousin)",graduation,perfume,5000–7000 PKR,,,Handmade & Crafted,acrylic box,,Floral,3.0
+male,20–25,adult,spouse,wedding/engagement gift,jewellery,More than 5000 PKR,Silver,Bracelet,Funny & Lighthearted,basket with ribbon,,,3.0
+male,20–25,adult,spouse,wedding/engagement gift,clothing,"10,000–15,000 PKR","Black,Maroon",Shalwar kameez,Handmade & Crafted,basket with ribbon,L,,3.0
+male,20–25,adult,other,other,wallet,5000–6000 PKR,Camel brown,Formal bag,Quirky & Unique,simple box,,,3.1538461538461537
+male,25–35,adult,"extended family (aunt, uncle, cousin)",birthday,wallet,"8000–10,000 PKR",Brown,Bifold wallets,Funny & Lighthearted,simple box,,,3.3076923076923075
+female,20–25,adult,"close family(parent, sibling, child)",birthday,jewellery,4000–5000 PKR,Gold,Chokr,Quirky & Unique,basket with ribbon,,,3.1538461538461537
+male,More than 35 years,adult,"extended family (aunt, uncle, cousin)",wedding/engagement gift,clothing,"10,000–15,000 PKR",White,,Handmade & Crafted,simple box,,,3.4615384615384617
+male,16–20,adult,"close family(parent, sibling, child)",birthday,shoes,"10,000–15,000 PKR",Black,Loafers,Quirky & Unique,basket with ribbon,42,,3.3846153846153846
+male,16–20,adult,"close family(parent, sibling, child)",birthday,perfume,"7000–10,000 PKR",,,Handmade & Crafted,basket with ribbon,,Spicy,3.3846153846153846
+male,16–20,adult,"close family(parent, sibling, child)",birthday,clothing,"8000–10,000 PKR",Black,Shalwar kameez,Quirky & Unique,basket with ribbon,S,,3.3846153846153846
+female,16–20,adult,spouse,birthday,perfume,"10,000–12,000 PKR",,,Quirky & Unique,acrylic box,,Floral,3.0
+female,3–6,kid,"close family(parent, sibling, child)",birthday,toys,5500 – 7500 PKR,,,,simple box,,,3.769230769230769
+male,20–25,adult,"close family(parent, sibling, child)",birthday,perfume,5000–7000 PKR,,,Handmade & Crafted,basket with net,,Sweet,3.076923076923077
+male,20–25,adult,friend,graduation,wallet,6000–8000 PKR,Brown,Card wallets,Quirky & Unique,basket with ribbon,,,3.076923076923077
+male,20–25,adult,friend,graduation,perfume,5000–7000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,3.076923076923077
+female,20–25,adult,colleague/professional,graduation,edible stuff,4000–5000 PKR,,,Quirky & Unique,basket with ribbon,,,3.076923076923077
+female,12–15,kid,"close family(parent, sibling, child)",birthday,edible stuff,4000–5000 PKR,,,,basket with ribbon,,,3.4615384615384617
+male,16–20,adult,friend,birthday,clothing,5000 PKR,White,Shalwar kameez,Handmade & Crafted,basket with ribbon,,,3.0
+male,16–20,adult,friend,birthday,perfume,5000 PKR,,,Quirky & Unique,basket with ribbon,,Floral,3.0
+male,20–25,adult,friend,birthday,edible stuff,1000–2000 PKR,,,Funny & Lighthearted,basket with ribbon,,,3.0

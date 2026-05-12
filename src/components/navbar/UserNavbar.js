@@ -1,64 +1,85 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useCart } from "../../context/CartContext";
-import { ShoppingCart, Heart, User, LayoutDashboard, LogOut } from "lucide-react";
+import {
+  ShoppingCart,
+  Heart,
+  User,
+  LayoutDashboard,
+  LogOut,
+  Menu,
+  X,
+  Sparkles,
+} from "lucide-react";
 
 const UserNavbar = () => {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const { user, isAuthenticated, logout } = useAuth();
   const { favorites } = useCart();
 
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const handleLogout = async () => {
     await logout();
+    setOpen(false);
     navigate("/");
   };
 
-  const isActive = (path) => window.location.pathname === path;
+  const navLinks = [
+    { to: "/home", label: "Home" },
+    { to: "/shop", label: "Shop" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
+  ];
+
+  const navLinkClass = ({ isActive }) =>
+    `px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+      isActive
+        ? "text-rose-700 bg-rose-100"
+        : "text-gray-700 hover:text-rose-600 hover:bg-rose-50"
+    }`;
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50 border-b border-rose-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16 justify-between">
-          
+    <nav
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "backdrop-blur-md bg-white/70 shadow-md border-b border-rose-100"
+          : "bg-white/20"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
           {/* Left: Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="text-2xl font-semibold text-rose-900">BASKETRIES</span>
+          <Link to="/home" className="flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-rose-600" />
+            <span className="text-2xl font-semibold tracking-tight text-rose-900">Basketries</span>
+          </Link>
+
+          {/* Right: Desktop Links + CTA + Utility Icons */}
+          <div className="hidden md:flex items-center gap-3 lg:gap-4">
+            <div className="flex items-center gap-x-2 lg:gap-x-3">
+              {navLinks.map((link) => (
+                <NavLink key={link.to} to={link.to} className={navLinkClass}>
+                  {link.label}
+                </NavLink>
+              ))}
+            </div>
+
+            <Link
+              to="/predict"
+              className="inline-flex items-center px-4 py-2 rounded-xl bg-rose-600 text-white shadow-md hover:scale-105 hover:shadow-lg hover:bg-rose-700 transition-all duration-300"
+            >
+              Try Now
             </Link>
-          </div>
 
-          {/* Center: Pages */}
-          <div className="hidden md:flex space-x-6 mx-auto">
-            <NavLink
-              to="/"
-              className={isActive("/") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/shop"
-              className={isActive("/shop") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
-            >
-              Shop
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={isActive("/about") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={isActive("/contact") ? "text-rose-600 font-semibold" : "text-gray-700 hover:text-rose-600"}
-            >
-              Contact
-            </NavLink>
-          </div>
-
-          {/* Right: Cart, Favourites, Profile */}
-          <div className="flex items-center gap-4 relative">
             <Link to="/cart" className="relative">
               <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition-colors" />
             </Link>
@@ -74,7 +95,7 @@ const UserNavbar = () => {
               </Link>
             )}
 
-            {/* Profile Dropdown */}
+            {/* Profile / Auth */}
             {isAuthenticated ? (
               <div className="relative group">
                 <button className="flex items-center gap-1 text-gray-700 hover:text-rose-600 transition-colors">
@@ -117,32 +138,34 @@ const UserNavbar = () => {
                 Login
               </button>
             )}
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-2xl text-rose-700 ml-2"
-              onClick={() => setOpen(!open)}
-            >
-              {open ? "✕" : "☰"}
-            </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-rose-700 hover:bg-rose-100 transition-colors"
+            onClick={() => setOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
         {/* Mobile Menu */}
         {open && (
-          <div className="md:hidden bg-white shadow-md py-4 flex flex-col items-center space-y-4">
-            <NavLink to="/" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
-              Home
-            </NavLink>
-            <NavLink to="/shop" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
-              Shop
-            </NavLink>
-            <NavLink to="/about" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
-              About
-            </NavLink>
-            <NavLink to="/contact" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
-              Contact
-            </NavLink>
+          <div className="md:hidden mt-3 rounded-2xl border border-rose-100 bg-white/95 backdrop-blur-md shadow-md p-4 flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <NavLink key={link.to} to={link.to} onClick={() => setOpen(false)} className={navLinkClass}>
+                {link.label}
+              </NavLink>
+            ))}
+
+            <Link
+              to="/predict"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center px-4 py-3 rounded-xl bg-rose-600 text-white shadow-md hover:bg-rose-700 transition-colors"
+            >
+              Try Now
+            </Link>
 
             {isAuthenticated && (
               <>
