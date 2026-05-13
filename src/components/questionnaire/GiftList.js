@@ -17,9 +17,14 @@ const GiftList = ({
   );
 
   useEffect(() => {
-  const allValid = giftValidities.every(Boolean);
-  setIsStepValid(allValid);   // 👈 comes as a prop from Questionnaire
-}, [giftValidities, setIsStepValid]);
+  const allValid = recipient.gifts.every((gift) => {
+    return !!gift.budget;
+  });
+
+  setIsStepValid(allValid);
+}, [recipient.gifts, setIsStepValid]);
+
+
 
 
 
