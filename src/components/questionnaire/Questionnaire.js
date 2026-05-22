@@ -87,6 +87,8 @@ const Questionnaire = () => {
     setIsSubmitting(true);
 
     try {
+
+      // 1. Save response to Firestore
       await addDoc(collection(db, "questionnaireResponses"), {
         timestamp: serverTimestamp(),
         recipientsCount: recipients,
@@ -95,9 +97,34 @@ const Questionnaire = () => {
         packaging: packagingChoice,
         feedback: feedbackData
       });
-      navigate("/thank-you");
+
+      // 2. Send data to Flask recommendation API
+      const response = await fetch("http://localhost:5000/recommend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          responses: giftData,
+          personality: personalityData,
+        }),
+      });
+
+      // 3. Get recommendations
+      const data = await response.json();
+
+      console.log("Recommendations:", data);
+
+      // 4. Navigate with recommendations
+      navigate("/thank-you", {
+        state: {
+          recommendations: data.recommendations,
+          traitScores: data.traitScores,
+        },
+      });
+
     } catch (error) {
-      console.error("FIRESTORE ERROR:", error);
+      console.error("SUBMIT ERROR:", error);
       alert(error.message);
       setIsSubmitting(false);
     }

@@ -19,6 +19,11 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         console.log("👤 AuthContext: User logged in/signed up:", currentUser.uid);
+
+        setUser(currentUser);
+        setIsAuthenticated(true);
+        setLoading(false);
+
         try {
           console.log("🔄 AuthContext: Attempting to initialize user profile...");
           await initializeUserProfile(currentUser.uid, currentUser);
@@ -32,10 +37,11 @@ export const AuthProvider = ({ children }) => {
         }
       } else {
         console.log("👤 AuthContext: User logged out");
+
+        setUser(null);
+        setIsAuthenticated(false);
+        setLoading(false);
       }
-      setUser(currentUser);
-      setIsAuthenticated(!!currentUser);
-      setLoading(false);
     });
 
     return () => unsubscribe();

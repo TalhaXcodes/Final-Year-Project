@@ -13,6 +13,11 @@ import Dashboard from "./components/dashboard/Dashboard";
 import AdminDashboard from "./components/dashboard/AdminDashboard";
 import UserProfile from "./components/profile/UserProfile";
 import Catalogue from "./components/catalogue/Catalogue";
+import Shop from "./components/shop/Shop";
+import ProductDetails from "./components/shop/ProductDetails";
+import Cart from "./components/cart/Cart";
+import Checkout from "./components/checkout/Checkout";
+import Favourites from "./components/favourites/Favourites";
 
 function App() {
   return (
@@ -33,6 +38,11 @@ function App() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/catalogue" element={<Catalogue />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:productId" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
     </>
   );

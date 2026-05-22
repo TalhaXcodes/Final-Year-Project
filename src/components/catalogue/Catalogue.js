@@ -52,7 +52,7 @@ const Catalogue = () => {
             className="bg-white border border-rose-300 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
           >
             <img
-              src={gift.imageUrl}
+              src={gift.imageURL}
               alt={gift.title}
               className="w-full h-48 object-cover"
             />

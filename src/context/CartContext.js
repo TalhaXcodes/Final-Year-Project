@@ -1,31 +1,91 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-// Create context
 const CartContext = createContext();
 
-// Provider component
-export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+const CART_KEY = "basketries_cart";
+const FAVORITES_KEY = "basketries_favorites";
 
-  // Add item to cart
+const getStoredData = (key) => {
+  try {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+};
+
+export const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState(() => getStoredData(CART_KEY));
+  const [favorites, setFavorites] = useState(() =>
+    getStoredData(FAVORITES_KEY)
+  );
+
+  useEffect(() => {
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+  }, [favorites]);
+
   const addToCart = (product) => {
-    setCartItems((prev) => [...prev, product]);
+    setCartItems((prev) => {
+      const existingItem = prev.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        return prev.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+
+      return [...prev, { ...product, quantity: 1 }];
+    });
   };
 
-  // Remove item from cart
+  const increaseQuantity = (id) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (id) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
+          : item
+      )
+    );
+  };
+
   const removeFromCart = (id) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Cart count
-  const getCartCount = () => cartItems.length;
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
-  // Favorites
+  const getCartCount = () =>
+    cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  const getCartTotal = () =>
+    cartItems.reduce(
+      (total, item) => total + Number(item.price) * item.quantity,
+      0
+    );
+
   const addToFavorites = (product) => {
-    if (!favorites.find((item) => item.id === product.id)) {
-      setFavorites((prev) => [...prev, product]);
-    }
+    setFavorites((prev) => {
+      const exists = prev.find((item) => item.id === product.id);
+      if (exists) return prev;
+
+      return [...prev, product];
+    });
   };
 
   const removeFromFavorites = (id) => {
@@ -38,10 +98,14 @@ export const CartProvider = ({ children }) => {
         cartItems,
         favorites,
         addToCart,
+        increaseQuantity,
+        decreaseQuantity,
         removeFromCart,
+        clearCart,
+        getCartCount,
+        getCartTotal,
         addToFavorites,
         removeFromFavorites,
-        getCartCount,
       }}
     >
       {children}
@@ -49,5 +113,4 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use cart context
 export const useCart = () => useContext(CartContext);

@@ -6,22 +6,46 @@ import { useCart } from "../../context/CartContext";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { mockRecommendations } from "../../data/recommendations";
 import Footer from "../Footer";
+import { useState } from "react";
+import { getUserOrders } from "../../services/firestore/orderService";
 
 const Dashboard = () => {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, loading } = useAuth();
   const { favorites } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!loading && !isAuthenticated) {
       navigate("/login", { state: { from: location } });
     }
-  }, [isAuthenticated, navigate, location]);
+  }, [loading, isAuthenticated, navigate, location]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (!user?.uid) return;
+
+      try {
+        const data = await getUserOrders(user.uid);
+        setOrders(data);
+      } catch (error) {
+        console.error("Failed to fetch orders:", error);
+      }
+    };
+
+    fetchOrders();
+  }, [user]);
+
+  if (loading) {
+    return <div className="text-center py-20">Loading...</div>;
+  }
 
   if (!isAuthenticated) {
     return null;
   }
+
+
 
   const displayName = user?.displayName || user?.name || "User";
 
@@ -132,6 +156,106 @@ const Dashboard = () => {
             </div>
           )}
         </div>
+
+        {/* Orders Section */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-rose-900">
+              My Orders
+            </h2>
+          </div>
+
+          {orders.length === 0 ? (
+            <div className="bg-white border border-rose-300 rounded-xl shadow-sm p-10 text-center">
+              <h3 className="text-xl font-semibold text-rose-900 mb-2">
+                No orders yet
+              </h3>
+
+              <p className="text-gray-600 mb-6">
+                Your placed orders will appear here.
+              </p>
+
+              <Link
+                to="/shop"
+                className="inline-flex items-center gap-2 bg-rose-600 text-white px-6 py-3 rounded-xl hover:bg-rose-700 transition-colors"
+              >
+                Start Shopping
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-5">
+              {orders.map((order) => (
+                <div
+                  key={order.id}
+                  className="bg-white border border-rose-300 rounded-xl shadow-sm p-5"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
+                    <div>
+                      <p className="text-sm text-gray-500">
+                        Order ID
+                      </p>
+
+                      <p className="font-semibold text-gray-800">
+                        {order.id}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-gray-500">
+                        Status
+                      </p>
+
+                      <span className="inline-block bg-yellow-100 text-yellow-700 text-sm px-3 py-1 rounded-full capitalize">
+                        {order.status}
+                      </span>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-gray-500">
+                        Total
+                      </p>
+
+                      <p className="font-bold text-rose-600">
+                        Rs {order.total}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {order.items?.map((item) => (
+                      <div
+                        key={item.productId}
+                        className="flex items-center gap-4 border rounded-lg p-3"
+                      >
+                        <img
+                          src={item.imageUrl}
+                          alt={item.name}
+                          className="w-20 h-20 object-contain bg-white rounded-md"
+                        />
+
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-800">
+                            {item.name}
+                          </h3>
+
+                          <p className="text-sm text-gray-500">
+                            Quantity: {item.quantity}
+                          </p>
+                        </div>
+
+                        <p className="font-bold text-rose-600">
+                          Rs {item.price * item.quantity}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+
         {/* Previous Recommendations */}
         <div>
           <div className="flex items-center justify-between mb-6">

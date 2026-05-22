@@ -21,11 +21,7 @@ const Login = () => {
     }
     try {
       const user = await login(form.email, form.password);
-      if (!user.emailVerified) {
-        setMessage("Please verify your email before logging in.");
-        return;
-      }
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     } catch (error) {
       setMessage(error.message);
     }

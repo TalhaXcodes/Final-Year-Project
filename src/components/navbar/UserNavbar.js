@@ -18,7 +18,8 @@ const UserNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const { user, isAuthenticated, logout } = useAuth();
-  const { favorites } = useCart();
+  const { favorites, getCartCount } = useCart();
+  const cartCount = getCartCount();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 12);
@@ -41,19 +42,17 @@ const UserNavbar = () => {
   ];
 
   const navLinkClass = ({ isActive }) =>
-    `px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-      isActive
-        ? "text-rose-700 bg-rose-100"
-        : "text-gray-700 hover:text-rose-600 hover:bg-rose-50"
+    `px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
+      ? "text-rose-700 bg-rose-100"
+      : "text-gray-700 hover:text-rose-600 hover:bg-rose-50"
     }`;
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled
           ? "backdrop-blur-md bg-white/70 shadow-md border-b border-rose-100"
           : "bg-white/20"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -80,8 +79,14 @@ const UserNavbar = () => {
               Try Now
             </Link>
 
-            <Link to="/cart" className="relative">
+            <Link to="/cart" className="relative inline-flex items-center">
               <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition-colors" />
+
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-3 bg-rose-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
             </Link>
 
             {isAuthenticated && (
@@ -169,8 +174,18 @@ const UserNavbar = () => {
 
             {isAuthenticated && (
               <>
-                <Link to="/cart" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
-                  Cart
+                <Link
+                  to="/cart"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between text-gray-700 hover:text-rose-600"
+                >
+                  <span>Cart</span>
+
+                  {cartCount > 0 && (
+                    <span className="bg-rose-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
                 <Link to="/favourites" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
                   Favourites
