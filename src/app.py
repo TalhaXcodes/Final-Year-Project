@@ -2,10 +2,19 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import pickle
 import pandas as pd
+import firebase_admin
+from firebase_admin import credentials, firestore
+import math
+import numpy as np
+from datetime import datetime, date
 
 
 app = Flask(__name__)
 CORS(app)
+
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 
 MODEL_PATH = "gift_recommender_pipeline.pkl"
@@ -27,6 +36,43 @@ PERSONALITY_COLUMNS = [
     "uniqueGiftValue",
     "practicalOverSentimental",
 ]
+
+
+def clean_json_value(value):
+    if value is None:
+        return None
+
+    if isinstance(value, float):
+        if math.isnan(value) or math.isinf(value):
+            return None
+        return value
+
+    if isinstance(value, np.floating):
+        value = float(value)
+        if math.isnan(value) or math.isinf(value):
+            return None
+        return value
+
+    if isinstance(value, np.integer):
+        return int(value)
+
+    if isinstance(value, (datetime, date)):
+        return value.isoformat()
+
+    if isinstance(value, dict):
+        return {
+            key: clean_json_value(val)
+            for key, val in value.items()
+        }
+
+    if isinstance(value, list):
+        return [clean_json_value(item) for item in value]
+
+    return value
+
+
+def safe_jsonify(data, status_code=200):
+    return jsonify(clean_json_value(data)), status_code
 
 
 def load_files():
@@ -60,14 +106,39 @@ def extract_budget(gift):
     return "Unknown"
 
 
+def fetch_personalized_templates():
+    docs = (
+        db.collection("personalizedTemplates")
+        .where("type", "==", "personalized")
+        .where("isAvailable", "==", True)
+        .stream()
+    )
+
+    templates = []
+
+    for doc in docs:
+        template = doc.to_dict()
+        template["id"] = doc.id
+        templates.append(template)
+
+    return templates
+
+
 def to_numeric(value):
     try:
         if value is None or value == "":
             return 3
-        return int(value)
+
+        number = int(value)
+
+        if math.isnan(number) or math.isinf(number):
+            return 3
+
+        return number
     except Exception:
         return 3
-    
+
+
 def calculate_trait_scores(personality):
     p = {key: to_numeric(value) for key, value in personality.items()}
 
@@ -142,7 +213,6 @@ def get_allowed_gift_types(model_input):
             "Toys",
             "Edible Stuff",
             "Accessories",
-            "Clothing",
             "Perfume",
         ]
 
@@ -150,33 +220,105 @@ def get_allowed_gift_types(model_input):
         return [
             "Clothing",
             "Shoes",
-            "Jewellery",
+            "Accessories",
             "Perfume",
             "Edible Stuff",
-            "Fashion Accessories",
+            "Bag / Wallet",
         ]
 
     if gender == "Female":
         return [
             "Clothing",
             "Shoes",
-            "Jewellery",
+            "Accessories",
             "Perfume",
             "Edible Stuff",
-            "Fashion Accessories",
+            "Bag / Wallet",
             "Makeup Products",
-            "Accessories",
         ]
 
-    return None
+    return [
+        "Accessories",
+        "Clothing",
+        "Edible Stuff",
+        "Bag / Wallet",
+        "Makeup Products",
+        "Perfume",
+        "Shoes",
+        "Toys",
+    ]
+
+
+def price_matches_budget(price, budget):
+    try:
+        price = int(price)
+    except Exception:
+        return True
+
+    if not budget or budget == "Unknown":
+        return True
+
+    budget = str(budget).replace(",", "")
+
+    if "1000–3000" in budget:
+        return 1000 <= price <= 3000
+    if "3000–5000" in budget:
+        return 3000 <= price <= 5000
+    if "5000–8000" in budget:
+        return 5000 <= price <= 8000
+    if "8000–10000" in budget:
+        return 8000 <= price <= 10000
+    if "10000–15000" in budget:
+        return 10000 <= price <= 15000
+    if "15000+" in budget:
+        return price >= 15000
+
+    return True
+
+
+def template_matches_user(template, model_input):
+    if template.get("category") != model_input.get("predicted_category"):
+        return False
+
+    if NumberSafe(template.get("stock", 0)) <= 0:
+        return False
+
+    return True
+
+
+def NumberSafe(value):
+    try:
+        if value is None or value == "":
+            return 0
+        number = float(value)
+        if math.isnan(number) or math.isinf(number):
+            return 0
+        return number
+    except Exception:
+        return 0
+
+
+def get_matching_templates(predicted_category, model_input):
+    templates = fetch_personalized_templates()
+
+    matched_templates = []
+
+    for template in templates:
+        if template_matches_user(
+            template,
+            {**model_input, "predicted_category": predicted_category}
+        ):
+            matched_templates.append(template)
+
+    return matched_templates
 
 
 def recommend_for_input(model_input, top_n=3):
     pipeline, target_encoder = load_files()
 
     input_df = pd.DataFrame([model_input])
-    probabilities = pipeline.predict_proba(input_df)[0]
 
+    probabilities = pipeline.predict_proba(input_df)[0]
     allowed_gift_types = get_allowed_gift_types(model_input)
 
     scored_items = []
@@ -187,9 +329,17 @@ def recommend_for_input(model_input, top_n=3):
         if allowed_gift_types is not None and gift_type not in allowed_gift_types:
             continue
 
+        matching_templates = get_matching_templates(
+            predicted_category=gift_type,
+            model_input=model_input
+        )
+
+        probability = clean_json_value(float(probability)) or 0
+
         scored_items.append({
             "gift_type": gift_type,
-            "confidence": float(probability),
+            "confidence": probability,
+            "templates": matching_templates,
         })
 
     scored_items = sorted(
@@ -203,7 +353,25 @@ def recommend_for_input(model_input, top_n=3):
 
 @app.get("/api/health")
 def health_check():
-    return jsonify({"status": "ok"}), 200
+    return safe_jsonify({"status": "ok"}, 200)
+
+
+@app.get("/api/personalized-templates")
+def get_personalized_templates():
+    try:
+        templates = fetch_personalized_templates()
+
+        return safe_jsonify({
+            "success": True,
+            "count": len(templates),
+            "templates": templates
+        }, 200)
+
+    except Exception as exc:
+        return safe_jsonify({
+            "success": False,
+            "error": str(exc)
+        }, 500)
 
 
 @app.post("/recommend")
@@ -211,24 +379,24 @@ def recommend():
     payload = request.get_json(silent=True)
 
     if payload is None:
-        return jsonify({
+        return safe_jsonify({
             "success": False,
             "error": "Invalid JSON payload."
-        }), 400
+        }, 400)
 
     responses = payload.get("responses", [])
     personality = payload.get("personality", {})
-    trait_scores = calculate_trait_scores(personality)
 
     if not isinstance(responses, list):
-        return jsonify({
+        return safe_jsonify({
             "success": False,
             "error": "responses must be a list."
-        }), 400
+        }, 400)
 
     if not isinstance(personality, dict):
         personality = {}
 
+    trait_scores = calculate_trait_scores(personality)
     all_results = []
 
     try:
@@ -262,23 +430,25 @@ def recommend():
                 "recommendations": recipient_results
             })
 
-        return jsonify({
+        response_data = {
             "success": True,
             "traitScores": trait_scores,
-            "recommendations": all_resultsb
-         }), 200
+            "recommendations": all_results
+        }
+
+        return safe_jsonify(response_data, 200)
 
     except FileNotFoundError:
-        return jsonify({
+        return safe_jsonify({
             "success": False,
             "error": "Model files not found. Make sure gift_recommender_pipeline.pkl and target_encoder.pkl exist."
-        }), 500
+        }, 500)
 
     except Exception as exc:
-        return jsonify({
+        return safe_jsonify({
             "success": False,
             "error": str(exc)
-        }), 500
+        }, 500)
 
 
 if __name__ == "__main__":

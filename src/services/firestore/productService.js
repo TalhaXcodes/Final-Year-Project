@@ -20,11 +20,8 @@ export const updateProduct = async (productId, productData) => {
     category: productData.category,
     price: Number(productData.price),
     stock: Number(productData.stock),
-    gender: productData.gender,
-    ageGroups: toArray(productData.ageGroups),
     imageUrl: productData.imageUrl,
     description: productData.description,
-    tags: toArray(productData.tags),
     isAvailable: productData.isAvailable,
     isFeatured: productData.isFeatured,
     type: "catalogue",
@@ -32,8 +29,6 @@ export const updateProduct = async (productId, productData) => {
   });
 };
 
-const toArray = (value = "") =>
-  value.split(",").map((item) => item.trim()).filter(Boolean);
 
 export const getAllProducts = async () => {
   const snapshot = await getDocs(productsRef);
@@ -85,11 +80,8 @@ export const addProduct = async (productData) => {
     category: productData.category,
     price: Number(productData.price),
     stock: Number(productData.stock),
-    gender: productData.gender,
-    ageGroups: toArray(productData.ageGroups),
     imageUrl: productData.imageUrl,
     description: productData.description,
-    tags: toArray(productData.tags),
     isAvailable: productData.isAvailable,
     isFeatured: productData.isFeatured,
     type: "catalogue",

@@ -1,181 +1,222 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../firebase";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
-    const navigate = useNavigate();
-    const [form, setForm] = useState({
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirm: "",
+  });
+
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setMessage("");
+  };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    const name = form.name.trim();
+    const email = form.email.trim();
+
+    if (!name || !email || !form.password || !form.confirm) {
+      setMessage("Please fill in all fields.");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (form.password.length < 6) {
+      setMessage("Password must be at least 6 characters.");
+      return;
+    }
+
+    if (form.password !== form.confirm) {
+      setMessage("Passwords do not match.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      setMessage("");
+
+      const userCred = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        form.password
+      );
+
+      await updateProfile(userCred.user, {
+        displayName: name,
+      });
+
+      await sendEmailVerification(userCred.user);
+
+      await signOut(auth);
+
+      setSuccess(true);
+      setMessage(
+        "Verification email sent. Please verify your email, then login."
+      );
+
+      setForm({
         name: "",
         email: "",
         password: "",
-        confirm: ""
-    });
-    const [message, setMessage] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirm, setShowConfirm] = useState(false);
+        confirm: "",
+      });
+    } catch (error) {
+      setSuccess(false);
+      setMessage(error.message || "Signup failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-rose-50 px-4">
+      <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-md border border-rose-300 w-full max-w-md">
+        <h2 className="text-2xl font-semibold text-rose-600 mb-2 text-center">
+          Create Account
+        </h2>
 
-    // Regex to validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        <p className="text-sm text-gray-600 text-center mb-6">
+          Sign up with your email and verify your account before logging in.
+        </p>
 
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+        {message && (
+          <p
+            className={`text-center text-sm mb-4 ${
+              success ? "text-green-600" : "text-rose-600"
+            }`}
+          >
+            {message}
+          </p>
+        )}
 
-    const handleSignup = async (e) => {
-        e.preventDefault();
+        <form onSubmit={handleSignup} className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={form.name}
+            onChange={handleChange}
+            required
+            disabled={isSubmitting}
+            className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none disabled:bg-gray-100"
+          />
 
-        // Basic validation
-        if (!form.name || !form.email || !form.password || !form.confirm) {
-            setMessage("Please fill in all fields.");
-            return;
-        }
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={form.email}
+            onChange={handleChange}
+            required
+            disabled={isSubmitting}
+            className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none disabled:bg-gray-100"
+          />
 
-        if (!emailRegex.test(form.email)) {
-            setMessage("Please enter a valid email address.");
-            return;
-        }
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              autoComplete="new-password"
+              spellCheck="false"
+              required
+              disabled={isSubmitting}
+              className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none pr-10 disabled:bg-gray-100"
+            />
 
-        if (form.password !== form.confirm) {
-            setMessage("Passwords do not match!");
-            return;
-        }
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              disabled={isSubmitting}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500"
+            >
+              {showPassword ? "👁️" : "🙈"}
+            </button>
+          </div>
 
-        try {
-            // Create user
-            const userCred = await createUserWithEmailAndPassword(auth, form.email, form.password);
+          <div className="relative">
+            <input
+              type={showConfirm ? "text" : "password"}
+              name="confirm"
+              placeholder="Confirm Password"
+              value={form.confirm}
+              onChange={handleChange}
+              autoComplete="new-password"
+              spellCheck="false"
+              required
+              disabled={isSubmitting}
+              className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none pr-10 disabled:bg-gray-100"
+            />
 
-            // Set display name
-            await updateProfile(userCred.user, { displayName: form.name });
+            <button
+              type="button"
+              onClick={() => setShowConfirm((prev) => !prev)}
+              disabled={isSubmitting}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500"
+            >
+              {showConfirm ? "👁️" : "🙈"}
+            </button>
+          </div>
 
-            // Send email verification
-            await sendEmailVerification(userCred.user);
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-rose-600 text-white py-2 rounded-md hover:bg-rose-700 transition disabled:bg-rose-300 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? "Creating Account..." : "Create Account"}
+          </button>
+        </form>
 
-            setMessage("Account created! Please check your email to verify your account.");
+        {success && (
+          <button
+            onClick={() => navigate("/login")}
+            className="w-full mt-4 border border-rose-300 text-rose-600 py-2 rounded-md hover:bg-rose-50 transition"
+          >
+            Go to Login
+          </button>
+        )}
 
-            // Optionally redirect to login after delay
-            setTimeout(() => navigate("/login"), 3000);
-
-        } catch (error) {
-            setMessage(error.message);
-        }
-    };
-
-    // Google Signup
-    const handleGoogleSignup = async () => {
-        try {
-            await signInWithPopup(auth, googleProvider);
-            navigate("/home");
-        } catch (error) {
-            setMessage(error.message);
-        }
-    };
-
-    return (
-        <div className="flex items-center justify-center min-h-screen bg-rose-50 px-4">
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-md border border-rose-300 w-full max-w-md">
-
-                <h2 className="text-2xl font-semibold text-rose-600 mb-6 text-center">
-                    Create Account
-                </h2>
-
-                {message && <p className="text-center text-sm mb-4 text-rose-600">{message}</p>}
-
-                <form onSubmit={handleSignup} className="space-y-4">
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Full Name"
-                        value={form.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none"
-                    />
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email Address"
-                        value={form.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none"
-                    />
-
-                    {/* Password Field */}
-                    <div className="relative">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            placeholder="Password"
-                            value={form.password}
-                            onChange={handleChange}
-                            autoComplete="new-password"   // Prevent browser suggestions
-                            spellCheck="false"
-                            required
-                            className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none pr-10"
-                        />
-                        <span
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
-                        >
-                            {showPassword ? "👁️" : "🙈"}
-                        </span>
-                    </div>
-
-                    {/* Confirm Password Field */}
-                    <div className="relative">
-                        <input
-                            type={showConfirm ? "text" : "password"}
-                            name="confirm"
-                            placeholder="Confirm Password"
-                            value={form.confirm}
-                            onChange={handleChange}
-                            autoComplete="new-password"
-                            spellCheck="false"
-                            required
-                            className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none pr-10"
-                        />
-                        <span
-                            onClick={() => setShowConfirm(!showConfirm)}
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
-                        >
-                            {showConfirm ? "👁️" : "🙈"}
-                        </span>
-                    </div>
-
-
-
-                    <button
-                        type="submit"
-                        className="w-full bg-rose-600 text-white py-2 rounded-md hover:bg-rose-700 transition"
-                    >
-                        Register
-                    </button>
-
-                    {/* Google Signup */}
-                    <button
-                        type="button"
-                        onClick={handleGoogleSignup}
-                        className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 shadow-sm py-2 rounded-md hover:shadow-md transition mt-3"
-                    >
-                        <FcGoogle className="text-lg" />
-                        <span className="text-gray-700 font-medium">Continue with Google</span>
-                    </button>
-                </form>
-
-                <p className="text-sm text-center mt-4">
-                    Already have an account?{" "}
-                    <span onClick={() => navigate("/login")} className="text-rose-600 cursor-pointer hover:underline">
-                        Login
-                    </span>
-                </p>
-
-            </div>
-        </div>
-    );
+        <p className="text-sm text-center mt-4">
+          Already have an account?{" "}
+          <button
+            type="button"
+            onClick={() => navigate("/login")}
+            className="text-rose-600 cursor-pointer hover:underline"
+          >
+            Login
+          </button>
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default Signup;

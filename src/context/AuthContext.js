@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      if (currentUser) {
+      if (currentUser && currentUser.emailVerified) {
         console.log("👤 AuthContext: User logged in/signed up:", currentUser.uid);
 
         setUser(currentUser);
@@ -35,6 +35,11 @@ export const AuthProvider = ({ children }) => {
             code: error.code,
           });
         }
+      } else if (currentUser && !currentUser.emailVerified) {
+        await signOut(auth);
+        setUser(null);
+        setIsAuthenticated(false);
+        setLoading(false);
       } else {
         console.log("👤 AuthContext: User logged out");
 
@@ -53,12 +58,14 @@ export const AuthProvider = ({ children }) => {
     if (!userCredential.user.emailVerified) {
       throw new Error("Please verify your email before logging in.");
     }
+    localStorage.removeItem("isGuest");
     return userCredential.user;
   };
 
   // Google Login
   const loginWithGoogle = async () => {
     const result = await signInWithPopup(auth, googleProvider);
+    localStorage.removeItem("isGuest");
     return result.user;
   };
 

@@ -2,8 +2,8 @@ import pandas as pd
 import random
 
 
-INPUT_PATH = "final_dataset v3.0.csv"
-OUTPUT_PATH = "balanced_dataset.csv v2.0"
+INPUT_PATH = "final_dataset.csv"
+OUTPUT_PATH = "balanced_dataset.csv"
 
 TARGET_COUNT = 80
 

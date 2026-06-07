@@ -20,7 +20,7 @@ export const GLOBAL_BUDGET_OPTIONS = [
 
 const Questionnaire = () => {
   // 🎯 PRODUCTION-READY CONFIGURATION
-  const maxTotalItems = 3; // Global system limit: max 3 gifts total
+  const maxTotalItems = 1; // Global system limit: max 3 gifts total
   const recipients = 1; // Single recipient flow (no dynamic count)
 
   // Phase flow: recipients → personality → packaging → feedback
@@ -98,6 +98,15 @@ const Questionnaire = () => {
         feedback: feedbackData
       });
 
+      const sanitizedGiftData = giftData.map((recipient) => ({
+        ...recipient,
+        gifts: recipient.gifts.map((gift) => ({
+          ...gift,
+          price: gift.price || gift.budget || "Not specified",
+          budget: gift.budget || "Not specified",
+        })),
+      }));
+
       // 2. Send data to Flask recommendation API
       const response = await fetch("http://localhost:5000/recommend", {
         method: "POST",
@@ -105,7 +114,7 @@ const Questionnaire = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          responses: giftData,
+          responses: sanitizedGiftData,
           personality: personalityData,
         }),
       });
@@ -115,11 +124,18 @@ const Questionnaire = () => {
 
       console.log("Recommendations:", data);
 
+
       // 4. Navigate with recommendations
       navigate("/thank-you", {
         state: {
           recommendations: data.recommendations,
           traitScores: data.traitScores,
+          packagingChoice,
+          userPreferences: {
+            giftData,
+            personalityData,
+            packagingChoice,
+          }
         },
       });
 
@@ -162,7 +178,7 @@ const Questionnaire = () => {
                 <div className="flex justify-between items-center w-full">
                   <div />
                   <button
-                    onClick={() => setRecipientSubStep(2)}
+                    onClick={() => setRecipientSubStep(3)}
                     disabled={!isStepValid}
                     className={`py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md transition
                       ${isStepValid
@@ -178,53 +194,7 @@ const Questionnaire = () => {
           </>
         )}
 
-        {/* ===== PHASE: GIFT COUNT SELECTION ===== */}
-        {phase === "recipients" && recipientSubStep === 2 && (
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-rose-300 mb-6">
-            <h2 className="text-xl font-semibold mb-4">
-              Number of gifts (Max {maxTotalItems})
-            </h2>
-            <p className="text-sm text-gray-600 mb-4">
-              Select how many gifts you’d like to include in this basket.
-            </p>
-
-            {(() => {
-              const currentRecipient = giftData[recipientStepIndex];
-              return (
-                <select
-                  value={currentRecipient.gifts.length}
-                  onChange={(e) =>
-                    handleGiftCountChange(currentRecipient.id, e.target.value)
-                  }
-                  className="w-full border border-rose-300 p-3 rounded-md"
-                >
-                  {[...Array(maxTotalItems).keys()]
-                    .map((i) => i + 1)
-                    .map((i) => (
-                      <option key={i} value={i}>
-                        {i} gift{i > 1 ? "s" : ""}
-                      </option>
-                    ))}
-                </select>
-              );
-            })()}
-
-            <div className="flex justify-between items-center mt-6">
-              <button
-                onClick={() => setRecipientSubStep(1)}
-                className="bg-rose-600 text-white py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md hover:bg-rose-700 transition"
-              >
-                Back
-              </button>
-              <button
-                onClick={() => setRecipientSubStep(3)}
-                className="bg-rose-600 text-white py-2.5 px-4 sm:px-6 text-sm sm:text-base rounded-md hover:bg-rose-700 transition"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        )}
+        
 
         {/* ===== PHASE: GIFT DETAILS ===== */}
         {phase === "recipients" && recipientSubStep === 3 && (
@@ -274,7 +244,7 @@ const Questionnaire = () => {
               <div className="flex justify-between w-full">
                 <button
                   type="button"
-                  onClick={() => setRecipientSubStep(2)}
+                  onClick={() => setRecipientSubStep(1)}
                   className="bg-rose-600 text-white py-2 px-4 rounded-md hover:bg-rose-700 transition"
                 >
                   Back

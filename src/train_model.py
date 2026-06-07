@@ -14,7 +14,7 @@ from sklearn.preprocessing import LabelEncoder
 # LOAD DATASET
 # =========================
 
-df = pd.read_csv("balanced_dataset v2.0.csv")
+df = pd.read_csv("balanced_dataset.csv")
 
 # Remove missing target rows
 df = df.dropna(subset=["gift_type"])
