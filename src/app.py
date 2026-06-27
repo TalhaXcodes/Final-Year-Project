@@ -201,6 +201,11 @@ def build_model_input(recipient, gift, personality):
 
     model_input["budget"] = extract_budget(gift)
 
+    # ===== DEBUG =====
+    print("\n================ MODEL INPUT ================")
+    print(model_input)
+    print("=============================================\n")
+
     return model_input
 
 
@@ -276,11 +281,70 @@ def price_matches_budget(price, budget):
     return True
 
 
-def template_matches_user(template, model_input):
-    if template.get("category") != model_input.get("predicted_category"):
+def normalize_text(value):
+    if value is None:
+        return ""
+    return str(value).strip().lower()
+
+
+def list_contains(values, target):
+    if not isinstance(values, list):
         return False
 
-    if NumberSafe(template.get("stock", 0)) <= 0:
+    target = normalize_text(target)
+
+    return any(normalize_text(item) == target for item in values)
+
+
+def template_matches_user(template, model_input):
+    # -------------------------
+    # Category
+    # -------------------------
+    if normalize_text(template.get("category")) != normalize_text(model_input.get("predicted_category")):
+        return False
+
+    # -------------------------
+    # Stock
+    # -------------------------
+    if NumberSafe(template.get("stock")) <= 0:
+        return False
+
+    # -------------------------
+    # Budget
+    # -------------------------
+    if not price_matches_budget(
+        template.get("price"),
+        model_input.get("budget")
+    ):
+        return False
+
+    # -------------------------
+    # Gender
+    # -------------------------
+    template_gender = normalize_text(template.get("gender"))
+    user_gender = normalize_text(model_input.get("gender"))
+
+    if template_gender not in [user_gender, "unisex"]:
+        return False
+
+    # -------------------------
+    # Age Group
+    # -------------------------
+    if not list_contains(
+        template.get("ageGroups", []),
+        model_input.get("ageGroup")
+    ):
+        return False
+
+    # -------------------------
+    # Occasion
+    # -------------------------
+    user_occasions = str(model_input.get("occasion", "")).split("|")
+
+    if not any(
+        list_contains(template.get("occasionTags", []), occasion)
+        for occasion in user_occasions
+    ):
         return False
 
     return True
@@ -304,10 +368,21 @@ def get_matching_templates(predicted_category, model_input):
     matched_templates = []
 
     for template in templates:
-        if template_matches_user(
+
+        matched = template_matches_user(
             template,
             {**model_input, "predicted_category": predicted_category}
-        ):
+        )
+
+        print(
+            template.get("name"),
+            "|",
+            template.get("price"),
+            "|",
+            matched
+        )
+
+        if matched:
             matched_templates.append(template)
 
     return matched_templates
@@ -333,6 +408,14 @@ def recommend_for_input(model_input, top_n=3):
             predicted_category=gift_type,
             model_input=model_input
         )
+        print("------------------------------------------------")
+        print("CATEGORY:", gift_type)
+        print("MATCHES:", len(matching_templates))
+
+        for t in matching_templates:
+            print("  ->", t["name"], "|", t["price"])
+
+        print("------------------------------------------------")
 
         probability = clean_json_value(float(probability)) or 0
 

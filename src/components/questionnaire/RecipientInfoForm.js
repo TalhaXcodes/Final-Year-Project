@@ -44,7 +44,7 @@ const RecipientInfoForm = ({ recipient, setGiftData, setIsStepValid }) => {
 
   const ageOptions =
     recipient.ageType === "Kid"
-      ? ["Less than a year", "1–3", "3–6", "6–9", "9–12", "12–15"]
+      ? ["6–9", "9–12", "12–15"]
       : ["16–20", "20–25", "25–35", "More than 35 years"];
 
   const isAutoAdult =

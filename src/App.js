@@ -23,6 +23,50 @@ import GuestAccess from "./components/pages/GuestAccess";
 import OrderSuccess from "./components/pages/OrderSuccess";
 import SeedTemplates from "./components/pages/SeedTemplates";
 
+const AdminRoute = ({ children }) => {
+  const { loading, isAuthenticated, role } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (role !== "admin") {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
+
+const UserRoute = ({ children }) => {
+  const { loading, isAuthenticated, role } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (role !== "user") {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
+
 const QuestionnaireRoute = () => {
   const { user, loading } = useAuth();
   const isGuest = localStorage.getItem("isGuest") === "true";
@@ -56,9 +100,30 @@ function App() {
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route
+          path="/dashboard"
+          element={
+            <UserRoute>
+              <Dashboard />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <UserRoute>
+              <UserProfile />
+            </UserRoute>
+          }
+        />
         <Route path="/catalogue" element={<Catalogue />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:productId" element={<ProductDetails />} />

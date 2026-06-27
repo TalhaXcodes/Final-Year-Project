@@ -5,8 +5,9 @@ import {
   updateProfile,
   signOut,
 } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -71,6 +72,13 @@ const Signup = () => {
         displayName: name,
       });
 
+      await setDoc(doc(db, "users", userCred.user.uid), {
+        name,
+        email,
+        role: "user",
+        createdAt: serverTimestamp(),
+      });
+
       await sendEmailVerification(userCred.user);
 
       await signOut(auth);
@@ -107,9 +115,8 @@ const Signup = () => {
 
         {message && (
           <p
-            className={`text-center text-sm mb-4 ${
-              success ? "text-green-600" : "text-rose-600"
-            }`}
+            className={`text-center text-sm mb-4 ${success ? "text-green-600" : "text-rose-600"
+              }`}
           >
             {message}
           </p>

@@ -1,7 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../firebase";
 
 const STORAGE_KEY = "giftPilotResults";
 
@@ -49,6 +47,9 @@ const ThankYou = () => {
       []
     );
   }, [rawRecommendations]);
+  console.log(
+    JSON.parse(JSON.stringify(recommendations))
+  );
 
   const getGiftType = (item) => {
     if (typeof item === "string") return item;
@@ -103,6 +104,59 @@ const ThankYou = () => {
 
   const normalizeText = (text) => String(text || "").trim().toLowerCase();
 
+  const getBudgetRange = (budget) => {
+    const text = String(budget || "");
+
+    if (text.includes("1000") && text.includes("3000"))
+      return [1000, 3000];
+
+    if (text.includes("3000") && text.includes("5000"))
+      return [3000, 5000];
+
+    if (text.includes("5000") && text.includes("8000"))
+      return [5000, 8000];
+
+    if (text.includes("8000"))
+      return [8000, 10000];
+
+    if (text.includes("10000") && text.includes("15000"))
+      return [10000, 15000];
+
+    if (text.includes("15000"))
+      return [15000, Number.MAX_SAFE_INTEGER];
+
+    return [0, Number.MAX_SAFE_INTEGER];
+  };
+
+  const isWithinBudget = (price, budget) => {
+
+    const [min, max] = getBudgetRange(budget);
+
+    return price >= min && price <= max;
+
+  };
+
+  const getBudgetScore = (price, budget) => {
+
+    const [min, max] = getBudgetRange(budget);
+
+    if (price >= min && price <= max)
+      return 15;
+
+    const distance = Math.min(
+      Math.abs(price - min),
+      Math.abs(price - max)
+    );
+
+    if (distance <= 1000)
+      return 10;
+
+    if (distance <= 3000)
+      return 5;
+
+    return 0;
+  };
+
   const arrayIncludesValue = (array, value) => {
     if (!Array.isArray(array)) return false;
 
@@ -114,13 +168,29 @@ const ThankYou = () => {
 
     const userGender = recipient.gender || "";
     const userAgeGroup = recipient.ageGroup || "";
-    const userOccasion = recipient.occasion || "";
+    const userOccasion = recipient.occasion || [];
+    const userBudget = recipient.gifts?.[0]?.budget || "";
+
+    console.log({
+      gender: userGender,
+      age: userAgeGroup,
+      occasion: userOccasion,
+      budget: userBudget
+    });
 
     let score = 0;
 
+    // ===========================
+    // CATEGORY MATCH (35)
+    // ===========================
+
     if (normalizeText(template.category) === normalizeText(category)) {
-      score += 40;
+      score += 35;
     }
+
+    // ===========================
+    // GENDER MATCH (20)
+    // ===========================
 
     if (
       normalizeText(template.gender) === normalizeText(userGender) ||
@@ -129,12 +199,20 @@ const ThankYou = () => {
       score += 20;
     }
 
+    // ===========================
+    // AGE GROUP MATCH (15)
+    // ===========================
+
     if (
       arrayIncludesValue(template.ageGroups, userAgeGroup) ||
       arrayIncludesValue(template.ageGroup, userAgeGroup)
     ) {
-      score += 20;
+      score += 15;
     }
+
+    // ===========================
+    // OCCASION MATCH (15)
+    // ===========================
 
     if (
       arrayIncludesValue(template.occasionTags, userOccasion) ||
@@ -143,8 +221,26 @@ const ThankYou = () => {
       score += 15;
     }
 
-    if (Number(template.stock || 0) > 0) {
-      score += 5;
+    // ===========================
+    // BUDGET MATCH (15)
+    // ===========================
+
+    score += getBudgetScore(
+      Number(template.price || 0),
+      userBudget
+    );
+
+
+
+    // ===========================
+    // STOCK BONUS (2)
+    // ===========================
+
+    if (
+      template.isAvailable &&
+      Number(template.stock || 0) > 0
+    ) {
+      score += 2;
     }
 
     return score;
@@ -152,6 +248,7 @@ const ThankYou = () => {
 
   const handleCategorySelect = async (category) => {
     const cleanedCategory = String(category || "").trim();
+
     if (!cleanedCategory) return;
 
     setSelectedCategory(cleanedCategory);
@@ -159,25 +256,26 @@ const ThankYou = () => {
     setTemplateMessage("");
 
     try {
-      const q = query(
-        collection(db, "personalizedTemplates"),
-        where("category", "==", cleanedCategory),
-        where("isAvailable", "==", true)
+
+      const recommendation = recommendations.find(
+        (item) => item.gift_type === cleanedCategory
       );
 
-      const snapshot = await getDocs(q);
-
-      if (snapshot.empty) {
+      if (!recommendation) {
         setTemplateMessage(
-          `No personalized basket found for ${cleanedCategory}.`
+          `No recommendation found for ${cleanedCategory}.`
         );
         return;
       }
 
-      const templates = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      const templates = recommendation.templates || [];
+
+      if (templates.length === 0) {
+        setTemplateMessage(
+          `No matching basket found for ${cleanedCategory}.`
+        );
+        return;
+      }
 
       const rankedTemplates = templates
         .map((template) => ({
@@ -187,6 +285,11 @@ const ThankYou = () => {
         .sort((a, b) => b.matchScore - a.matchScore);
 
       const bestTemplate = rankedTemplates[0];
+
+      console.log("Selected Category:", cleanedCategory);
+      console.log("Recommendation:", recommendation);
+      console.log("Templates:", templates);
+      console.log("Best Template:", bestTemplate);
 
       navigate("/recommend-basket", {
         state: {
@@ -198,9 +301,12 @@ const ThankYou = () => {
           userPreferences,
         },
       });
+
     } catch (error) {
-      console.error("Template fetch error:", error);
-      setTemplateMessage("Something went wrong while loading the basket.");
+      console.error("HANDLE CATEGORY ERROR:", error);
+      console.error(error.stack);
+
+      setTemplateMessage("Something went wrong.");
     } finally {
       setLoadingTemplate(false);
     }
@@ -237,9 +343,8 @@ const ThankYou = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-white to-pink-50 px-4 py-10">
       <div
-        className={`bg-white border border-rose-300 rounded-3xl shadow-2xl max-w-3xl w-full p-8 sm:p-10 transform transition-all duration-700 ${
-          show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
+        className={`bg-white border border-rose-300 rounded-3xl shadow-2xl max-w-3xl w-full p-8 sm:p-10 transform transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
       >
         <div className="text-center">
           <div className="mx-auto mb-6 w-24 h-24 rounded-full bg-rose-100 flex items-center justify-center shadow-inner">
@@ -305,11 +410,10 @@ const ThankYou = () => {
                   key={`${giftType}-${index}`}
                   onClick={() => handleCategorySelect(giftType)}
                   disabled={loadingTemplate}
-                  className={`w-full text-left bg-gradient-to-r from-rose-50 to-white border rounded-2xl p-5 shadow-sm hover:shadow-md transition cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed ${
-                    isSelected
-                      ? "border-rose-500 ring-2 ring-rose-200"
-                      : "border-rose-200"
-                  }`}
+                  className={`w-full text-left bg-gradient-to-r from-rose-50 to-white border rounded-2xl p-5 shadow-sm hover:shadow-md transition cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed ${isSelected
+                    ? "border-rose-500 ring-2 ring-rose-200"
+                    : "border-rose-200"
+                    }`}
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4">

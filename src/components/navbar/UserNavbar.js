@@ -11,27 +11,47 @@ import {
   Menu,
   X,
   Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 
 const UserNavbar = () => {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   const navigate = useNavigate();
-  const { user, isAuthenticated, logout } = useAuth();
-  const { favorites, getCartCount } = useCart();
+
+  const {
+    user,
+    role,
+    isAuthenticated,
+    logout,
+  } = useAuth();
+
+  const {
+    favorites,
+    getCartCount,
+  } = useCart();
+
   const cartCount = getCartCount();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12);
-    onScroll();
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const handleLogout = async () => {
-    await logout();
-    setOpen(false);
-    navigate("/");
+    try {
+      await logout();
+      setOpen(false);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const navLinks = [
@@ -42,45 +62,53 @@ const UserNavbar = () => {
   ];
 
   const navLinkClass = ({ isActive }) =>
-    `px-3 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
-      ? "text-rose-700 bg-rose-100"
-      : "text-gray-700 hover:text-rose-600 hover:bg-rose-50"
+    `px-3 py-2 rounded-xl text-sm font-medium transition-all ${
+      isActive
+        ? "bg-rose-100 text-rose-700"
+        : "text-gray-700 hover:bg-rose-50 hover:text-rose-600"
     }`;
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled
-          ? "backdrop-blur-md bg-white/70 shadow-md border-b border-rose-100"
-          : "bg-white/20"
-        }`}
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/80 backdrop-blur-md shadow-md border-b border-rose-100"
+          : "bg-white"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Left: Logo */}
-          <Link to="/home" className="flex items-center gap-2">
+
+          {/* Logo */}
+          <Link
+            to="/home"
+            className="flex items-center gap-2"
+          >
             <Sparkles className="w-5 h-5 text-rose-600" />
-            <span className="text-2xl font-semibold tracking-tight text-rose-900">Basketries</span>
+            <span className="text-2xl font-bold text-rose-900">
+              Basketries
+            </span>
           </Link>
 
-          {/* Right: Desktop Links + CTA + Utility Icons */}
-          <div className="hidden md:flex items-center gap-3 lg:gap-4">
-            <div className="flex items-center gap-x-2 lg:gap-x-3">
-              {navLinks.map((link) => (
-                <NavLink key={link.to} to={link.to} className={navLinkClass}>
-                  {link.label}
-                </NavLink>
-              ))}
-            </div>
+          {/* Desktop */}
+          <div className="hidden md:flex items-center gap-4">
 
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={navLinkClass}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+
+            {/* Cart */}
             <Link
-              to="/predict"
-              className="inline-flex items-center px-4 py-2 rounded-xl bg-rose-600 text-white shadow-md hover:scale-105 hover:shadow-lg hover:bg-rose-700 transition-all duration-300"
+              to="/cart"
+              className="relative"
             >
-              Try Now
-            </Link>
-
-            <Link to="/cart" className="relative inline-flex items-center">
-              <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition-colors" />
+              <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition" />
 
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-3 bg-rose-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
@@ -89,9 +117,14 @@ const UserNavbar = () => {
               )}
             </Link>
 
+            {/* Favourites */}
             {isAuthenticated && (
-              <Link to="/favourites" className="relative">
-                <Heart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition-colors" />
+              <Link
+                to="/favourites"
+                className="relative"
+              >
+                <Heart className="w-5 h-5 text-gray-700 hover:text-rose-600 transition" />
+
                 {favorites.length > 0 && (
                   <span className="absolute -top-2 -right-2 bg-rose-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {favorites.length}
@@ -100,107 +133,150 @@ const UserNavbar = () => {
               </Link>
             )}
 
-            {/* Profile / Auth */}
+            {/* Auth Section */}
             {isAuthenticated ? (
               <div className="relative group">
-                <button className="flex items-center gap-1 text-gray-700 hover:text-rose-600 transition-colors">
-                  <User className="w-5 h-5" />
-                  <span className="hidden lg:block">{user?.displayName || user?.name || "User"}</span>
+
+                <button className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-rose-50 transition">
+                  <User className="w-5 h-5 text-rose-600" />
+
+                  <span className="font-medium text-gray-700">
+                    {user?.displayName || "User"}
+                  </span>
                 </button>
 
                 {/* Dropdown */}
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-rose-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                <div className="absolute right-0 mt-2 w-56 bg-white border border-rose-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+
                   <Link
-                    to="/dashboard"
-                    className="flex items-center gap-2 px-4 py-2 hover:bg-rose-50 rounded-t-xl"
+                    to="/profile"
+                    className="flex items-center gap-2 px-4 py-3 hover:bg-rose-50"
                   >
-                    <LayoutDashboard className="w-4 h-4" />
-                    Dashboard
+                    <User className="w-4 h-4" />
+                    Profile
                   </Link>
-                  {user?.isAdmin && (
+
+                  {role === "user" && (
                     <Link
-                      to="/admin"
-                      className="flex items-center gap-2 px-4 py-2 hover:bg-rose-50"
+                      to="/dashboard"
+                      className="flex items-center gap-2 px-4 py-3 hover:bg-rose-50"
                     >
                       <LayoutDashboard className="w-4 h-4" />
+                      Dashboard
+                    </Link>
+                  )}
+
+                  {role === "admin" && (
+                    <Link
+                      to="/admin"
+                      className="flex items-center gap-2 px-4 py-3 hover:bg-rose-50"
+                    >
+                      <ShieldCheck className="w-4 h-4" />
                       Admin Panel
                     </Link>
                   )}
+
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-2 px-4 py-2 hover:bg-rose-50 rounded-b-xl w-full text-left"
+                    className="flex items-center gap-2 px-4 py-3 hover:bg-rose-50 w-full text-left rounded-b-2xl"
                   >
                     <LogOut className="w-4 h-4" />
                     Logout
                   </button>
+
                 </div>
               </div>
             ) : (
-              <button
-                onClick={() => navigate("/login")}
-                className="px-3 py-1 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition"
-              >
-                Login
-              </button>
+              <div className="flex gap-2">
+                <Link
+                  to="/login"
+                  className="px-4 py-2 rounded-xl border border-rose-300 text-rose-600 hover:bg-rose-50 transition"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  to="/signup"
+                  className="px-4 py-2 rounded-xl bg-rose-600 text-white hover:bg-rose-700 transition"
+                >
+                  Sign Up
+                </Link>
+              </div>
             )}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-rose-700 hover:bg-rose-100 transition-colors"
-            onClick={() => setOpen((prev) => !prev)}
-            aria-label="Toggle menu"
+            onClick={() => setOpen(!open)}
+            className="md:hidden"
           >
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {open ? (
+              <X className="w-6 h-6 text-rose-700" />
+            ) : (
+              <Menu className="w-6 h-6 text-rose-700" />
+            )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {open && (
-          <div className="md:hidden mt-3 rounded-2xl border border-rose-100 bg-white/95 backdrop-blur-md shadow-md p-4 flex flex-col gap-3">
+          <div className="md:hidden mt-4 bg-white rounded-2xl border border-rose-100 shadow-lg p-4 flex flex-col gap-3">
+
             {navLinks.map((link) => (
-              <NavLink key={link.to} to={link.to} onClick={() => setOpen(false)} className={navLinkClass}>
+              <NavLink
+                key={link.to}
+                to={link.to}
+                onClick={() => setOpen(false)}
+                className={navLinkClass}
+              >
                 {link.label}
               </NavLink>
             ))}
 
-            <Link
-              to="/predict"
-              onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center px-4 py-3 rounded-xl bg-rose-600 text-white shadow-md hover:bg-rose-700 transition-colors"
-            >
-              Try Now
-            </Link>
-
             {isAuthenticated && (
               <>
                 <Link
+                  to="/profile"
+                  onClick={() => setOpen(false)}
+                >
+                  Profile
+                </Link>
+
+                <Link
                   to="/cart"
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-between text-gray-700 hover:text-rose-600"
                 >
-                  <span>Cart</span>
-
-                  {cartCount > 0 && (
-                    <span className="bg-rose-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      {cartCount}
-                    </span>
-                  )}
+                  Cart ({cartCount})
                 </Link>
-                <Link to="/favourites" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+
+                <Link
+                  to="/favourites"
+                  onClick={() => setOpen(false)}
+                >
                   Favourites
                 </Link>
-                <Link to="/dashboard" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
-                  Dashboard
-                </Link>
-                {user?.isAdmin && (
-                  <Link to="/admin" onClick={() => setOpen(false)} className="text-gray-700 hover:text-rose-600">
+
+                {role === "user" && (
+                  <Link
+                    to="/dashboard"
+                    onClick={() => setOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                )}
+
+                {role === "admin" && (
+                  <Link
+                    to="/admin"
+                    onClick={() => setOpen(false)}
+                  >
                     Admin Panel
                   </Link>
                 )}
+
                 <button
-                  onClick={() => { setOpen(false); handleLogout(); }}
-                  className="text-gray-700 hover:text-rose-600 w-full text-left px-2"
+                  onClick={handleLogout}
+                  className="text-left text-red-500"
                 >
                   Logout
                 </button>
@@ -208,12 +284,21 @@ const UserNavbar = () => {
             )}
 
             {!isAuthenticated && (
-              <button
-                onClick={() => { setOpen(false); navigate("/login"); }}
-                className="px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition"
-              >
-                Login
-              </button>
+              <>
+                <Link
+                  to="/login"
+                  onClick={() => setOpen(false)}
+                >
+                  Login
+                </Link>
+
+                <Link
+                  to="/signup"
+                  onClick={() => setOpen(false)}
+                >
+                  Sign Up
+                </Link>
+              </>
             )}
           </div>
         )}
