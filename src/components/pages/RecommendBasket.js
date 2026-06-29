@@ -19,6 +19,10 @@ const RecommendedBasket = () => {
         }
     }, [selectedTemplate]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const normalizeText = (text) => String(text || "").trim().toLowerCase();
 
     const getAddonName = (addon) => {
@@ -255,8 +259,8 @@ const RecommendedBasket = () => {
                                     <label
                                         key={index}
                                         className={`flex items-center gap-3 rounded-xl border p-3 transition ${isBaseItem
-                                                ? "bg-rose-100 border-rose-300"
-                                                : "bg-rose-50 border-rose-100 hover:border-rose-300"
+                                            ? "bg-rose-100 border-rose-300"
+                                            : "bg-rose-50 border-rose-100 hover:border-rose-300"
                                             }`}
                                     >
                                         <input
@@ -330,8 +334,8 @@ const RecommendedBasket = () => {
                                             <label
                                                 key={index}
                                                 className={`flex items-center gap-3 rounded-xl border p-3 transition ${isBaseItem
-                                                        ? "bg-rose-100 border-rose-300"
-                                                        : "bg-rose-50 border-rose-100 hover:border-rose-300"
+                                                    ? "bg-rose-100 border-rose-300"
+                                                    : "bg-rose-50 border-rose-100 hover:border-rose-300"
                                                     } ${!isChecked && isBasketFull && !isBaseItem
                                                         ? "opacity-60 cursor-not-allowed"
                                                         : "cursor-pointer"
@@ -407,8 +411,8 @@ const RecommendedBasket = () => {
                         disabled={!isInStock}
                         onClick={handleContinueWithBasket}
                         className={`px-6 py-2 rounded-lg font-semibold transition ${isInStock
-                                ? "bg-rose-600 hover:bg-rose-700 text-white"
-                                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            ? "bg-rose-600 hover:bg-rose-700 text-white"
+                            : "bg-gray-300 text-gray-500 cursor-not-allowed"
                             }`}
                     >
                         {isInStock ? "Continue with Basket" : "Out of Stock"}

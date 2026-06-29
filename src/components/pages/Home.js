@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.png";
 import {
   ArrowRight,
   Sparkles,
@@ -82,10 +83,10 @@ const Home = () => {
         <div className="absolute top-20 -right-24 h-80 w-80 rounded-full bg-purple-300/30 blur-3xl" />
         <div className="absolute bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-pink-300/20 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center min-h-[75vh]">
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center min-h-[75vh] pb-12">
           <div>
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-rose-200 mb-6">
-              <Sparkles className="w-4 h-4 text-rose-600" />
+              <Gift className="w-4 h-4 text-rose-600" />
               <span className="text-sm font-medium text-rose-900">
                 Basketries GiftPilot
               </span>
@@ -106,7 +107,7 @@ const Home = () => {
                 className="inline-flex items-center justify-center gap-2 bg-rose-600 text-white px-8 py-4 rounded-2xl shadow-lg hover:bg-rose-700 hover:scale-105 hover:shadow-xl transition-all duration-300"
               >
                 Start GiftPilot
-                <Sparkles className="w-5 h-5" />
+                <Gift className="w-5 h-5" />
               </Link>
 
               <Link
@@ -137,20 +138,28 @@ const Home = () => {
           </div>
 
           <div className="relative">
-            <div className="relative bg-white/65 backdrop-blur-xl border border-white rounded-[2rem] shadow-2xl p-5 sm:p-7">
+            <div className="bg-white/70 backdrop-blur-xl border border-white rounded-[2rem] shadow-2xl p-5 sm:p-7">
+
               <div className="bg-gradient-to-br from-rose-500 to-pink-500 rounded-[1.5rem] p-6 text-white shadow-lg">
+
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <p className="text-sm opacity-90">Personalized Basket</p>
-                    <h3 className="text-2xl font-bold">GiftPilot Match</h3>
+                    <p className="text-sm opacity-90">
+                      Personalized Basket
+                    </p>
+
+                    <h3 className="text-2xl font-bold">
+                      GiftPilot Match
+                    </h3>
                   </div>
 
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
                     <Gift className="w-6 h-6" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
+
                   <div className="bg-white/20 rounded-2xl p-4">
                     <Heart className="w-5 h-5 mb-3" />
                     <p className="font-semibold">Occasion Based</p>
@@ -182,17 +191,34 @@ const Home = () => {
                       Useful, creative, and thoughtful gifts.
                     </p>
                   </div>
+
                 </div>
+
+                {/* Bottom Card */}
+                <div className="mt-6 bg-white text-gray-700 rounded-2xl p-4 shadow-lg border border-rose-100">
+
+                  <div className="flex items-center gap-3">
+
+                    <div className="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 text-rose-600" />
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-rose-900">
+                        Recommendation Ready
+                      </h4>
+
+                      <p className="text-xs text-gray-500 mt-1">
+                        Based on budget, relationship, and recipient profile.
+                      </p>
+                    </div>
+
+                  </div>
+
+                </div>
+
               </div>
 
-              <div className="absolute -bottom-6 -left-4 sm:-left-8 bg-white border border-rose-200 rounded-2xl shadow-xl p-4 max-w-[220px]">
-                <p className="text-sm font-semibold text-rose-900">
-                  Recommendation Ready
-                </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Based on budget, relationship, and recipient profile.
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -293,7 +319,7 @@ const Home = () => {
 
         <div className="relative max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/15 mb-6">
-            <Sparkles className="w-8 h-8" />
+            <Gift className="w-8 h-8" />
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">

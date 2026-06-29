@@ -145,8 +145,8 @@ export default function UserProfile() {
       return;
     }
 
-    if (newPassword.length < 6) {
-      setPasswordMessage("Password must be at least 6 characters");
+    if (newPassword.length < 8 || newPassword.length > 64) {
+      setPasswordMessage("Password must be between 8 and 64 characters long");
       return;
     }
 
@@ -230,11 +230,10 @@ export default function UserProfile() {
 
           {personalMessage && (
             <div
-              className={`p-4 rounded-lg mb-4 ${
-                personalMessage.includes("success")
-                  ? "bg-green-50 text-green-700 border border-green-200"
-                  : "bg-red-50 text-red-700 border border-red-200"
-              }`}
+              className={`p-4 rounded-lg mb-4 ${personalMessage.includes("success")
+                ? "bg-green-50 text-green-700 border border-green-200"
+                : "bg-red-50 text-red-700 border border-red-200"
+                }`}
             >
               {personalMessage}
             </div>
@@ -286,11 +285,10 @@ export default function UserProfile() {
 
           {shippingMessage && (
             <div
-              className={`p-4 rounded-lg mb-4 ${
-                shippingMessage.includes("success")
-                  ? "bg-green-50 text-green-700 border border-green-200"
-                  : "bg-red-50 text-red-700 border border-red-200"
-              }`}
+              className={`p-4 rounded-lg mb-4 ${shippingMessage.includes("success")
+                ? "bg-green-50 text-green-700 border border-green-200"
+                : "bg-red-50 text-red-700 border border-red-200"
+                }`}
             >
               {shippingMessage}
             </div>
@@ -371,11 +369,10 @@ export default function UserProfile() {
 
             {passwordMessage && (
               <div
-                className={`p-4 rounded-lg mb-4 ${
-                  passwordMessage.includes("success")
-                    ? "bg-green-50 text-green-700 border border-green-200"
-                    : "bg-red-50 text-red-700 border border-red-200"
-                }`}
+                className={`p-4 rounded-lg mb-4 ${passwordMessage.includes("success")
+                  ? "bg-green-50 text-green-700 border border-green-200"
+                  : "bg-red-50 text-red-700 border border-red-200"
+                  }`}
               >
                 {passwordMessage}
               </div>
@@ -392,8 +389,11 @@ export default function UserProfile() {
                   onChange={(e) => setNewPassword(e.target.value)}
                   className="w-full border border-rose-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                   placeholder="Enter new password"
-                  minLength={6}
+                  minLength={8}
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Password must be between 8 and 64 characters long.
+                </p>
               </div>
 
               <div>
@@ -406,7 +406,7 @@ export default function UserProfile() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className="w-full border border-rose-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
                   placeholder="Confirm new password"
-                  minLength={6}
+                  minLength={8}
                 />
               </div>
 

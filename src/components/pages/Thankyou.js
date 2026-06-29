@@ -402,6 +402,17 @@ const ThankYou = () => {
             recommendations.map((item, index) => {
               const giftType = getGiftType(item);
               const confidence = getConfidence(item);
+              const getRecommendationLabel = (confidence) => {
+                const percentage = confidence * 100;
+
+                if (percentage >= 45)
+                  return "Highly Recommended";
+
+                if (percentage >= 10)
+                  return "Recommended";
+
+                return "Worth Considering";
+              };
               const isSelected = selectedCategory === giftType;
 
               return (
@@ -437,11 +448,9 @@ const ThankYou = () => {
                     </div>
 
                     <div className="text-right shrink-0">
-                      <div className="text-lg font-bold text-rose-600">
-                        {(confidence * 100).toFixed(0)}%
-                      </div>
-
-                      <p className="text-xs text-gray-500">Match Score</p>
+                      <span className="inline-block bg-rose-100 text-rose-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        {getRecommendationLabel(confidence)}
+                      </span>
                     </div>
                   </div>
 

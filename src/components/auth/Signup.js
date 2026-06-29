@@ -48,8 +48,8 @@ const Signup = () => {
       return;
     }
 
-    if (form.password.length < 6) {
-      setMessage("Password must be at least 6 characters.");
+    if (form.password.length < 8 || form.password.length > 64) {
+      setMessage("Password must be between 8 and 64 characters long.");
       return;
     }
 
@@ -158,6 +158,9 @@ const Signup = () => {
               disabled={isSubmitting}
               className="w-full border border-rose-300 p-2 rounded-md focus:ring-2 focus:ring-rose-400 outline-none pr-10 disabled:bg-gray-100"
             />
+            <p className="text-xs text-gray-500 mt-1">
+              Password must be between 8 and 64 characters long.
+            </p>
 
             <button
               type="button"

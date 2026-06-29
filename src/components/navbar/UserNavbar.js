@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useCart } from "../../context/CartContext";
+import logo from "../assets/images/logo.png";
 import {
   ShoppingCart,
   Heart,
@@ -62,19 +63,17 @@ const UserNavbar = () => {
   ];
 
   const navLinkClass = ({ isActive }) =>
-    `px-3 py-2 rounded-xl text-sm font-medium transition-all ${
-      isActive
-        ? "bg-rose-100 text-rose-700"
-        : "text-gray-700 hover:bg-rose-50 hover:text-rose-600"
+    `px-3 py-2 rounded-xl text-sm font-medium transition-all ${isActive
+      ? "bg-rose-100 text-rose-700"
+      : "text-gray-700 hover:bg-rose-50 hover:text-rose-600"
     }`;
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-md border-b border-rose-100"
-          : "bg-white"
-      }`}
+      className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-white/80 backdrop-blur-md shadow-md border-b border-rose-100"
+        : "bg-white"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -82,12 +81,13 @@ const UserNavbar = () => {
           {/* Logo */}
           <Link
             to="/home"
-            className="flex items-center gap-2"
+            className="flex items-center"
           >
-            <Sparkles className="w-5 h-5 text-rose-600" />
-            <span className="text-2xl font-bold text-rose-900">
-              Basketries
-            </span>
+            <img
+              src={logo}
+              alt="Basketries Logo"
+              className="h-14 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop */}
@@ -156,7 +156,7 @@ const UserNavbar = () => {
                     Profile
                   </Link>
 
-                  {role === "user" && (
+                  {(role === "user" || role === "admin") && (
                     <Link
                       to="/dashboard"
                       className="flex items-center gap-2 px-4 py-3 hover:bg-rose-50"
@@ -256,7 +256,7 @@ const UserNavbar = () => {
                   Favourites
                 </Link>
 
-                {role === "user" && (
+                {(role === "user" || role === "admin") && (
                   <Link
                     to="/dashboard"
                     onClick={() => setOpen(false)}
@@ -288,6 +288,7 @@ const UserNavbar = () => {
                 <Link
                   to="/login"
                   onClick={() => setOpen(false)}
+                  className="px-3 py-2 rounded-xl border border-rose-300 text-rose-600 font-medium hover:bg-rose-50 transition"
                 >
                   Login
                 </Link>
@@ -295,6 +296,7 @@ const UserNavbar = () => {
                 <Link
                   to="/signup"
                   onClick={() => setOpen(false)}
+                  className="px-3 py-2 rounded-xl bg-rose-600 text-white font-medium hover:bg-rose-700 transition"
                 >
                   Sign Up
                 </Link>

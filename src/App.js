@@ -60,7 +60,7 @@ const UserRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (role !== "user") {
+  if (role !== "user" && role !== "admin") {
     return <Navigate to="/" replace />;
   }
 
@@ -133,7 +133,14 @@ function App() {
         <Route path="/recommend-basket" element={<RecommendBasket />} />
         <Route path="/guest-access" element={<GuestAccess />} />
         <Route path="/order-success" element={<OrderSuccess />} />
-        <Route path="/seed-templates" element={<SeedTemplates />} />
+        <Route
+          path="/seed-template"
+          element={
+            <AdminRoute>
+              <SeedTemplates />
+            </AdminRoute>
+          }
+        />
       </Routes>
     </>
   );
