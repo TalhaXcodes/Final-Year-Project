@@ -1,70 +1,257 @@
-# Getting Started with Create React App
+# 🎁 BASKETRIES – GiftPilot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> **AI-Powered Personalized Gift Recommendation System using React, Flask, Firebase, and Random Forest Machine Learning**
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-19-blue)
+![Flask](https://img.shields.io/badge/Flask-3.1-black)
+![Firebase](https://img.shields.io/badge/Firebase-Firestore-orange)
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Random%20Forest-success)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📖 Project Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**GiftPilot** is an AI-powered personalized gift recommendation system developed as a **Final Year Project**.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The system recommends suitable gift categories based on the recipient's information, gifting preferences, and personality traits. It uses a **Random Forest Classifier** trained on a custom dataset to generate personalized recommendations. The predicted gift categories are then matched with personalized gift basket templates stored in Firebase Firestore.
 
-### `npm test`
+Users can customize their recommended basket, add it to the cart, and complete the purchase through an integrated shopping experience.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ✨ Key Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- User Authentication using Firebase Authentication
+- Guest Questionnaire Access
+- Personality-Based Recommendation Engine
+- Random Forest Machine Learning Model
+- Personalized Gift Basket Recommendations
+- Budget-Based Recommendation Filtering
+- Firestore Integration
+- Shopping Cart & Checkout
+- Favourite Products
+- User Dashboard
+- Admin Dashboard
+- Inventory Management
+- Responsive User Interface
+- Firebase Hosting Deployment
+- Render Backend Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠 Tech Stack
 
-### `npm run eject`
+### Frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React.js
+- Tailwind CSS
+- React Router DOM
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Flask
+- RESTful API
+- Gunicorn
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Database
 
-## Learn More
+- Firebase Firestore
+- Firebase Authentication
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Machine Learning
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Random Forest Classifier
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Firebase Hosting
+- Render
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🏗 System Architecture
+
+```text
+React Frontend
+      │
+      ▼
+RESTful Flask API
+      │
+      ▼
+Random Forest Model
+      │
+      ▼
+Firebase Firestore
+      │
+      ▼
+Personalized Basket Recommendation
+```
+
+---
+
+## 🤖 Machine Learning Workflow
+
+1. User completes the questionnaire.
+2. Responses are sent to the Flask REST API.
+3. Data is preprocessed into model features.
+4. The Random Forest model predicts the most suitable gift categories.
+5. Matching personalized basket templates are retrieved from Firestore.
+6. Business rules filter templates based on:
+   - Gender
+   - Age Group
+   - Occasion
+   - Budget
+   - Availability
+7. The best recommendations are returned to the React frontend.
+
+---
+
+## 🚀 Live Deployment
+
+### Frontend
+
+https://final-year-project-a5669.web.app
+
+### Backend API
+
+https://giftpilot-api.onrender.com
+
+---
+
+## 📁 Project Structure
+
+```
+Final-Year-Project/
+│
+├── public/
+├── src/
+│   ├── components/
+│   ├── context/
+│   ├── services/
+│   ├── app.py
+│   ├── train_model.py
+│   ├── firebase.js
+│   ├── requirements.txt
+│   ├── gift_recommender_pipeline.pkl
+│   └── target_encoder.pkl
+│
+├── cypress/
+├── tests/
+├── package.json
+├── firebase.json
+└── README.md
+```
+
+---
+
+## 🔌 REST API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/health` | Check backend server status |
+| GET | `/api/personalized-templates` | Retrieve available personalized basket templates |
+| POST | `/recommend` | Generate personalized gift recommendations |
+
+---
+
+## ⚙️ Installation Guide
+
+### Clone Repository
+
+```bash
+git clone https://github.com/TalhaXcodes/Final-Year-Project.git
+```
+
+### Frontend Setup
+
+```bash
+npm install
+npm start
+```
+
+### Backend Setup
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+---
+
+## 🧠 Machine Learning Model
+
+The recommendation engine is powered by a **Random Forest Classifier** trained using Scikit-learn.
+
+### Input Features
+
+- Recipient Relationship
+- Occasion
+- Gender
+- Age Group
+- Budget
+- Personality Responses
+- Gift Preferences
+
+### Output
+
+- Recommended Gift Categories
+- Confidence Scores
+- Personalized Basket Templates
+
+---
+
+## 📸 Application Screenshots
+
+> Screenshots will be added in a future update.
+
+- Home Page
+- Login
+- Signup
+- Questionnaire
+- Recommendation Page
+- Personalized Basket
+- Shopping Cart
+- Checkout
+- User Dashboard
+- Admin Dashboard
+
+---
+
+## 🔮 Future Enhancements
+
+- Collaborative Filtering Recommendations
+- Wishlist Sharing
+- AI Chat Assistant
+- Product Review System
+- Online Payment Gateway Integration
+- Order Tracking
+- Mobile Application
+- Multi-language Support
+
+---
+
+## 👨‍💻 Contributors
+
+### Talha Shahbaz
+- BS Computer Science
+- The University of Lahore
+- GitHub: https://github.com/TalhaXcodes
+
+### Eman
+- BS Computer Science
+- The University of Lahore
+- GitHub: https://github.com/eman-work
+
+---
+
+## 📄 License
+
+This project is developed for academic purposes as a **Final Year Project** at **The University of Lahore**.
+
+© 2026 Talha Shahbaz & Eman Nusrat. All Rights Reserved.
