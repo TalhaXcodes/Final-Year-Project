@@ -112,7 +112,7 @@ export const AuthProvider = ({ children }) => {
     return userCredential.user;
   };
 
-  // Google Login (optional - remove later if not needed)
+  // Google Login 
   const loginWithGoogle = async () => {
     const result = await signInWithPopup(
       auth,
