@@ -96,7 +96,7 @@ const Questionnaire = () => {
       }));
 
       // 2. Send data to Flask recommendation API
-      const response = await fetch("http://localhost:5000/recommend", {
+      const response = await fetch("https://giftpilot-api.onrender.com/recommend", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -180,7 +180,7 @@ const Questionnaire = () => {
           </>
         )}
 
-        
+
 
         {/* ===== PHASE: GIFT DETAILS ===== */}
         {phase === "recipients" && recipientSubStep === 3 && (
