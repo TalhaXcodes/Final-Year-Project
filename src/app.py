@@ -7,12 +7,16 @@ from firebase_admin import credentials, firestore
 import math
 import numpy as np
 from datetime import datetime, date
+import os
 
 
 app = Flask(__name__)
 CORS(app)
 
-cred = credentials.Certificate("serviceAccountKey.json")
+
+SECRET_PATH = "/etc/secrets/serviceAccountKey.json"
+
+cred = credentials.Certificate(SECRET_PATH)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
