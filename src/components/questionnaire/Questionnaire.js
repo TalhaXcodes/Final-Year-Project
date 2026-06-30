@@ -2,7 +2,6 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
-import FeedbackSection from "./FeedbackSection";
 import GiftList from "./GiftList";
 import GiftPackaging from "./GiftPackaging";
 import PersonalityAnalysisForm from "./PersonalityAnalysisForm";
@@ -20,7 +19,7 @@ export const GLOBAL_BUDGET_OPTIONS = [
 
 const Questionnaire = () => {
   // 🎯 PRODUCTION-READY CONFIGURATION
-  const maxTotalItems = 1; // Global system limit: max 3 gifts total
+  const maxTotalItems = 1; // Global system limit: max 1 gift total
   const recipients = 1; // Single recipient flow (no dynamic count)
 
   // Phase flow: recipients → personality → packaging → feedback
@@ -28,20 +27,16 @@ const Questionnaire = () => {
   const [giftData, setGiftData] = useState([
     { id: 1, gifts: [{}], knownDuration: "", ageType: "", gender: "" }
   ]);
-  const [recipientStepIndex, setRecipientStepIndex] = useState(0);
+  const [recipientStepIndex] = useState(0);
   const [recipientSubStep, setRecipientSubStep] = useState(1);
   const [personalityData, setPersonalityData] = useState({});
   const [packagingChoice, setPackagingChoice] = useState("");
-  const [feedbackData, setFeedbackData] = useState({
-    helpful: "",
-    suggestion: "",
-  });
   const [isStepValid, setIsStepValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
 
-  // ✅ SIMPLIFIED: Gift count must not exceed maxTotalItems (3)
+  // Prevent users from selecting more than the allowed number of gifts
   const handleGiftCountChange = (recipientId, count) => {
     const newGiftCount = parseInt(count);
     if (newGiftCount <= maxTotalItems) {
@@ -73,12 +68,6 @@ const Questionnaire = () => {
     );
   };
 
-  // ✅ VALIDATION: Ensure all gifts have budgets selected
-  const validateAllGiftsBudgets = () => {
-    const currentRecipient = giftData[recipientStepIndex];
-    if (!currentRecipient || !currentRecipient.gifts) return false;
-    return currentRecipient.gifts.every(gift => gift.budget);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,8 +83,7 @@ const Questionnaire = () => {
         recipientsCount: recipients,
         responses: giftData,
         personality: personalityData,
-        packaging: packagingChoice,
-        feedback: feedbackData
+        packaging: packagingChoice
       });
 
       const sanitizedGiftData = giftData.map((recipient) => ({
@@ -121,8 +109,6 @@ const Questionnaire = () => {
 
       // 3. Get recommendations
       const data = await response.json();
-
-      console.log("Recommendations:", data);
 
 
       // 4. Navigate with recommendations

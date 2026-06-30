@@ -35,21 +35,19 @@ const ThankYou = () => {
   }, []);
 
   const traitScores = pageData?.traitScores || {};
-  const rawRecommendations = pageData?.recommendations || [];
   const userPreferences = pageData?.userPreferences || {};
   const packagingChoice = pageData?.packagingChoice || "";
 
   const recommendations = useMemo(() => {
+    const rawRecommendations = pageData?.recommendations || [];
+
     return (
       rawRecommendations?.[0]?.recommendations?.[0]?.recommendations ||
       rawRecommendations?.[0]?.recommendations ||
       rawRecommendations ||
       []
     );
-  }, [rawRecommendations]);
-  console.log(
-    JSON.parse(JSON.stringify(recommendations))
-  );
+  }, [pageData]);
 
   const getGiftType = (item) => {
     if (typeof item === "string") return item;
@@ -66,6 +64,22 @@ const ThankYou = () => {
   const getConfidence = (item) => {
     if (typeof item === "string") return 1;
     return item?.confidence || 1;
+  };
+
+
+  const highestConfidence = useMemo(() => {
+    if (!recommendations.length) return 1;
+
+    return Math.max(
+      ...recommendations.map((item) => getConfidence(item))
+    );
+  }, [recommendations]);
+
+  const getProgressWidth = (confidence) => {
+    return Math.max(
+      40,
+      Math.round((confidence / highestConfidence) * 100)
+    );
   };
 
   const getGiftEmoji = (giftType) => {
@@ -128,14 +142,6 @@ const ThankYou = () => {
     return [0, Number.MAX_SAFE_INTEGER];
   };
 
-  const isWithinBudget = (price, budget) => {
-
-    const [min, max] = getBudgetRange(budget);
-
-    return price >= min && price <= max;
-
-  };
-
   const getBudgetScore = (price, budget) => {
 
     const [min, max] = getBudgetRange(budget);
@@ -170,13 +176,6 @@ const ThankYou = () => {
     const userAgeGroup = recipient.ageGroup || "";
     const userOccasion = recipient.occasion || [];
     const userBudget = recipient.gifts?.[0]?.budget || "";
-
-    console.log({
-      gender: userGender,
-      age: userAgeGroup,
-      occasion: userOccasion,
-      budget: userBudget
-    });
 
     let score = 0;
 
@@ -286,11 +285,6 @@ const ThankYou = () => {
 
       const bestTemplate = rankedTemplates[0];
 
-      console.log("Selected Category:", cleanedCategory);
-      console.log("Recommendation:", recommendation);
-      console.log("Templates:", templates);
-      console.log("Best Template:", bestTemplate);
-
       navigate("/recommend-basket", {
         state: {
           selectedCategory: cleanedCategory,
@@ -303,8 +297,7 @@ const ThankYou = () => {
       });
 
     } catch (error) {
-      console.error("HANDLE CATEGORY ERROR:", error);
-      console.error(error.stack);
+      console.error(error);
 
       setTemplateMessage("Something went wrong.");
     } finally {
@@ -339,6 +332,14 @@ const ThankYou = () => {
       </div>
     );
   }
+
+  const getRecommendationLabel = (confidence) => {
+    const percentage = confidence * 100;
+
+    if (percentage >= 40) return "Top Pick";
+    if (percentage >= 20) return "Strong Match";
+    return "Recommended";
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-white to-pink-50 px-4 py-10">
@@ -402,17 +403,6 @@ const ThankYou = () => {
             recommendations.map((item, index) => {
               const giftType = getGiftType(item);
               const confidence = getConfidence(item);
-              const getRecommendationLabel = (confidence) => {
-                const percentage = confidence * 100;
-
-                if (percentage >= 45)
-                  return "Highly Recommended";
-
-                if (percentage >= 10)
-                  return "Recommended";
-
-                return "Worth Considering";
-              };
               const isSelected = selectedCategory === giftType;
 
               return (
@@ -459,7 +449,7 @@ const ThankYou = () => {
                       <div
                         className="bg-rose-500 h-3 rounded-full transition-all duration-700"
                         style={{
-                          width: `${(confidence * 100).toFixed(0)}%`,
+                          width: `${getProgressWidth(confidence)}%`,
                         }}
                       />
                     </div>
@@ -477,7 +467,7 @@ const ThankYou = () => {
 
         {loadingTemplate && (
           <div className="mt-8 bg-rose-50 border border-rose-200 rounded-2xl p-5 text-center text-gray-600">
-            Loading best matching basket...
+            Finding your best matching gift basket...
           </div>
         )}
 
